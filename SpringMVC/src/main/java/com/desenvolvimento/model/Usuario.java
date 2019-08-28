@@ -1,4 +1,4 @@
-
+package com.desenvolvimento.model;
 
 public class Usuario {
     private String nomeUsuario ;
@@ -6,7 +6,8 @@ public class Usuario {
     public String getUsuario(){
         return nomeUsuario;
     }
-    public String setNomeUsuario()
-
+    public void setNomeUsuario(String nomeUsuario){
+        this.nomeUsuario = nomeUsuario;
+    }
 
 }

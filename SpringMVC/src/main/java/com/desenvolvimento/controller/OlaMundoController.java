@@ -8,12 +8,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.annotation.Validated;
+
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.*;
 
-/* Area de Rotas do SpringMVC */
+import com.desenvolvimento.model.Usuario;
 
+/* Area de Rotas do SpringMVC */
 @Controller
 public class OlaMundoController {
    @RequestMapping("/olaMundoSpring")
@@ -46,4 +50,12 @@ public class OlaMundoController {
        model.addAttribute("serverTime",dataFinal);
        return "home";
    }  
+
+   @RequestMapping(value="/user",method=RequestMethod.POST)
+   public String usuario(@Validated Usuario usuario, Model modelo){
+    System.out.println("Entrou no Usuario ");
+    modelo.addAttribute("userName", usuario.getUsuario());
+    return "user";
+
+   }
 }
