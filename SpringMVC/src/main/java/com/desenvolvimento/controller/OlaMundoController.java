@@ -3,6 +3,8 @@ package com.desenvolvimento.controller;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,6 +58,25 @@ public class OlaMundoController {
     System.out.println("Entrou no Usuario ");
     modelo.addAttribute("userName", usuario.getUsuario());
     return "user";
+   }
+
+   // Estudo para o retorno de Lista para simulação de Data Base 
+   @RequestMapping(value="/listaSimples",method=RequestMethod.GET)
+   public ModelAndView getData(){
+
+       List<String> list = getList();
+       ModelAndView modelo = new ModelAndView("listaSimples");
+       modelo.addObject("lists",list);
+       return modelo;
 
    }
+
+   public List<String> getList(){
+        List<String> lista = new ArrayList<String>();
+        lista.add("Jamal 1");    
+        lista.add("Jamal 2");    
+        lista.add("Jamal 3");    
+        return lista;
+   }
+
 }
