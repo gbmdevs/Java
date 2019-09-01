@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.validation.annotation.Validated;
 
+import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
+
 @Controller
 public class Roteador
 {
@@ -18,10 +21,13 @@ public class Roteador
           return "index";
     }
     @RequestMapping(value="/listaSimples",method=RequestMethod.GET)
-    public String listaSimples(){
+    public ModelAndView listaSimples(){
           System.out.println("Entrou na lista Simples!");         
           ArrayList<String> lista = new ArrayList();
+          System.out.println(lista);
           lista.add("Jamal1");
-          return "listaSimples";
+          ModelAndView modelo = new ModelAndView("listaSimples");
+          modelo.addObject("lista",lista);
+          return modelo;
     }
 }

@@ -10,7 +10,11 @@
     
 </head>
 <body ng-app="app">
-  Oi Lista Simples
+  Oi Lista Simples 
+  <div ng-controller="lista1">
+     ${lista}
+  </div>
+
 </div>
 </body>
 
