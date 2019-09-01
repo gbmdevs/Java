@@ -1,3 +1,3 @@
 angular.module("app", []).controller("Controle1", function($scope) {  
-    $scope.nome="Jamalzinho !" 
+    $scope.nome="Jamalzinho Arrasa!" 
 })
