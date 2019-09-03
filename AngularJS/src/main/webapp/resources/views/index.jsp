@@ -15,6 +15,10 @@
  <div ng-controller="Controle1">
   Ola {{nome}}
 </div>
+  <div ng-controller="Controle2">
+    
+  </div>
+
 </body>
 
 </html>

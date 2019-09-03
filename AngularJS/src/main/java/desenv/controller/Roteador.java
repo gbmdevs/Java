@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,10 +35,10 @@ public class Roteador
           return modelo;
     }
     // Estudos de JSON  - Forma de Retorno para angular
-    @RequestMapping(value="/users",method=RequestMethod.GET)
-    public @ResponseBody Cliente getClienteJSON(){
+    @RequestMapping(value="/users/{name}",method=RequestMethod.GET)
+    public @ResponseBody Cliente getClienteJSON(@PathVariable String name){
          Cliente cli = new Cliente();
-         cli.setNome("Jamal");
+         cli.setNome(name);
          return cli;
     }
 
