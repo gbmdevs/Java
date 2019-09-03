@@ -1,13 +1,16 @@
 package desenv.controller;
 
+import desenv.model.Cliente;
 import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,6 +34,11 @@ public class Roteador
           return modelo;
     }
     // Estudos de JSON  - Forma de Retorno para angular
-    @RequestMapping()
+    @RequestMapping(value="/users",method=RequestMethod.GET)
+    public @ResponseBody Cliente getClienteJSON(){
+         Cliente cli = new Cliente();
+         cli.setNome("Jamal");
+         return cli;
+    }
 
 }
