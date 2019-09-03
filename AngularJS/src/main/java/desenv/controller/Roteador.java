@@ -1,4 +1,4 @@
-package Desenv;
+package desenv.controller;
 
 import java.util.ArrayList;
 
@@ -30,4 +30,7 @@ public class Roteador
           modelo.addObject("lista",lista);
           return modelo;
     }
+    // Estudos de JSON  - Forma de Retorno para angular
+    @RequestMapping()
+
 }
