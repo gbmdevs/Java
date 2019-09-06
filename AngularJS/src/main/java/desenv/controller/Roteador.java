@@ -37,9 +37,10 @@ public class Roteador
     // Estudos de JSON  - Forma de Retorno para angular
     @RequestMapping(value="/users/{name}",method=RequestMethod.GET)
     public @ResponseBody Cliente getClienteJSON(@PathVariable String name){
-         Cliente cli = new Cliente();
-         cli.setNome(name);
-         return cli;
+       String json = "";      
+       Cliente cli = new Cliente();
+       cli.setNome(name);
+       return cli;
     }
 
 }

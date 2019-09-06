@@ -15,10 +15,11 @@
  <div ng-controller="Controle1">
   Ola {{nome}}
 </div>
-  <div ng-controller="Controle2">
-    
+  <h2>.: Lista de Exemplo para Estudo :.</h2>
+  <div ng-controller="Controle2">  
+      <li ng-repeat="membros in ListaSimples">
+          {{$index + 1}. }
+      </li>
   </div>
-
 </body>
-
 </html>
