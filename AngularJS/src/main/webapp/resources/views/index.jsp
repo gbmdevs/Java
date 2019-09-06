@@ -17,8 +17,15 @@
 </div>
   <h2>.: Lista de Exemplo para Estudo :.</h2>
   <div ng-controller="Controle2">  
-      <li ng-repeat="membros in ListaSimples">
-          {{$index + 1}. }
+      <li ng-repeat="nomes in ListaSimples">
+          {{$index + 1}}. Nome: {{nomes}}
+      </li>
+  </div>
+
+  <h2>.: Lista de Exemplo para Estudo2 :.</h2>
+  <div ng-controller="Controle3">
+      <li ng-repeat="array in ArraySimples">
+        {{array}}
       </li>
   </div>
 </body>

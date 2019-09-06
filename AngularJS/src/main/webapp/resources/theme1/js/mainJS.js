@@ -12,5 +12,7 @@ app.controller("Controle2", function($scope,$http){
   });
 });
 
-
-
+app.controller("Controle3", function($scope,$http){
+  var array = ['Jamal','Guih','Klebinha']
+  $scope.ArraySimples = array;
+});
