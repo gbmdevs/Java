@@ -16,12 +16,30 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
+// Area de Banco de Dados
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.io.*;
+
 @Controller
 public class Roteador
 {
     @RequestMapping(value="/",method=RequestMethod.GET)
     public String executa(){
           System.out.println("Pagina inicial requisitada!");
+          
+          try {
+           Connection connection =  DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "");
+             System.out.println("Foi");
+          }catch(SQLException ex){
+                System.out.println("Deu ruim na conexão");
+            }
+
+            
+          
           return "index";
     }
     @RequestMapping(value="/listaSimples",method=RequestMethod.GET)
