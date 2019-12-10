@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="Financeiro.AppTest" time="0.005" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="Financeiro.AppTest" time="0.003" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/jdk1.8.0_221/jre/lib/amd64"/>
@@ -32,7 +32,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="4.9.125-linuxkit"/>
+    <property name="os.version" value="4.9.184-linuxkit"/>
     <property name="library.jansi.path" value="/opt/apache-maven-3.6.3/lib/jansi-native"/>
     <property name="user.home" value="/root"/>
     <property name="user.timezone" value="Etc/UTC"/>
@@ -61,5 +61,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="Financeiro.AppTest" name="shouldAnswerWithTrue" time="0.005"/>
+  <testcase classname="Financeiro.AppTest" name="shouldAnswerWithTrue" time="0.003"/>
 </testsuite>
