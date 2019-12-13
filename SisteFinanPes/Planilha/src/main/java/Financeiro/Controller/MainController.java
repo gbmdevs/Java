@@ -17,8 +17,8 @@ public class MainController{
     // Variaveis do DB
      String driver = "org.postgresql.Driver";
      String user   = "postgres";
-     String pass   = "";
-     String url    = "jdbc:postgresql://localhost:5432/postgres"; 
+     String pass   = "example";
+     String url    = "jdbc:postgresql://172.18.0.2:5432/postgres"; 
      Connection con = null;    
 
 @RequestMapping(value = "/", method = RequestMethod.GET)
