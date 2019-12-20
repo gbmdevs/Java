@@ -1,6 +1,5 @@
 package Financeiro.Controller;
 
-
 // Postgres
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,7 +11,7 @@ public class DBConfig{
      String driver = "org.postgresql.Driver";
      String user   = "postgres";
      String pass   = "example";
-     String url    = "jdbc:postgresql://172.28.0.3:5432/postgres"; 
+     String url    = "jdbc:postgresql://172.20.0.5:5432/postgres"; 
      Connection con = null;    
 
      public void testaConexao(){
