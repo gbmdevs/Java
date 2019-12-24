@@ -18,6 +18,7 @@ public class DBConfig{
      String pass   = "example";
      String url    = "jdbc:postgresql://172.20.0.5:5432/postgres"; 
      String status = "";
+     String sql    = "";
      PreparedStatement stmt = null;
      Connection con = null;    
 
@@ -35,7 +36,7 @@ public class DBConfig{
 
      public List<String> listarTabelas() throws SQLException{
              conexao();
-             String sql = "SELECT *  FROM pg_catalog.pg_tables  WHERE schemaname != 'pg_catalog'  AND schemaname != 'information_schema' ";
+             sql = "SELECT *  FROM pg_catalog.pg_tables  WHERE schemaname != 'pg_catalog'  AND schemaname != 'information_schema' ";
              stmt = this.con.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery();
               
@@ -49,6 +50,22 @@ public class DBConfig{
              
              return lista;
                                 
+     }
+     
+     // Listar os valores tipo gastos
+     public List<String> comboBoxTipGasto() throws SQLException{
+            conexao();
+            sql = "Select nometipgasto from TIP_GASTO";
+            List<String> boxTipGasto = new  ArrayList();
+            stmt = this.con.prepareStatement(sql);
+            ResultSet rs  =  stmt.executeQuery();
+
+            while(rs.next()){
+                 System.out.println(rs.getString("nometipgasto"));
+
+            }
+
+            return boxTipGasto;
      }
 
 }
