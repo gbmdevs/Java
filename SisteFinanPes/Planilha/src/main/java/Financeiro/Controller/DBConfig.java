@@ -56,13 +56,13 @@ public class DBConfig{
      public List<String> comboBoxTipGasto() throws SQLException{
             conexao();
             sql = "Select nometipgasto from TIP_GASTO";
-            List<String> boxTipGasto = new  ArrayList();
+            List<String> boxTipGasto = new  ArrayList<>();
             stmt = this.con.prepareStatement(sql);
             ResultSet rs  =  stmt.executeQuery();
 
             while(rs.next()){
                  System.out.println(rs.getString("nometipgasto"));
-
+                 boxTipGasto.add(rs.getString("nometipgasto"));
             }
 
             return boxTipGasto;

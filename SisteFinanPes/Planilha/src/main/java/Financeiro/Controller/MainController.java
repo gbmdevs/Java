@@ -32,17 +32,17 @@ public class MainController{
 
       List<String> listaTabelas =  db.listarTabelas();
       modelo.addObject("lista",listaTabelas);
+      modelo.addObject("country", "country");
 
       return modelo;
   }
+  
 
+  // Carrega o modelo de Dropbox
   @ModelAttribute("countryList")
-  public List<String> getCountryList() {
-      List<String> countryList = new ArrayList<String>();
-      countryList.add("United States");
-      countryList.add("China");
-      countryList.add("Singapore");
-      countryList.add("Malaysia");
+  public List<String> getCountryList() throws SQLException {
+      this.db.conexao(); 
+      List<String> countryList = this.db.comboBoxTipGasto();
       return countryList;
    }
 

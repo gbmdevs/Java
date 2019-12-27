@@ -21,6 +21,10 @@
 </c:if>
 
 <h4>Combo box vindo do Banco de Dados</h4><br>
+<form:select path="country">
+   <form:option value="NONE" label="Selecione um Valor da Base"/>
+   <form:options items="${countryList}" />
+</form:select>
 
 </body>
 </html>
