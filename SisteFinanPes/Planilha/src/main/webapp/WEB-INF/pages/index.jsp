@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">   
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>.: Pagina Inicial :.</title>
 </head>
@@ -21,7 +22,7 @@
 </c:if>
 
 <h4>Combo box vindo do Banco de Dados</h4><br>
-<form:select path="country">
+<form:select path="country" class="dropbtn">
    <form:option value="NONE" label="Selecione um Valor da Base"/>
    <form:options items="${countryList}" />
 </form:select>
