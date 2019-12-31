@@ -61,7 +61,7 @@ public class DBConfig{
             ResultSet rs  =  stmt.executeQuery();
 
             while(rs.next()){
-                 System.out.println(rs.getString("nometipgasto"));
+            //     System.out.println(rs.getString("nometipgasto"));
                  boxTipGasto.add(rs.getString("nometipgasto"));
             }
 

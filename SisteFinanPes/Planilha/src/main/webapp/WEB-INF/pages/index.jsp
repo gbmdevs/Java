@@ -22,10 +22,12 @@
 </c:if>
 
 <h4>Combo box vindo do Banco de Dados</h4><br>
-<form:select path="country" class="dropbtn">
+<span class="dropdown-box">
+<form:select path="country" class="dropbox-estilo" disabled>
    <form:option value="NONE" label="Selecione um Valor da Base"/>
    <form:options items="${countryList}" />
 </form:select>
+</span>
 
 </body>
 </html>
