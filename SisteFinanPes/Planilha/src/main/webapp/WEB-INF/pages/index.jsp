@@ -22,12 +22,22 @@
 </c:if>
 
 <h4>Combo box vindo do Banco de Dados</h4><br>
-<span class="dropdown-box">
-<form:select path="country" class="dropbox-estilo" disabled>
+<div class="custom-select" style="width:200px;">
+<form:select path="country" >
    <form:option value="NONE" label="Selecione um Valor da Base"/>
    <form:options items="${countryList}" />
 </form:select>
-</span>
+</div>
+
+<button class="trigger">Inserir Gasto</button>
+<div class="modal">
+    <div class="modal-content">
+        <span class="close-button">×</span>
+        <h3>Menu em Construção para Inserção de Gastos</h3>
+    </div>
+</div>
+
 
 </body>
+<script src="<c:url value="/resources/js/modalScript.js" />"></script> 
 </html>
