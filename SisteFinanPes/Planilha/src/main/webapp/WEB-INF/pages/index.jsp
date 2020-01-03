@@ -21,19 +21,27 @@
     </ul>
 </c:if>
 
-<h4>Combo box vindo do Banco de Dados</h4><br>
-<div class="custom-select" style="width:200px;">
-<form:select path="country" >
-   <form:option value="NONE" label="Selecione um Valor da Base"/>
-   <form:options items="${countryList}" />
-</form:select>
-</div>
+
 
 <button class="trigger">Inserir Gasto</button>
 <div class="modal">
     <div class="modal-content">
         <span class="close-button">×</span>
         <h3>Menu em Construção para Inserção de Gastos</h3>
+        
+        <div class="form__group field">
+            <input type="input" class="form__field" placeholder="Name" name="name" id='name' required />
+            <label for="name" class="form__label">Name</label>
+        </div>
+        <br>
+        <div class="custom-select" style="width:200px;">
+           <form:select path="country" >
+           <form:option value="NONE" label="Selecione um Valor da Base"/>
+           <form:options items="${countryList}" />
+        </form:select>
+
+         
+        </div>
     </div>
 </div>
 
