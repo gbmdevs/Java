@@ -13,17 +13,23 @@
 <h3>Status da Conexão do Banco: ${db}</h3>
 
 <h4>Lista de Tabelas Disponiveis</h4>
-<c:if test="${not empty lista}">
+ 
+<button class="trigger">Inserir Gasto</button>
+
+<div class="box">
+    <h2> Lista Custumizavel</h2> 
     <ul>
         <c:forEach var="listValue" items="${lista}">
-            <li>${listValue}</li>
-        </c:forEach>
-    </ul>
-</c:if>
+            <li><span>99</span>${listValue}</li>
+        </c:forEach>  
+     <!--   <li><span>1</span> Item</li>
+        <li><span>2</span> Item</li>
+        <li><span>3</span> Item</li>
+        <li><span>4</span> Item</li>
+        <li><span>5</span> Item</li> -->
+     </ul>
+ </div>
 
-
-
-<button class="trigger">Inserir Gasto</button>
 <div class="modal">
     <div class="modal-content">
         <span class="close-button">×</span>
