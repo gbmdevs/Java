@@ -19,10 +19,11 @@
 <div class="box">
     <h2> Lista Custumizavel</h2> 
     <ul>
+     <!--
         <c:forEach var="listValue" items="${lista}">
             <li><span>99</span>${listValue}</li>
         </c:forEach>  
-     <!--   <li><span>1</span> Item</li>
+        <li><span>1</span> Item</li>
         <li><span>2</span> Item</li>
         <li><span>3</span> Item</li>
         <li><span>4</span> Item</li>
@@ -31,7 +32,7 @@
  </div>
 
 <div class="modal">
-    <div class="modal-content">
+    <di class="modal-content">
         <span class="close-button">×</span>
         <h3>Menu em Construção para Inserção de Gastos</h3>
         
@@ -40,18 +41,40 @@
             <label for="name" class="form__label">Name</label>
         </div>
         <br>
-        <div class="custom-select" style="width:200px;">
+        <div class="custom-select1" style="width:200px;">
            <form:select path="country" >
            <form:option value="NONE" label="Selecione um Valor da Base"/>
            <form:options items="${countryList}" />
         </form:select>
+        <br>
+       </div>
+    
+       <div class="container">   
+       <div class="custom-select-wrapper">
+           <div class="custom-select">
+               <div class="custom-select__trigger"><span>Selecione um Gasto</span>
+                <div class="arrow"></div>
+             </div>
+             <div class="custom-options">
+                <c:forEach var="listValue" items="${lista}">
+                    <span class="custom-option" data-value="${listValue}">${listValue}</span>              
+                </c:forEach>  
+<!--
 
-         
+                <span class="custom-option selected" data-value="tesla">Tesla</span>
+                <span class="custom-option" data-value="volvo">Volvo</span>
+                <span class="custom-option" data-value="mercedes">Mercedes</span>
+-->
+            </div>
         </div>
+        </div>
+        
+        
     </div>
 </div>
 
 
 </body>
 <script src="<c:url value="/resources/js/modalScript.js" />"></script> 
+<script src="<c:url value="/resources/js/dropScript.js" />"></script> 
 </html>
