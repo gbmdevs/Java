@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 
+<<<<<<< HEAD
 @media screen and (max-height: 450px) {
     .sidebar {padding-top: 15px;}
     .sidebar a {font-size: 18px;}
@@ -113,6 +114,87 @@ div.material-table .table-footer .select-wrapper {
   -webkit-justify-content: center;
   justify-content: center;
 }
+=======
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f6f6f6;
+}
+
+.box
+{
+    width: 300px;
+}
+
+.box h2{
+   color: #fff;
+   background: #03a9f4;
+   padding: 10px 20px;
+   font-size: 20px;
+   font-weight: 700;
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+}
+
+.box ul{
+    position: relative;
+    background: #fff;
+}
+
+.box li{
+    list-style: none;
+    padding: 10px;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 5px 25px rgba(0,0,0,.1);
+    transition-duration: 0.2s;
+}
+
+.box ul li:hover{
+    transform: scale(1.1);
+    z-index: 100;
+    background: #25bcff;
+    box-shadow: 0 5 25px rgba(0,0,0,.2);
+    color: #fff;
+}
+
+.box ul li span{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    background-color: #25bcff;
+    color: #fff;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    transform: translateY(-2px);
+}
+
+
+.box ul li:hover span{
+    background: #fff;
+    color: #25bcff
+}
+
+
+/* Fim da Customização da Lista Simples */
+/* -------------------------------------------------------------------/*
+
+/* Constumização do  Dropdown Box */
+>>>>>>> 338373b243e4d97b7900cd34e0d1b3c88713f9e8
 
 div.material-table .table-footer .dataTables_info,
 div.material-table .table-footer .dataTables_length {
@@ -220,6 +302,7 @@ div.material-table table th.sorting_desc:after {
   vertical-align: middle;
 }
 
+<<<<<<< HEAD
 div.material-table table th.sorting:hover:after,
 div.material-table table th.sorting_asc:after,
 div.material-table table th.sorting_desc:after {
@@ -243,3 +326,236 @@ div.material-table table th:last-child,
 div.material-table table td:last-child {
   padding: 0 14px 0 0;
 }
+=======
+/* FF only temporary & ugly fixes */
+  /* the "appearance: none" applied on select still shows a dropdown arrow on Firefox */
+  /* https://bugzilla.mozilla.org/show_bug.cgi?id=649849 */
+  @-moz-document url-prefix() {
+    .dropbox-estilo  						 { padding-right: .9em } 
+  }	
+
+
+
+
+  /* Area da Modal */
+  .modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    border-radius: 0.5rem;
+}
+.close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+}
+.close-button:hover {
+    background-color: darkgray;
+}
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+/* Area de Inputs Customizaveis */
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 50%;
+}
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 1.3rem;
+  color: gray;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+.form__field::placeholder {
+  color: transparent;
+}
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 14px;
+  cursor: text;
+  top: 20px;
+}
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #9b9b9b;
+}
+.form__field:focus {
+  padding-bottom: 6px;
+  border-bottom: 2px solid teal;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #11998e, #38ef7d);
+  border-image-slice: 1;
+}
+.form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #11998e;
+  font-weight: 700;
+}
+
+
+/* Area Referente ao Custom Box Dropdown de exemplo */
+
+.container {
+  margin: 20px;
+  max-width: 250px;
+}
+
+.custom-select-wrapper {
+  position: relative;
+  user-select: none;
+  width: 85%; 
+}
+
+.custom-select {
+  /*display: flex;*/
+  flex-direction: column;
+  border-width: 0 2px 0 2px;
+  border-style: solid;
+  border-color: #394a6d;
+
+}
+
+.custom-select__trigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 22px;
+  font-size: 20px;
+  font-weight: 300;
+  color: #3b3b3b;
+  height: 30px;
+  line-height: 60px;
+  background: #ffffff;
+  cursor: pointer;
+  border-width: 2px 0 2px 0;
+  border-style: solid;
+  border-color: #394a6d;
+}
+
+.custom-options {
+  position: absolute;
+  display: block;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border: 2px solid #394a6d;
+  border-top: 0;
+  background: #fff;
+  transition: all 0.5s;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.custom-select.open .custom-options {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+.custom-option {
+  position: relative;
+  display: block;
+  padding: 0 22px 0 22px;
+  font-size: 22px;
+  font-weight: 30px;
+  color: #3b3b3b;
+  line-height: 30px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.custom-option:hover {
+  cursor: pointer;
+  background-color: #b2b2b2;
+}
+
+.custom-option.selected {
+  color: #ffffff;
+  background-color: #305c91;
+}
+
+.arrow {
+  position: relative;
+  height: 15px;
+  width: 15px;
+}
+
+.arrow::before,
+.arrow::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  width: 0.15rem;
+  height: 100%;
+  transition: all 0.5s;
+}
+
+.arrow::before {
+  left: -5px;
+  transform: rotate(45deg);
+  background-color: #394a6d;
+}
+
+.arrow::after {
+  left: 5px;
+  transform: rotate(-45deg);
+  background-color: #394a6d;
+}
+
+.open .arrow::before {
+  left: -5px;
+  transform: rotate(-45deg);
+}
+
+.open .arrow::after {
+  left: 5px;
+  transform: rotate(45deg);
+}
+
+
+
+
+>>>>>>> 338373b243e4d97b7900cd34e0d1b3c88713f9e8
