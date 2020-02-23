@@ -16,7 +16,7 @@ public class DBConfig{
      String driver = "org.postgresql.Driver";
      String user   = "postgres";
      String pass   = "example";
-     String url    = "jdbc:postgresql://172.20.0.5:5432/postgres"; 
+     String url    = "jdbc:postgresql://172.20.0.9:5432/postgres"; 
      String status = "";
      String sql    = "";
      PreparedStatement stmt = null;

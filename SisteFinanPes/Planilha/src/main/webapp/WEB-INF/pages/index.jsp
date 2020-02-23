@@ -6,12 +6,25 @@
 <html lang="pt-br">
 <head>
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">   
+<link href="<c:url value="/resources/css/icon.css" />" rel="stylesheet">   
+<link href="<c:url value="/resources/css/materialize.min.css" />" rel="stylesheet">   
+<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet"> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>.: Pagina Inicial :.</title>
 </head>
 
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="/SistemaFinanceiro">Planilha Pessoal</a>
+    <ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link" href="/SistemaFinanceiro/historicoGastos">Historico de Gastos</a>
+      </li>
+    </ul>  
+</nav>
+
 <h3>Status da Conexão do Banco: ${db}</h3>
 
+<!--materialize.min
 <h4>Lista de Tabelas Disponiveis</h4>
 <c:if test="${not empty lista}">
     <ul>
@@ -44,7 +57,7 @@
         </div>
     </div>
 </div>
-
+-->
 
 </body>
 <script src="<c:url value="/resources/js/modalScript.js" />"></script> 
