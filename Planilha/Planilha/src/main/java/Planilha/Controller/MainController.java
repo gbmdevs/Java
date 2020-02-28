@@ -17,12 +17,20 @@ import java.util.List;
 public class MainController{
     private List<Empregados> empregados = criarLista();
 
+    //Rotas
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
     public List<Empregados> primeriaPage(){
              System.out.println("Hello");
              return empregados;
     }
- 
+
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public void testePost(){
+           System.out.println("Post Realizado!");
+
+    }
+
+    // Funcoes das Rotas 
     private static List<Empregados> criarLista(){
         List<Empregados> tempEmpregados = new ArrayList<>();
         Empregados emp1 = new Empregados();
@@ -46,5 +54,6 @@ public class MainController{
         return tempEmpregados;
     }
 
+ 
 
 }
