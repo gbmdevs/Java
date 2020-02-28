@@ -1,4 +1,4 @@
-package Financeiro;
+package Planilha;
 
 import static org.junit.Assert.assertTrue;
 
