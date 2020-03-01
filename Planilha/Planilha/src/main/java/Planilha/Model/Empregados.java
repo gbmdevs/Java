@@ -3,6 +3,7 @@ package Planilha.Model;
 public class Empregados {
      private String nome;
      private double salario;
+     private String cargo;
 
 public Empregados() {
 
@@ -22,6 +23,14 @@ public Double getSalario(){
 
 public void setSalario(Double salario){
     this.salario = salario;
+}
+
+public void setCargo(String cargo){
+    this.cargo = cargo;
+}
+
+public String getCargo(){
+    return cargo;
 }
 
 }
