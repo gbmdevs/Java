@@ -17,12 +17,6 @@ import java.util.List;
 public class MainController{
     private List<Empregados> empregados = criarLista();
     
-
-    @RequestMapping(value = "/", method = RequestMethod.POST)
-    public void testaPost(){
-        System.out.println("Enviou o Post");
-    }
-
     //Rotas
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
     public List<Empregados> primeriaPage(){
