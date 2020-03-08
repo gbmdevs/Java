@@ -16,6 +16,12 @@ import java.util.List;
 @RestController
 public class MainController{
     private List<Empregados> empregados = criarLista();
+    
+
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public void testaPost(){
+        System.out.println("Enviou o Post");
+    }
 
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
     public List<Empregados> primeriaPage(){
