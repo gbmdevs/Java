@@ -1,8 +1,9 @@
 package Planilha.Controller;
 
 // Models
-import Planilha.Model.Empregados; 
+import Planilha.Model.Empregados;
 import Planilha.Model.Gastos;
+import Planilha.Model.Staff;
 
 // Controllers
 import Planilha.Controller.GastosController;
@@ -16,9 +17,20 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 // Jackson
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
+import java.io.IOException;
+// Bibliotecas Padrões
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Arrays;
+import java.math.BigDecimal; 
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
+
 
 //@CrossOrigin(origins = "http://localhost:4200")
 @CrossOrigin(origins = "*")
@@ -39,23 +51,29 @@ public class MainController{
 
 
     @RequestMapping(value="/gastos", method = RequestMethod.GET, produces = "application/json")
-    public GastosController listaGastos(){    
+    public String listaGastos(){    
+        TimeZone.setDefault(TimeZone.getTimeZone("GMT-03:00"));
+        Locale.setDefault(new Locale("pt", "BR"));
+        Calendar c = Calendar.getInstance();
+        Date data = c.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss"); 
+        
+        System.out.println(c.getTime().toString());  
+
+        System.out.println("GET REALIZADO: " + sdf.format(data)); 
         ObjectMapper mapper = new ObjectMapper();
-
-
-
-        System.out.println("Gastos GET Realizado!");
-        List<Gastos> TempGast = new ArrayList<>();
-        TempGast.add(new Gastos(1,"Teste ", 165.00));
+        Staff staff = createStaff();
+        String jsonString = "";
+        // Conversao para Json
+        try { 
+          jsonString = mapper.writeValueAsString(staff); 
           
-        gastos.setTotalSpent(160.00);
-        gastos.setGastos(TempGast);
 
-       // String jsonString = mapper.writeValueAsString(gastos);
-         
-        System.out.println(jsonString);
+        }catch(IOException e){
+             e.printStackTrace();
+        }
 
-        return gastos;
+        return jsonString;
     }
 
 
@@ -109,6 +127,28 @@ public class MainController{
 
 }
 
+
+// Area de Teste Remover Depois
+
+public static Staff createStaff(){
+     Staff staff = new Staff();
+     
+     staff.setName("Jamal Braga");
+     staff.setAge(25);
+     staff.setPosition(
+         new String[]{"Aluno","Iniciante"});
+     staff.setSkills(Arrays.asList(
+         "Java","React","Angular"
+      ));
+     Map<String, BigDecimal> salary = new HashMap() {{
+         put("2010", new BigDecimal(1000));
+         put("2015", new BigDecimal(4500));
+     }};
+
+     staff.setSalary(salary);
+
+     return staff;
+}
 
  
 
