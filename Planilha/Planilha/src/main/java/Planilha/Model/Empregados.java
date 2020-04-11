@@ -4,10 +4,7 @@ public class Empregados {
      private String nome;
      private double salario;
      private String cargo;
-
-public Empregados() {
-
-}
+ 
 
 public String getNome() {
     return nome;
