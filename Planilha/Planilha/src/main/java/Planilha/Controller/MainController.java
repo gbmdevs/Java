@@ -4,6 +4,7 @@ package Planilha.Controller;
 import Planilha.Model.Empregados;
 import Planilha.Model.Gastos;
 import Planilha.Model.Staff;
+import Planilha.Model.Profile;
 
 // Controllers
 import Planilha.Controller.GastosController;
@@ -23,7 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Arrays;
-import java.math.BigDecimal; 
+import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
@@ -49,9 +51,34 @@ public class MainController{
              return empregados;
     }
 
+    @RequestMapping(value="/gastos", method = RequestMethod.GET, produces= "application/json")
+    public String listagastos() throws SQLException{
+        Profile      pf1     = new Profile();
+        String       jsonRet =  ""; 
+        List<Gastos> gas1    = new ArrayList<Gastos>();
+        ObjectMapper mapper  = new ObjectMapper();
+        GastosController gasCon  = new GastosController();
+       
+        gasCon.buscaGastos();
+          
+        gas1.add(new Gastos(1, "teste", 11.88 , 25 ));
+        System.out.println(gas1);
 
-    @RequestMapping(value="/gastos", method = RequestMethod.GET, produces = "application/json")
-    public String listaGastos(){    
+        pf1.setTotalSalaryAcc(1000.67);
+        pf1.setSpents(gas1);
+
+        // Monta JSON de Resposta
+        try{
+         jsonRet = mapper.writeValueAsString(pf1);
+        }catch(IOException e ){
+           e.printStackTrace();
+        }
+        
+        return jsonRet;
+    }
+
+    @RequestMapping(value="/staff", method = RequestMethod.GET, produces = "application/json")
+    public String listaStaf(){    
         TimeZone.setDefault(TimeZone.getTimeZone("GMT-03:00"));
         Locale.setDefault(new Locale("pt", "BR"));
         Calendar c = Calendar.getInstance();

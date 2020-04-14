@@ -1,19 +1,24 @@
 package Planilha.Model;
 
+import java.util.Date;
+
 public class Gastos {
     private Integer id;
     private String spentDescription;
     private Double spentValue;
-
+    //private Date dateSpent;
+    private int cdTipSpent;
 
 public Gastos(){
 
 }   
 
-public Gastos(Integer id , String spentDescription, Double spentValue){
+public Gastos(Integer id , String spentDescription,
+               Double spentValue, int cdTipSpent){
     this.id = id ;
     this.spentDescription = spentDescription;
     this.spentValue = spentValue;
+    this.cdTipSpent = cdTipSpent;
 }
 
  
