@@ -58,13 +58,12 @@ public class MainController{
         List<Gastos> gas1    = new ArrayList<Gastos>();
         ObjectMapper mapper  = new ObjectMapper();
         GastosController gasCon  = new GastosController();
-       
-        gasCon.buscaGastos();
-          
-        gas1.add(new Gastos(1, "teste", 11.88 , 25 ));
-        System.out.println(gas1);
+         
 
-        pf1.setTotalSalaryAcc(1000.67);
+        gas1 = gasCon.buscaGastos(); 
+        System.out.println(gas1);
+        
+        pf1.setTotalSalaryAcc(14.55);
         pf1.setSpents(gas1);
 
         // Monta JSON de Resposta

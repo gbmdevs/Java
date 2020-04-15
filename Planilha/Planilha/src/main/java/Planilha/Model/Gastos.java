@@ -47,4 +47,14 @@ public Integer getId(){
     return this.id;
 }
 
+//CDTIPSPENT
+public void setCdIdSpent(Integer cdtipspent){
+    this.cdTipSpent = cdtipspent;
+}
+
+public Integer getCdIdSpent(){
+    return this.cdTipSpent;
+}
+
+
 }
