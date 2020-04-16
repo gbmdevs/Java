@@ -4,10 +4,9 @@ package Planilha.Controller;
 import Planilha.Model.Empregados;
 import Planilha.Model.Gastos;
 import Planilha.Model.Staff;
-import Planilha.Model.Profile;
 
-// Controllers
-import Planilha.Controller.GastosController;
+// Controllers 
+import Planilha.Controller.ProfileController;
 
 // Bibliotecas a respeito do Spring Framework 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,11 +38,9 @@ import java.util.TimeZone;
 @RestController
 public class MainController{
     private List<Empregados> empregados = criarLista();
-    private List<Gastos> spent  = criarGastos();
-    private GastosController gastos = new GastosController();
+    private List<Gastos> spent  = criarGastos(); 
+    private ProfileController profi = new ProfileController();
     
-
-
     //Rotas
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
     public List<Empregados> primeriaPage(){
@@ -53,26 +50,15 @@ public class MainController{
 
     @RequestMapping(value="/gastos", method = RequestMethod.GET, produces= "application/json")
     public String listagastos() throws SQLException{
-        Profile      pf1     = new Profile();
-        String       jsonRet =  ""; 
-        List<Gastos> gas1    = new ArrayList<Gastos>();
-        ObjectMapper mapper  = new ObjectMapper();
-        GastosController gasCon  = new GastosController();
-         
-
-        gas1 = gasCon.buscaGastos(); 
-        System.out.println(gas1);
-        
-        pf1.setTotalSalaryAcc(14.55);
-        pf1.setSpents(gas1);
-
+        this.profi.buscaGastos(); 
+        ObjectMapper mapper  = new ObjectMapper();   
+        String      jsonRet  = "";
         // Monta JSON de Resposta
         try{
-         jsonRet = mapper.writeValueAsString(pf1);
+         jsonRet = mapper.writeValueAsString(this.profi);
         }catch(IOException e ){
            e.printStackTrace();
         }
-        
         return jsonRet;
     }
 
