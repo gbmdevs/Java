@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import Planilha.Model.Gastos;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ProfileController {
     
@@ -45,14 +47,16 @@ public void buscaGastos() throws SQLException{
     conecta.sql = "Select * from gastos";
     conecta.stmt = conecta.con.prepareStatement(conecta.sql);
     ResultSet rs = conecta.stmt.executeQuery();
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     while(rs.next()){ 
       listGas.add(new Gastos(
          rs.getInt("idspent"),
          rs.getString("spentdescription"),
          rs.getDouble("spentvalue"),
-         rs.getInt("spenttype")
-         ));  
+         rs.getInt("spenttype"),
+         rs.getDate("datespent")
+         ));   
          this.addTotalSalaryAccount(
                 rs.getDouble("spentvalue"));
     }

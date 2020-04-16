@@ -1,6 +1,7 @@
 package Planilha.Model;
 
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class Gastos {
     private Integer id;
@@ -8,17 +9,20 @@ public class Gastos {
     private Double spentValue;
     //private Date dateSpent;
     private int cdTipSpent;
+    private Date dateSpent;
 
 public Gastos(){
 
 }   
 
 public Gastos(Integer id , String spentDescription,
-               Double spentValue, int cdTipSpent){
-    this.id = id ;
+               Double spentValue, int cdTipSpent,
+               Date dateSpent){
+    this.id               = id ;
     this.spentDescription = spentDescription;
-    this.spentValue = spentValue;
-    this.cdTipSpent = cdTipSpent;
+    this.spentValue       = spentValue;
+    this.cdTipSpent       = cdTipSpent;
+    this.dateSpent        = dateSpent;
 }
 
  
@@ -56,5 +60,12 @@ public Integer getCdIdSpent(){
     return this.cdTipSpent;
 }
 
+public void setDateSpent( Date dateSpent){
+    this.dateSpent = dateSpent;
+}
+
+public String getDateSpent(){
+    return this.dateSpent.toString(); 
+}
 
 }
