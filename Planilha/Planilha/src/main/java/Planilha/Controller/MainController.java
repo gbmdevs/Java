@@ -51,6 +51,7 @@ public class MainController{
     @RequestMapping(value="/gastos", method = RequestMethod.GET, produces= "application/json")
     public String listagastos() throws SQLException{
         this.profi.buscaGastos(); 
+        this.profi.buscaDespesas();
         ObjectMapper mapper  = new ObjectMapper();   
         String      jsonRet  = "";
         // Monta JSON de Resposta
