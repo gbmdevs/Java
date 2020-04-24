@@ -4,7 +4,9 @@ package Planilha.Controller;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 //Model
 import Planilha.Model.DespesasFixas;
@@ -13,6 +15,7 @@ import Planilha.Model.Gastos;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
  
 
@@ -22,6 +25,7 @@ public class ProfileController {
      private Double totalSalaryFree;
      private List<Gastos> spents; 
      private List<DespesasFixas> despesas;
+     private Map<String,Double> sumSpentsList;
     
 
 //Get and Setters  - Profile     
@@ -66,11 +70,47 @@ public void addTotalSalaryAccount(Double spentValue){
   this.totalSalaryAccount += spentValue;
 }
 
-public void buscaGastos() throws SQLException{
-    this.setTotalSalaryAcc(0.0);
+public void setSumSpentList(Map<String,Double> sumSpentsList){
+    this.sumSpentsList = sumSpentsList;
+}
+
+public Map<String,Double> getSumSpentsList(){
+    return this.sumSpentsList;
+}
+
+
+public void buscaGastosListTipo() throws SQLException{
+    Conexao conexao = new Conexao();
+    Map<String,Double> soma = new HashMap<String,Double>();
+    conexao.sql = "select spenttype,sum(spentvalue) " + 
+                  " from gastos " +
+                  " group by spenttype";
+    conexao.stmt = conexao.con.prepareStatement(conexao.sql);              
+    ResultSet rs = conexao.stmt.executeQuery();
+    while(rs.next()){
+        soma.put(rs.getString("spenttype"),rs.getDouble("sum"));
+    }
+    this.setSumSpentList(soma);
+}
+
+public Double totalSalarySum(Integer spenttype) throws SQLException{
+    Conexao conexao = new Conexao();
+    conexao.sql = "Select sum(spentvalue) from gastos " +
+                  "where spenttype = " + spenttype;
+    conexao.stmt = conexao.con.prepareStatement(conexao.sql);
+    ResultSet rs = conexao.stmt.executeQuery();
+    rs.next();
+    String soma = rs.getString(1);
+    return Double.parseDouble(soma);
+}
+
+public void buscaGastos(Integer tipgastos) throws SQLException{
+    this.setTotalSalaryAcc(totalSalarySum(1));
+    this.buscaGastosListTipo();
     List<Gastos>  listGas = new ArrayList<Gastos>();
     Conexao conecta = new Conexao();  
-    conecta.sql = "Select * from gastos";
+    conecta.sql = "Select * from gastos " + 
+                   "Where spenttype = " + tipgastos;
     conecta.stmt = conecta.con.prepareStatement(conecta.sql);
     ResultSet rs = conecta.stmt.executeQuery();
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -82,15 +122,17 @@ public void buscaGastos() throws SQLException{
          rs.getDouble("spentvalue"),
          rs.getInt("spenttype"),
          rs.getDate("datespent")
-         ));   
-         this.addTotalSalaryAccount(
-                rs.getDouble("spentvalue"));
+         ));    
     }
     conecta.con.close();
     this.setSpents(listGas);  
 }
 
    public void buscaDespesas() throws SQLException{
+      Calendar c = Calendar.getInstance();
+      Date date = c.getTime();
+      System.out.println(date.toString()); 
+      
       this.totalSalaryFree = 0.0;
       char status; 
       setTotalSalaryFree(totalSalaryAccount);
@@ -116,10 +158,8 @@ public void buscaGastos() throws SQLException{
            rs.getDate("duedate"),
            rs.getString("sitpayment")) 
            
-        );
-        System.out.println(status);
-        if(status == 'N'){
-            System.out.println("Entrou aqui");
+        ); 
+        if(status == 'N'){ 
             this.totalSalaryFree = this.totalSalaryFree
               -  rs.getDouble("valueexpenses");
         }
