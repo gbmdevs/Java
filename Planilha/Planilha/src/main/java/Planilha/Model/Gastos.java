@@ -6,9 +6,8 @@ import java.text.SimpleDateFormat;
 public class Gastos {
     private Integer id;
     private String spentDescription;
-    private Double spentValue;
-    //private Date dateSpent;
-    private int cdTipSpent;
+    private Double spentValue; 
+    private Integer cdTipSpent;
     private Date dateSpent;
 
 public Gastos(){
@@ -16,7 +15,7 @@ public Gastos(){
 }   
 
 public Gastos(Integer id , String spentDescription,
-               Double spentValue, int cdTipSpent,
+               Double spentValue, Integer cdTipSpent,
                Date dateSpent){
     this.id               = id ;
     this.spentDescription = spentDescription;
@@ -25,7 +24,15 @@ public Gastos(Integer id , String spentDescription,
     this.dateSpent        = dateSpent;
 }
 
- 
+public Gastos(String spentDescription,
+              Double spentValue, Integer cdTipSpent,
+              Date dateSpent ){
+    this.spentDescription = spentDescription;
+    this.spentValue = spentValue;
+    this.cdTipSpent = cdTipSpent;
+    this.dateSpent = dateSpent;              
+}
+
 public String getSpentDescription() {
     return this.spentDescription;
 }
@@ -52,11 +59,11 @@ public Integer getId(){
 }
 
 //CDTIPSPENT
-public void setCdIdSpent(Integer cdtipspent){
-    this.cdTipSpent = cdtipspent;
+public void setcdTipSpent(Integer cdTipSpent){
+    this.cdTipSpent = cdTipSpent;
 }
 
-public Integer getCdIdSpent(){
+public Integer getcdTipSpent(){
     return this.cdTipSpent;
 }
 
@@ -67,5 +74,20 @@ public void setDateSpent( Date dateSpent){
 public String getDateSpent(){
     return this.dateSpent.toString(); 
 }
+
+public Date getFormatDateSpent(){
+    return this.dateSpent;
+}
+
+@Override
+public String toString(){
+   return "Gastos [ id = " + this.id + ","
+   + "spentdescription = " + this.spentDescription + ","
+   + "spentValue = " + this.spentValue + ","
+   + "dateSpent  = " + this.dateSpent  + ","
+   + "cdTipSpent = " + this.cdTipSpent  
+   + " ]";
+}
+
 
 }

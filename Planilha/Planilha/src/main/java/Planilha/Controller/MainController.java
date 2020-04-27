@@ -7,13 +7,20 @@ import Planilha.Model.Staff;
 
 // Controllers 
 import Planilha.Controller.ProfileController;
+import Planilha.Controller.GastosController;
 
 // Bibliotecas a respeito do Spring Framework 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.io.JsonEOFException;
+import com.fasterxml.jackson.core.util.JsonParserSequence;
+import com.fasterxml.jackson.databind.JsonMappingException;
 // Jackson
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -40,6 +47,8 @@ public class MainController{
     private List<Empregados> empregados = criarLista();
     private List<Gastos> spent  = criarGastos(); 
     private ProfileController profi = new ProfileController();
+    private GastosController  gastosCon = new GastosController();
+    private ObjectMapper mapper  = new ObjectMapper(); 
     
     //Rotas
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
@@ -51,16 +60,23 @@ public class MainController{
     @RequestMapping(value="/gastos", method = RequestMethod.GET, produces= "application/json")
     public String listagastos() throws SQLException{
         this.profi.buscaGastos(1); 
-        this.profi.buscaDespesas();
-        ObjectMapper mapper  = new ObjectMapper();   
+        this.profi.buscaDespesas();  
         String      jsonRet  = "";
         // Monta JSON de Resposta
         try{
-         jsonRet = mapper.writeValueAsString(this.profi);
+         jsonRet = this.mapper.writeValueAsString(this.profi);
         }catch(IOException e ){
            e.printStackTrace();
         }
         return jsonRet;
+    }
+
+    // POST - Gastos
+    @RequestMapping(value="/gastos", method = RequestMethod.POST,
+                    produces = "application/json",
+                    consumes="application/json")
+    public String insereGastos(@RequestBody Gastos gastos ){     
+        return gastosCon.insertSpent(gastos);
     }
 
     @RequestMapping(value="/staff", method = RequestMethod.GET, produces = "application/json")
