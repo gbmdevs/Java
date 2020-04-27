@@ -82,13 +82,15 @@ public Map<String,Double> getSumSpentsList(){
 public void buscaGastosListTipo() throws SQLException{
     Conexao conexao = new Conexao();
     Map<String,Double> soma = new HashMap<String,Double>();
-    conexao.sql = "select spenttype,sum(spentvalue) " + 
-                  " from gastos " +
-                  " group by spenttype";
+    conexao.sql = "select b.titletypespent,sum(a.spentvalue) " + 
+                  " from gastos a ," +
+                  " tipogasto b" + 
+                  " where a.spenttype = b.idtypespent " + 
+                  " group by b.titletypespent";
     conexao.stmt = conexao.con.prepareStatement(conexao.sql);              
     ResultSet rs = conexao.stmt.executeQuery();
     while(rs.next()){
-        soma.put(rs.getString("spenttype"),rs.getDouble("sum"));
+        soma.put(rs.getString("titletypespent"),rs.getDouble("sum"));
     }
     this.setSumSpentList(soma);
 }
@@ -110,7 +112,8 @@ public void buscaGastos(Integer tipgastos) throws SQLException{
     List<Gastos>  listGas = new ArrayList<Gastos>();
     Conexao conecta = new Conexao();  
     conecta.sql = "Select * from gastos " + 
-                   "Where spenttype = " + tipgastos;
+                   "Where spenttype = " + tipgastos +
+                   "order by datespent desc";
     conecta.stmt = conecta.con.prepareStatement(conecta.sql);
     ResultSet rs = conecta.stmt.executeQuery();
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
