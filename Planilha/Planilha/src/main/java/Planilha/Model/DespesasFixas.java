@@ -7,9 +7,17 @@ public class DespesasFixas {
    private Integer idExpenses; 
    private String  titleExpenses;
    private Double  valueExpenses;
-   private Date    dueDate;
+   private Date    dueDate ; 
    private String  sitPayment;
+   
 
+   public DespesasFixas(){
+       this.idExpenses = 0;
+       this.titleExpenses = "";
+       this.valueExpenses = 0.00;
+       this.dueDate = new Date();
+       this.sitPayment = "";
+   }
 
    public DespesasFixas( Integer idExpenses,String titleExpenses, Double valueExpenses,
                         Date dueDate, String sitPayment){

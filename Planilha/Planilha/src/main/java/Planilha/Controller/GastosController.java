@@ -42,9 +42,9 @@ public String insertSpent(Gastos gastos){
             conexao.stmt.close();
         }catch(Exception e){
             e.printStackTrace();
-        }
- 
-        return "{ status: 'OK' }"; 
+        } 
+        
+        return "{ status: 200 }";
 }
 
 

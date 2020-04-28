@@ -49,6 +49,7 @@ public class MainController{
     private ProfileController profi = new ProfileController();
     private GastosController  gastosCon = new GastosController();
     private ObjectMapper mapper  = new ObjectMapper(); 
+    private DespesasFixasController despesasCon = new DespesasFixasController();
     
     //Rotas
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
@@ -78,6 +79,14 @@ public class MainController{
     public String insereGastos(@RequestBody Gastos gastos ){     
         return gastosCon.insertSpent(gastos);
     }
+     
+    //@ROUTES despesasFixas
+    @RequestMapping(value="/despesasfixas",
+                    method = RequestMethod.GET,
+                    produces = "application/json")
+    public String listarDespesasFixas(){
+        return despesasCon.listarDispesasFixas();
+    }                
 
     @RequestMapping(value="/staff", method = RequestMethod.GET, produces = "application/json")
     public String listaStaf(){    
