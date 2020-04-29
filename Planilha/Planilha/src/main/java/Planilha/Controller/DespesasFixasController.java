@@ -26,6 +26,7 @@ public List<DespesasFixas> getDespesasFixas(){
 public String listarDispesasFixas(){
     String jsonret = "";
     ObjectMapper mapper  = new ObjectMapper(); 
+    int rowcont = 0;
 
     try{ 
       Conexao conexao = new Conexao();
@@ -41,6 +42,7 @@ public String listarDispesasFixas(){
               rs.getDate("duedate"),
               rs.getString("sitpayment")
               ));
+              rowcont++;
       }
       conexao.con.close();
     }catch(Exception e){
@@ -53,13 +55,8 @@ public String listarDispesasFixas(){
     }catch(IOException e ){
         e.printStackTrace();
     }
-     
-
+     System.out.println(rowcont);
      return jsonret;
-
-    
-
-
 }
 
 
