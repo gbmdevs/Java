@@ -148,7 +148,8 @@ public void buscaGastos(Integer tipgastos) throws SQLException{
                     "a.idexpenses " +
                     "FROM despesasFixas a, " +
                     " tipdespesas   b " +
-                    " WHERE a.idtipexpenses = b.idtipexpenses ";
+                    " WHERE a.idtipexpenses = b.idtipexpenses "  +
+                    " AND a.sitpayment = 'N'";
       conecta.stmt = conecta.con.prepareStatement(conecta.sql);
       ResultSet rs = conecta.stmt.executeQuery();
       
