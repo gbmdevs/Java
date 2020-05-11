@@ -11,6 +11,7 @@ import java.util.Map;
 //Model
 import Planilha.Model.DespesasFixas;
 import Planilha.Model.Gastos;
+import Planilha.Model.ResumoGastos; 
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -25,7 +26,7 @@ public class ProfileController {
      private Double totalSalaryFree;
      private List<Gastos> spents; 
      private List<DespesasFixas> despesas;
-     private Map<String,Double> sumSpentsList;
+     private Map<String,Object> sumSpentsList;
     
 
 //Get and Setters  - Profile     
@@ -70,18 +71,20 @@ public void addTotalSalaryAccount(Double spentValue){
   this.totalSalaryAccount += spentValue;
 }
 
-public void setSumSpentList(Map<String,Double> sumSpentsList){
+public void setSumSpentList(Map<String,Object> sumSpentsList){
     this.sumSpentsList = sumSpentsList;
 }
 
-public Map<String,Double> getSumSpentsList(){
+public Map<String,Object> getSumSpentsList(){
     return this.sumSpentsList;
 }
 
 
 public void buscaGastosListTipo() throws SQLException{
     Conexao conexao = new Conexao();
-    Map<String,Double> soma = new HashMap<String,Double>();
+    List<ResumoGastos> resgas = new ArrayList<ResumoGastos>();
+
+    Map<String,Object> soma = new HashMap<String,Object>();
     conexao.sql = "select b.titletypespent,sum(a.spentvalue) " + 
                   " from gastos a ," +
                   " tipogasto b" + 
@@ -90,8 +93,11 @@ public void buscaGastosListTipo() throws SQLException{
     conexao.stmt = conexao.con.prepareStatement(conexao.sql);              
     ResultSet rs = conexao.stmt.executeQuery();
     while(rs.next()){
-        soma.put(rs.getString("titletypespent"),rs.getDouble("sum"));
+        resgas.add(new ResumoGastos(rs.getString("titletypespent"),
+                                    rs.getDouble("sum")));
+        //soma.put(rs.getString("titletypespent"),rs.getDouble("sum"));
     }
+    soma.put("ResumoGastos", resgas);
     this.setSumSpentList(soma);
 }
 
