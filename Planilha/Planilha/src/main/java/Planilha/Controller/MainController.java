@@ -43,20 +43,12 @@ import java.util.TimeZone;
 //@CrossOrigin(origins = "http://localhost:4200")
 @CrossOrigin(origins = "*")
 @RestController
-public class MainController{
-    private List<Empregados> empregados = criarLista();
-    private List<Gastos> spent  = criarGastos(); 
+public class MainController{ 
     private ProfileController profi = new ProfileController();
     private GastosController  gastosCon = new GastosController();
     private ObjectMapper mapper  = new ObjectMapper(); 
     private DespesasFixasController despesasCon = new DespesasFixasController();
-    
-    //Rotas
-    @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
-    public List<Empregados> primeriaPage(){
-             System.out.println("Hello");
-             return empregados;
-    }
+     
 
     @RequestMapping(value="/gastos", method = RequestMethod.GET, produces= "application/json")
     public String listagastos() throws SQLException{
@@ -79,7 +71,14 @@ public class MainController{
     public String insereGastos(@RequestBody Gastos gastos ){     
         return gastosCon.insertSpent(gastos);
     }
-     
+
+     // GET - Resumo
+     @RequestMapping(value="/resumo", method = RequestMethod.GET,
+     produces = "application/json")
+        public String buscaResumo() throws SQLException{     
+            return this.profi.buscaGastosListTipo();
+        }
+
     //@ROUTES despesasFixas
     @RequestMapping(value="/despesasfixas",
                     method = RequestMethod.GET,
@@ -87,105 +86,5 @@ public class MainController{
     public String listarDespesasFixas(){
         return despesasCon.listarDispesasFixas();
     }                
-
-    @RequestMapping(value="/staff", method = RequestMethod.GET, produces = "application/json")
-    public String listaStaf(){    
-        TimeZone.setDefault(TimeZone.getTimeZone("GMT-03:00"));
-        Locale.setDefault(new Locale("pt", "BR"));
-        Calendar c = Calendar.getInstance();
-        Date data = c.getTime();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss"); 
-        
-        System.out.println(c.getTime().toString());  
-
-        System.out.println("GET REALIZADO: " + sdf.format(data)); 
-        ObjectMapper mapper = new ObjectMapper();
-        Staff staff = createStaff();
-        String jsonString = "";
-        // Conversao para Json
-        try { 
-          jsonString = mapper.writeValueAsString(staff); 
-          
-
-        }catch(IOException e){
-             e.printStackTrace();
-        }
-
-        return jsonString;
-    }
-
-
-    @RequestMapping(value = "/", method = RequestMethod.POST)
-    public void testePost(){
-           System.out.println("Post Realizado!");
-
-    }
-
-    // Funcoes das Rotas 
-    private static List<Empregados> criarLista(){
-        List<Empregados> tempEmpregados = new ArrayList<>();
-        Empregados emp1 = new Empregados();
-        emp1.setNome("Jamal");
-        emp1.setSalario(7688.56);
-        emp1.setCargo("Analista Jr");
-
-        Empregados emp2 = new Empregados();
-        emp2.setNome("Lais Gois");
-        emp2.setSalario(7688.56);
-        emp2.setCargo("Designer Pleno");
-
-        Empregados emp3 = new Empregados();
-        emp3.setNome("Funalo de Tal");
-        emp3.setSalario(1200.00);
-        emp3.setCargo("Estagiario");
-
-        tempEmpregados.add(emp1);
-        tempEmpregados.add(emp2);
-        tempEmpregados.add(emp3);
-        return tempEmpregados;
-    }
  
- public  static List<Gastos> criarGastos(){
-    List<Gastos> tempGastos = new ArrayList<>();
-    Gastos gas1 = new Gastos();
-    Gastos gas2 = new Gastos();       
-    Integer id  = 0 ;
-
-    gas1.setSpentDescription("Descrição Simples do Gastos");
-    gas1.setSpentValue(1678.56);
-    gas1.setId(id + 1);
-
-    gas2.setSpentDescription("Descrição Simples 2");
-    gas2.setSpentValue(878.45);
-    gas2.setId(id + 2);
-
-    tempGastos.add(gas1);
-    tempGastos.add(gas2);
-    return tempGastos;
-
-}
-
-// Area de Teste Remover Depois
-public static Staff createStaff(){
-     Staff staff = new Staff();
-     
-     staff.setName("Jamal Braga");
-     staff.setAge(25);
-     staff.setPosition(
-         new String[]{"Aluno","Iniciante"});
-     staff.setSkills(Arrays.asList(
-         "Java","React","Angular"
-      ));
-     Map<String, BigDecimal> salary = new HashMap() {{
-         put("2010", new BigDecimal(1000));
-         put("2015", new BigDecimal(4500));
-     }};
-
-     staff.setSalary(salary);
-
-     return staff;
-}
-
- 
-
 }

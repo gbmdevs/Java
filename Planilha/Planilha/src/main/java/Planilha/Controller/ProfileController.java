@@ -2,11 +2,14 @@ package Planilha.Controller;
 
 // SQL 
 import java.sql.SQLException;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 //Model
 import Planilha.Model.DespesasFixas;
@@ -25,8 +28,7 @@ public class ProfileController {
      private Double totalSalaryAccount;
      private Double totalSalaryFree;
      private List<Gastos> spents; 
-     private List<DespesasFixas> despesas;
-     private Map<String,Object> sumSpentsList;
+     private List<DespesasFixas> despesas; 
     
 
 //Get and Setters  - Profile     
@@ -70,20 +72,13 @@ public List<DespesasFixas> getDespesas(){
 public void addTotalSalaryAccount(Double spentValue){
   this.totalSalaryAccount += spentValue;
 }
-
-public void setSumSpentList(Map<String,Object> sumSpentsList){
-    this.sumSpentsList = sumSpentsList;
-}
-
-public Map<String,Object> getSumSpentsList(){
-    return this.sumSpentsList;
-}
-
-
-public void buscaGastosListTipo() throws SQLException{
+ 
+public String buscaGastosListTipo() throws SQLException{
+    String ret = "";
+    try{
     Conexao conexao = new Conexao();
     List<ResumoGastos> resgas = new ArrayList<ResumoGastos>();
-
+    ObjectMapper mapper  = new ObjectMapper(); 
     Map<String,Object> soma = new HashMap<String,Object>();
     conexao.sql = "select b.titletypespent,sum(a.spentvalue) " + 
                   " from gastos a ," +
@@ -97,8 +92,18 @@ public void buscaGastosListTipo() throws SQLException{
                                     rs.getDouble("sum")));
         //soma.put(rs.getString("titletypespent"),rs.getDouble("sum"));
     }
-    soma.put("ResumoGastos", resgas);
-    this.setSumSpentList(soma);
+      soma.put("ResumoGastos", resgas); 
+     
+      try{
+      ret = mapper.writeValueAsString(soma);
+      System.out.println(ret);
+      }catch(IOException e){
+        e.printStackTrace();
+      }
+    }catch(SQLException e){
+       e.printStackTrace();
+    }
+    return ret;
 }
 
 public Double totalSalarySum(Integer spenttype) throws SQLException{
@@ -178,7 +183,7 @@ public void buscaGastos(Integer tipgastos) throws SQLException{
 
       this.setDespesas(listDes);
 
-   }
+   } 
 
 
 }
