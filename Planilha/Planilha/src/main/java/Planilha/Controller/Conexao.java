@@ -18,8 +18,7 @@ public class Conexao {
     public Conexao(){
        try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,pass);
-            System.out.println("Banco de Dados Conectado");
+            con = DriverManager.getConnection(url,user,pass); 
             status = "Executado OK";
             
        }catch(Exception e){

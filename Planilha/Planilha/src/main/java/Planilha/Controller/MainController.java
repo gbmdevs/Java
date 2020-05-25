@@ -8,6 +8,7 @@ import Planilha.Model.Staff;
 // Controllers 
 import Planilha.Controller.ProfileController;
 import Planilha.Controller.GastosController;
+import Planilha.Controller.TipoGastoController;
 
 // Bibliotecas a respeito do Spring Framework 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,7 +49,7 @@ public class MainController{
     private GastosController  gastosCon = new GastosController();
     private ObjectMapper mapper  = new ObjectMapper(); 
     private DespesasFixasController despesasCon = new DespesasFixasController();
-     
+    private TipoGastoController tipogasto = new TipoGastoController();
 
     @RequestMapping(value="/gastos", method = RequestMethod.GET, produces= "application/json")
     public String listagastos() throws SQLException{
@@ -79,7 +80,16 @@ public class MainController{
             return this.profi.buscaGastosListTipo();
         }
 
-    //@ROUTES despesasFixas
+    //@Route - TipoGasto - LIST
+    @RequestMapping(value    = "/tipogasto",
+                    method   = RequestMethod.GET,
+                    produces = "application/json")   
+    public String listarTipoGasto(){
+        return this.tipogasto.listarTipoGasto();
+    }
+
+    // * Despesas Fixas Routes 
+    //@ROUTE despesasFixas - LIST
     @RequestMapping(value="/despesasfixas",
                     method = RequestMethod.GET,
                     produces = "application/json")
