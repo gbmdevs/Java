@@ -30,8 +30,8 @@ public Gastos getGastosController(){
 // CRUD - Modelo de Gastos
 public String insertSpent(Gastos gastos){ 
       
-  //  System.out.println(gastos.toString());
-     
+    System.out.println(gastos.toString());
+  /*   
     try{
             Conexao conexao = new Conexao();
             conexao.sql = "INSERT INTO gastos(spentdescription," +
@@ -46,8 +46,8 @@ public String insertSpent(Gastos gastos){
         }catch(Exception e){
             e.printStackTrace();
         } 
-        
-        return "{ status: 200 }";
+        */
+        return "{ 'status' : 200 }";
 }
 
 
