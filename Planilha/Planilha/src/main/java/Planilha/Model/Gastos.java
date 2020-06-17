@@ -82,7 +82,7 @@ public Date getFormatDateSpent(){
 @Override
 public String toString(){
    return "Gastos [ id = " + this.id + ","
-   + "spentdescription = " + this.spentDescription + ","
+   + "spentDescription = " + this.spentDescription + ","
    + "spentValue = " + this.spentValue + ","
    + "dateSpent  = " + this.dateSpent  + ","
    + "cdTipSpent = " + this.cdTipSpent  
