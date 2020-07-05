@@ -32,7 +32,7 @@ public Gastos getGastosController(){
 public String insertSpent(Gastos gastos){ 
        
     int idspent = this.retornaMax(); 
-    /*
+    
     try{
             Conexao conexao = new Conexao();
             conexao.sql = "INSERT INTO gastos(spentdescription," +
@@ -47,7 +47,7 @@ public String insertSpent(Gastos gastos){
             conexao.stmt.close();
         }catch(Exception e){
             e.printStackTrace();
-        } */
+        } 
         
         return "{ 'status' : 200 }";
 }

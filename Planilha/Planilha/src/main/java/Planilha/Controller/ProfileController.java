@@ -124,7 +124,7 @@ public void buscaGastos(Integer tipgastos) throws SQLException{
     Conexao conecta = new Conexao();  
     conecta.sql = "Select * from gastos " + 
                    "Where spenttype = " + tipgastos +
-                   "order by datespent desc";
+                   "order by datespent desc, idspent desc";
     conecta.stmt = conecta.con.prepareStatement(conecta.sql);
     ResultSet rs = conecta.stmt.executeQuery();
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
