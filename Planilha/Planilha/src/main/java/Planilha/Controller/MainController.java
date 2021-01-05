@@ -96,5 +96,15 @@ public class MainController{
     public String listarDespesasFixas(){
         return despesasCon.listarDispesasFixas();
     }                
+
+
+    // * Gráfico para Despesas Fixas
+    @RequestMapping(value    ="/despfixgrap",
+                    method   = RequestMethod.GET,
+                    produces = "application/json")
+    public String carregarGraficoDespesasFixas(){
+       return despesasCon.carregarGraficoDespesasFixas();
+    }                
+
  
 }

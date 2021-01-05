@@ -5,10 +5,14 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import Planilha.Model.DespesasFixas;
+import Planilha.Model.GraficoDespesasFixas;
+
 
 import Planilha.Controller.Conexao;
 
@@ -58,6 +62,42 @@ public String listarDispesasFixas(){
      System.out.println(rowcont);
      return jsonret;
 }
+
+// Compor Grafico DespesasFixas
+public String carregarGraficoDespesasFixas() {
+    ObjectMapper mapper  = new ObjectMapper(); 
+    List<GraficoDespesasFixas> lista = new ArrayList<GraficoDespesasFixas>();
+    String jsonret = "";
+    int i = 0;
+    
+    try{
+        Conexao conexao = new Conexao();
+        conexao.sql = "select b.titleexpenses, a.valueexpenses from despesasfixas a , tipdespesas b " +
+         "where a.duedate > '2021-01-01' and a.idtipexpenses = b.idtipexpenses order by a.duedate asc";
+         conexao.stmt = conexao.con.prepareStatement(conexao.sql);
+         ResultSet rs = conexao.stmt.executeQuery();
+         while(rs.next()){
+             lista.add(new GraficoDespesasFixas(
+                 rs.getString("titleexpenses"),
+                 rs.getDouble("valueexpenses")
+             ));
+         }
+         conexao.con.close();
+
+    }catch(Exception e){
+        e.printStackTrace();
+    }
+
+    try{
+        jsonret = mapper.writeValueAsString(lista);
+    } catch(IOException e){
+        e.printStackTrace();
+    }
+ 
+     System.out.println(" Retorno = " +  jsonret);
+
+     return jsonret;
+ }
 
 
 }

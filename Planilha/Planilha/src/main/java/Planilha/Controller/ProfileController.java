@@ -142,7 +142,8 @@ public void buscaGastos(Integer tipgastos) throws SQLException{
     this.setSpents(listGas);  
 }
 
-   public void buscaDespesas() throws SQLException{
+
+public void buscaDespesas() throws SQLException{
       Calendar c = Calendar.getInstance();
       Date date = c.getTime();
       System.out.println(date.toString()); 
