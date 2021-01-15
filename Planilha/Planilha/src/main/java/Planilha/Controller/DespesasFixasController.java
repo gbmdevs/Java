@@ -73,7 +73,8 @@ public String carregarGraficoDespesasFixas() {
     try{
         Conexao conexao = new Conexao();
         conexao.sql = "select b.titleexpenses, a.valueexpenses from despesasfixas a , tipdespesas b " +
-         "where a.duedate > '2021-01-01' and a.idtipexpenses = b.idtipexpenses order by a.duedate asc";
+         "where a.duedate between '2021-01-01' and '2021-01-31' " +    
+         "and a.idtipexpenses = b.idtipexpenses order by a.duedate asc";
          conexao.stmt = conexao.con.prepareStatement(conexao.sql);
          ResultSet rs = conexao.stmt.executeQuery();
          while(rs.next()){
