@@ -106,5 +106,13 @@ public class MainController{
        return despesasCon.carregarGraficoDespesasFixas();
     }                
 
+    //* Lista Despesas Fixas do Mês Referencia
+    @RequestMapping(value    = "/lidespfixa",
+                    method   = RequestMethod.GET,
+                    produces = "application/json")
+    public String listarDespesasFixasMes(){
+        return despesasCon.listarDespesasFixasMes();
+    }                
+
  
 }

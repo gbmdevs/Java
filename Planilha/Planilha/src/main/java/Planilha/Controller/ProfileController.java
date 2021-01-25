@@ -161,7 +161,7 @@ public void buscaDespesas() throws SQLException{
                     "FROM despesasFixas a, " +
                     " tipdespesas   b " +
                     " WHERE a.idtipexpenses = b.idtipexpenses "  +
-                    " AND a.sitpayment = 'N'  " +
+                    " AND a.sitpayment = 'N' " +  
                     " ORDER BY duedate ASC ";
       conecta.stmt = conecta.con.prepareStatement(conecta.sql);
       ResultSet rs = conecta.stmt.executeQuery();

@@ -73,7 +73,7 @@ public String carregarGraficoDespesasFixas() {
     try{
         Conexao conexao = new Conexao();
         conexao.sql = "select b.titleexpenses, a.valueexpenses from despesasfixas a , tipdespesas b " +
-         "where a.duedate between '2021-01-01' and '2021-01-31' " +    
+         "where a.duedate between '2021-02-01' and '2021-02-28' " +    
          "and a.idtipexpenses = b.idtipexpenses order by a.duedate asc";
          conexao.stmt = conexao.con.prepareStatement(conexao.sql);
          ResultSet rs = conexao.stmt.executeQuery();
@@ -95,10 +95,50 @@ public String carregarGraficoDespesasFixas() {
         e.printStackTrace();
     }
  
-     System.out.println(" Retorno = " +  jsonret);
 
      return jsonret;
  }
+
+
+ public String listarDespesasFixasMes(){
+      ObjectMapper mapper  = new ObjectMapper(); 
+      String jsonret = "";
+      List<DespesasFixas> ldesp = new ArrayList<DespesasFixas>();
+      
+      try{
+          Conexao conexao = new Conexao();
+          conexao.sql = "select a.idexpenses, " +  
+          "b.titleexpenses, " +
+          "a.valueexpenses, " +
+          "a.duedate, " +
+          "a.sitpayment " + 
+          "from despesasfixas a , tipdespesas b " +
+          "where a.duedate between '2021-02-01' and '2021-02-28' " +    
+          "and a.idtipexpenses = b.idtipexpenses order by a.duedate asc";
+          conexao.stmt = conexao.con.prepareStatement(conexao.sql);
+          ResultSet rs = conexao.stmt.executeQuery(); 
+          while(rs.next()){
+              ldesp.add(new DespesasFixas(
+                rs.getInt("idexpenses"),
+                rs.getString("titleexpenses"),
+                rs.getDouble("valueexpenses"),
+                rs.getDate("duedate"),
+                rs.getString("sitpayment")
+              ));
+          }
+      }catch(Exception e ){
+          e.printStackTrace();
+      }
+
+      //Compor o JSON da Saida
+      try{
+        jsonret = mapper.writeValueAsString(ldesp);
+      }catch(IOException e){
+          e.printStackTrace();
+      }
+       
+      return jsonret;
+}
 
 
 }
