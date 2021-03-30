@@ -80,7 +80,8 @@ public String carregarGraficoDespesasFixas() {
          while(rs.next()){
              lista.add(new GraficoDespesasFixas(
                  rs.getString("titleexpenses"),
-                 rs.getDouble("valueexpenses")
+                 rs.getDouble("valueexpenses"),
+                 "DD/MM/AAAA"
              ));
          }
          conexao.con.close();
@@ -99,6 +100,39 @@ public String carregarGraficoDespesasFixas() {
      return jsonret;
  }
 
+// Carregar a Media de Gastos e Historico dos ultimos 12 meses
+ public String ultimo12mesDespesaFixas(){
+    ObjectMapper mapper = new ObjectMapper();
+    String jsonret = " ";
+    List<GraficoDespesasFixas> lista = new ArrayList<GraficoDespesasFixas>();
+    int i = 0;
+
+    try{
+        Conexao conexao = new Conexao();
+        conexao.sql = "select valueexpenses, duedate from despesasfixas " +
+         "where idtipexpenses = 2 order by duedate asc";
+         conexao.stmt = conexao.con.prepareStatement(conexao.sql);
+         ResultSet rs = conexao.stmt.executeQuery();
+         while(rs.next()){
+             lista.add(new GraficoDespesasFixas(
+                 "Teste Chamada",
+                 rs.getDouble("valueexpenses"), 
+                 rs.getDate("duedate").toString()
+             ));
+         }
+         conexao.con.close();
+    }catch(Exception e){
+        e.printStackTrace();
+    }
+
+    try{
+        jsonret = mapper.writeValueAsString(lista);
+    } catch(IOException e){
+        e.printStackTrace();
+    }
+
+    return jsonret;
+ }
 
  public String listarDespesasFixasMes(){
       ObjectMapper mapper  = new ObjectMapper(); 

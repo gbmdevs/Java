@@ -114,5 +114,13 @@ public class MainController{
         return despesasCon.listarDespesasFixasMes();
     }                
 
+    // * Listar os Ultimos 12 meses de movimento
+    @RequestMapping(value   = "/ultmovidesp",
+                   method   = RequestMethod.GET,
+                   produces = "application/json")
+    public String ultimo12mesDespesaFixas(){
+        return despesasCon.ultimo12mesDespesaFixas();
+    }               
+
  
 }
