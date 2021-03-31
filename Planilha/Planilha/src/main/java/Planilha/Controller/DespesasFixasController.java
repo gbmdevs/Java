@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Calendar;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -117,7 +118,7 @@ public String carregarGraficoDespesasFixas() {
              lista.add(new GraficoDespesasFixas(
                  "Teste Chamada",
                  rs.getDouble("valueexpenses"), 
-                 rs.getDate("duedate").toString()
+                 retornaDataPorExtenso(rs.getDate("duedate")) 
              ));
          }
          conexao.con.close();
@@ -133,6 +134,21 @@ public String carregarGraficoDespesasFixas() {
 
     return jsonret;
  }
+
+public String retornaDataPorExtenso(Date date){ 
+    Calendar cal = Calendar.getInstance();
+    cal.setTime(date);
+    String mesExtenso =  mesPorExtenso(cal.get(Calendar.MONTH));
+    int year  = cal.get(Calendar.YEAR);
+    String retorno = mesExtenso + '/' + Integer.toString(year).substring(2);
+    System.out.println(mesExtenso);
+    return retorno;
+}
+
+public String mesPorExtenso(int month){
+    String[] monthNames = {"Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"};
+    return monthNames[month];
+}
 
  public String listarDespesasFixasMes(){
       ObjectMapper mapper  = new ObjectMapper(); 
