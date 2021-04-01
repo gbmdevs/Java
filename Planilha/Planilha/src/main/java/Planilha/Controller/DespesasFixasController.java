@@ -140,8 +140,7 @@ public String retornaDataPorExtenso(Date date){
     cal.setTime(date);
     String mesExtenso =  mesPorExtenso(cal.get(Calendar.MONTH));
     int year  = cal.get(Calendar.YEAR);
-    String retorno = mesExtenso + '/' + Integer.toString(year).substring(2);
-    System.out.println(mesExtenso);
+    String retorno = mesExtenso + '/' + Integer.toString(year).substring(2); 
     return retorno;
 }
 
