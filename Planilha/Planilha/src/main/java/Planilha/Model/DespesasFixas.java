@@ -66,4 +66,13 @@ public class DespesasFixas {
        this.sitPayment = sitPayment;
    }
 
+  @Override
+  public String toString(){
+      return "Despesa Fixa = [" + this.idExpenses +
+      "," + this.titleExpenses + "," + this.valueExpenses + "," + "]";
+
+    
+  }
+
+
 }

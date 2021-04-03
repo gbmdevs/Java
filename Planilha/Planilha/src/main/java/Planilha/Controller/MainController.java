@@ -4,6 +4,7 @@ package Planilha.Controller;
 import Planilha.Model.Empregados;
 import Planilha.Model.Gastos;
 import Planilha.Model.Staff;
+import Planilha.Model.DespesasFixas;
 
 // Controllers 
 import Planilha.Controller.ProfileController;
@@ -116,10 +117,10 @@ public class MainController{
 
     // * Listar os Ultimos 12 meses de movimento
     @RequestMapping(value   = "/ultmovidesp",
-                   method   = RequestMethod.GET,
+                   method   = RequestMethod.POST,
                    produces = "application/json")
-    public String ultimo12mesDespesaFixas(){
-        return despesasCon.ultimo12mesDespesaFixas();
+    public String ultimo12mesDespesaFixas(@RequestBody DespesasFixas despfixa){
+        return despesasCon.ultimo12mesDespesaFixas(despfixa);
     }               
 
  

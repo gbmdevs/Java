@@ -102,7 +102,7 @@ public String carregarGraficoDespesasFixas() {
  }
 
 // Carregar a Media de Gastos e Historico dos ultimos 12 meses
- public String ultimo12mesDespesaFixas(){
+ public String ultimo12mesDespesaFixas(DespesasFixas despfixa){
     ObjectMapper mapper = new ObjectMapper();
     String jsonret = " ";
     List<GraficoDespesasFixas> lista = new ArrayList<GraficoDespesasFixas>();
@@ -110,13 +110,14 @@ public String carregarGraficoDespesasFixas() {
 
     try{
         Conexao conexao = new Conexao();
-        conexao.sql = "select valueexpenses, duedate from despesasfixas " +
-         "where idtipexpenses = 2 order by duedate asc";
+        conexao.sql = "select a.valueexpenses, a.duedate from despesasfixas A," + 
+          "tipdespesas B where a.idtipexpenses = b.idtipexpenses and b.titleexpenses = '" + despfixa.getTitleExpenses() + "' " +    
+          "order by duedate asc FETCH FIRST 50 ROWS ONLY";
          conexao.stmt = conexao.con.prepareStatement(conexao.sql);
          ResultSet rs = conexao.stmt.executeQuery();
          while(rs.next()){
              lista.add(new GraficoDespesasFixas(
-                 "Teste Chamada",
+                 despfixa.getTitleExpenses(),
                  rs.getDouble("valueexpenses"), 
                  retornaDataPorExtenso(rs.getDate("duedate")) 
              ));
