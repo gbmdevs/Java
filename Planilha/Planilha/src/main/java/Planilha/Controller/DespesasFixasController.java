@@ -146,7 +146,7 @@ public String retornaDataPorExtenso(Date date){
 }
 
 public String mesPorExtenso(int month){
-    String[] monthNames = {"Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"};
+    String[] monthNames = {"JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ"};
     return monthNames[month];
 }
 
