@@ -13,9 +13,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import Planilha.Model.DespesasFixas;
 import Planilha.Model.GraficoDespesasFixas;
+import Planilha.Model.Datas;
 
 
 import Planilha.Controller.Conexao;
+import Planilha.Controller.DatasController;
 
 public class DespesasFixasController {
        private List<DespesasFixas>  despesasFixas = new ArrayList<DespesasFixas>();
@@ -74,7 +76,7 @@ public String carregarGraficoDespesasFixas() {
     try{
         Conexao conexao = new Conexao();
         conexao.sql = "select b.titleexpenses, a.valueexpenses from despesasfixas a , tipdespesas b " +
-         "where a.duedate between '2021-04-01' and '2021-05-01' " +    
+         "where a.duedate between '2021-05-01' and '2021-06-01' " +    
          "and a.idtipexpenses = b.idtipexpenses order by a.duedate asc";
          conexao.stmt = conexao.con.prepareStatement(conexao.sql);
          ResultSet rs = conexao.stmt.executeQuery();
@@ -108,10 +110,19 @@ public String carregarGraficoDespesasFixas() {
     List<GraficoDespesasFixas> lista = new ArrayList<GraficoDespesasFixas>();
     int i = 0;
 
+    Datas datas = new Datas();
+
+    // Busca a Data atual
+    datas.setDataAtual(new DatasController().buscaDataAtual()); 
+    datas.setDataUlt12Mes(new DatasController().buscaUltimos12Meses());
+    datas.setDataProxMes(new DatasController().buscaProximoMes());
+    System.out.println(datas.toString());
+
     try{
         Conexao conexao = new Conexao();
         conexao.sql = "select a.valueexpenses, a.duedate from despesasfixas A," + 
-          "tipdespesas B where a.idtipexpenses = b.idtipexpenses and b.titleexpenses = '" + despfixa.getTitleExpenses() + "' " +    
+          "tipdespesas B where a.idtipexpenses = b.idtipexpenses and b.titleexpenses = '" + despfixa.getTitleExpenses() + "' " +  
+          "and duedate between '" + datas.getDataUlt12Mes() + "' and '" + datas.getDataProxMes() + "'" +
           "order by duedate asc FETCH FIRST 50 ROWS ONLY";
          conexao.stmt = conexao.con.prepareStatement(conexao.sql);
          ResultSet rs = conexao.stmt.executeQuery();
@@ -146,7 +157,7 @@ public String retornaDataPorExtenso(Date date){
 }
 
 public String mesPorExtenso(int month){
-    String[] monthNames = {"JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ"};
+    String[] monthNames = {"JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ"};   
     return monthNames[month];
 }
 
@@ -163,7 +174,7 @@ public String mesPorExtenso(int month){
           "a.duedate, " +
           "a.sitpayment " + 
           "from despesasfixas a , tipdespesas b " +
-          "where a.duedate between '2021-04-01' and '2021-05-01' " +    
+          "where a.duedate between '2021-05-01' and '2021-06-01' " +    
           "and a.idtipexpenses = b.idtipexpenses order by a.duedate asc";
           conexao.stmt = conexao.con.prepareStatement(conexao.sql);
           ResultSet rs = conexao.stmt.executeQuery(); 
