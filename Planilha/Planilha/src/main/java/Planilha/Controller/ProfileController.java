@@ -84,6 +84,7 @@ public String buscaGastosListTipo() throws SQLException{
                   " from gastos a ," +
                   " tipogasto b" + 
                   " where a.spenttype = b.idtypespent " + 
+                  " and b.isactive = 'S' " +
                   " group by b.titletypespent";
     conexao.stmt = conexao.con.prepareStatement(conexao.sql);              
     ResultSet rs = conexao.stmt.executeQuery();

@@ -28,7 +28,7 @@ public class TipoGastoController
     try{  
        Conexao conexao = new Conexao();
        conexao.sql =
-        "Select idtypespent,titletypespent,desctypespent from tipogasto";
+        "Select idtypespent,titletypespent,desctypespent from tipogasto where isactive = 'S'";
         conexao.stmt = conexao.con.prepareStatement(conexao.sql);
         ResultSet rs = conexao.stmt.executeQuery();
         while(rs.next()){
