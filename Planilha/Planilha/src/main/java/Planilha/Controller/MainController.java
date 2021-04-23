@@ -4,12 +4,12 @@ package Planilha.Controller;
 import Planilha.Model.Empregados;
 import Planilha.Model.Gastos;
 import Planilha.Model.Staff;
-import Planilha.Model.DespesasFixas;
+import Planilha.Model.DespesasFixas; 
 
 // Controllers 
 import Planilha.Controller.ProfileController;
 import Planilha.Controller.GastosController;
-import Planilha.Controller.TipoGastoController;
+import Planilha.Controller.TipoGastoController; 
 
 // Bibliotecas a respeito do Spring Framework 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,7 +40,7 @@ import java.util.Map;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
-
+ 
 
 //@CrossOrigin(origins = "http://localhost:4200")
 @CrossOrigin(origins = "*")
@@ -122,6 +122,5 @@ public class MainController{
     public String ultimo12mesDespesaFixas(@RequestBody DespesasFixas despfixa){
         return despesasCon.ultimo12mesDespesaFixas(despfixa);
     }               
-
  
 }
