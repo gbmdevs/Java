@@ -1,4 +1,4 @@
-package Planilha.Model;
+package JAXRS.Model;
 
 // Estudo JAX-RS
 
