@@ -18,7 +18,7 @@ public class BancoRepositorio{
 
 
     // Buscar Tipdespesas
-    public TipDespesas getTipDespesaById(Integer id){
+    public TipDespesas getTipDespesaById(Integer id){ 
         return this.em.find(TipDespesas.class, 1);
     }
 
