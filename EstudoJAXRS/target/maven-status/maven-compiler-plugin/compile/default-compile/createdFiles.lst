@@ -1,3 +1,5 @@
 JAXRS/Controller/PessoaRepository.class
+JAXRS/Model/TipDespesas.class
+JAXRS/Controller/BancoRepositorio.class
 JAXRS/Controller/MainController.class
 JAXRS/Model/Pessoa.class

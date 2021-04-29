@@ -5,9 +5,11 @@ import java.util.List;
 
 //Controles
 import JAXRS.Controller.PessoaRepository;
+import JAXRS.Controller.BancoRepositorio;
 
 // Modelos
 import JAXRS.Model.Pessoa;
+import JAXRS.Model.TipDespesas;
 
 // Arquivos para o JAX-RS
 import javax.ws.rs.Path;
@@ -23,6 +25,16 @@ import javax.ws.rs.core.Response;
 public class MainController{
 
     private PessoaRepository _repositorio = new PessoaRepository();
+    private BancoRepositorio _bancorepo   = new BancoRepositorio();
+
+
+    @GET
+    @Path("/jpa1")
+    @Produces(MediaType.APPLICATION_JSON)
+    public TipDespesas tipDespesasById(){
+        return this._bancorepo.getTipDespesaById(1);
+    }
+
 
     // Recebe apenas chamada sem parametro: busca todos
     @GET
