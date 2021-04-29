@@ -9,7 +9,9 @@ import Planilha.Model.DespesasFixas;
 // Controllers 
 import Planilha.Controller.ProfileController;
 import Planilha.Controller.GastosController;
-import Planilha.Controller.TipoGastoController; 
+import Planilha.Controller.TipoGastoController;
+// JPA 
+import Planilha.Controller.JPATipDespesas;
 
 // Bibliotecas a respeito do Spring Framework 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
-
+import org.springframework.web.bind.annotation.RequestBody; 
+ 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.io.JsonEOFException;
 import com.fasterxml.jackson.core.util.JsonParserSequence;
@@ -45,6 +47,7 @@ import java.util.TimeZone;
 //@CrossOrigin(origins = "http://localhost:4200")
 @CrossOrigin(origins = "*")
 @RestController
+//@EntityScan(basePackages = "Planilha")
 public class MainController{ 
     private ProfileController profi = new ProfileController();
     private GastosController  gastosCon = new GastosController();
@@ -122,5 +125,16 @@ public class MainController{
     public String ultimo12mesDespesaFixas(@RequestBody DespesasFixas despfixa){
         return despesasCon.ultimo12mesDespesaFixas(despfixa);
     }               
+
+
+    //*-----------------------------------------------------------------*//
+    //* ESTUDOS EM JPA
+    //*-----------------------------------------------------------------*//
+    @RequestMapping(value    = "/testejpa",
+                    method   = RequestMethod.GET,
+                    produces = "application/json")
+    public String testeEmJpa(){
+        return new JPATipDespesas().buscaIdTipDespesas(1);
+    }
  
 }
