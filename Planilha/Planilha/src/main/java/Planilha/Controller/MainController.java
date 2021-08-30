@@ -10,6 +10,7 @@ import Planilha.Model.DespesasFixas;
 import Planilha.Controller.ProfileController;
 import Planilha.Controller.GastosController;
 import Planilha.Controller.TipoGastoController;
+import Planilha.Controller.ClienteRelatorio;
 // JPA 
 import Planilha.Controller.JPATipDespesas;
 
@@ -135,6 +136,17 @@ public class MainController{
                     produces = "application/json")
     public String testeEmJpa(){
         return new JPATipDespesas().buscaIdTipDespesas(1);
+    }
+
+    //*-----------------------------------------------------------------*//
+    //* ESTUDOS EM RELATORIO Jasper Reports
+    //*-----------------------------------------------------------------*//
+    @RequestMapping(value    = "/relatorio",
+                    method   = RequestMethod.GET,
+                    produces = "application/json")
+    public void testeRelatorioJasper(){
+        System.out.println("Entrou no Jasper");
+        ClienteRelatorio relatorio = new ClienteRelatorio();
     }
  
 }
