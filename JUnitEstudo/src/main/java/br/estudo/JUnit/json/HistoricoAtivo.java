@@ -12,7 +12,8 @@ public class HistoricoAtivo{
      private MetaInfoAtivo mia;
 
      @JsonProperty("Time Series (Daily)")
-     private ArrayList<HistoricoCandleAtivo> listaHistorico;
+     private HistoricoCandleAtivo listaHistorico;
+
 
 
     public MetaInfoAtivo getMia() {
@@ -23,12 +24,13 @@ public class HistoricoAtivo{
         this.mia = mia;
     }
 
-    public ArrayList<HistoricoCandleAtivo> getListaHistorico() {
+    public HistoricoCandleAtivo getListaHistorico() {
         return this.listaHistorico;
     }
 
-    public void setListaHistorico(ArrayList<HistoricoCandleAtivo> listaHistorico) {
+    public void setListaHistorico(HistoricoCandleAtivo listaHistorico) {
         this.listaHistorico = listaHistorico;
     }
+
 
 }

@@ -1,6 +1,7 @@
 package br.estudo.JUnit.api;
 
 import java.net.URLConnection;
+import java.util.Iterator;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.MalformedURLException;
@@ -10,8 +11,11 @@ import java.io.BufferedReader;
 import java.lang.StringBuilder;
 import java.io.InputStreamReader;
 
+import org.json.JSONObject;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 
 import br.estudo.JUnit.json.HistoricoAtivo;
 
@@ -25,6 +29,7 @@ public class DadosMercadoFinanceiro{
 
     public void buscarDadosHistoricoAtivo(){
         try{
+        HistoricoAtivo historicoAtivo = new HistoricoAtivo();
         URL url = new URL(URL_HISTORICO_MERCADO);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestProperty("accept", "application/json");
@@ -38,6 +43,21 @@ public class DadosMercadoFinanceiro{
         }
         br.close();
         System.out.println(sb.toString());
+    
+        // Tratamento do Json em si
+        JSONObject jsonObject = new JSONObject(sb.toString());
+        JSONObject jsonChildObject = (JSONObject)jsonObject.get("Time Series (Daily)");
+        Iterator iterator  = jsonChildObject.keys();
+        String key = null;
+        Integer dias = 0;
+        while(iterator.hasNext()){
+            key = (String)iterator.next();
+            System.out.println("Fechamento ("+key+"): "+((JSONObject)jsonChildObject.get(key)).get("4. close"));
+            dias++;
+        }
+
+
+        System.out.println("Total de Dias:" +dias);
         }catch(MalformedURLException ex){
             ex.printStackTrace();
         }catch(IOException ioex){

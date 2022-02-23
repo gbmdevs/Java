@@ -1,25 +1,22 @@
 package br.estudo.JUnit.json;
 
+import java.util.Map;
 import br.estudo.JUnit.json.DataCandleAtivo;
 
 public class HistoricoCandleAtivo {
 
-      private String data;
-      private DataCandleAtivo dataCandle;
+   private Map<String, Map<String,DataCandleAtivo>> dataCandleAtivo;
 
-    public String getData() {
-        return this.data;
+    public Map<String,Map<String,DataCandleAtivo>> getDataCandleAtivo() {
+        return this.dataCandleAtivo;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDataCandleAtivo(Map<String,Map<String,DataCandleAtivo>> dataCandleAtivo) {
+        this.dataCandleAtivo = dataCandleAtivo;
     }
 
-    public DataCandleAtivo getDataCandle() {
-        return this.dataCandle;
-    }
 
-    public void setDataCandle(DataCandleAtivo dataCandle) {
-        this.dataCandle = dataCandle;
-    }
+
+
+
 }
