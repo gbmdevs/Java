@@ -21,7 +21,8 @@ import br.estudo.JUnit.json.HistoricoAtivo;
 
 public class DadosMercadoFinanceiro{
 
-     private static String URL_HISTORICO_MERCADO = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=BBAS3.SAO&apikey=H2PVC2B6ERK6RIMY";
+     private static String URL_HISTORICO_MERCADO = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=BBAS3.SAO&apikey=";
+     private static String CHAVE_DA_API="H2PVC2B6ERK6RIMY";
 
     public DadosMercadoFinanceiro(){
 
@@ -42,7 +43,7 @@ public class DadosMercadoFinanceiro{
                     sb.append(linha+"\n");
         }
         br.close();
-        System.out.println(sb.toString());
+        //System.out.println(sb.toString());
     
         // Tratamento do Json em si
         JSONObject jsonObject = new JSONObject(sb.toString());
@@ -52,7 +53,7 @@ public class DadosMercadoFinanceiro{
         Integer dias = 0;
         while(iterator.hasNext()){
             key = (String)iterator.next();
-            System.out.println("Fechamento ("+key+"): "+((JSONObject)jsonChildObject.get(key)).get("4. close"));
+            //System.out.println("Fechamento ("+key+"): "+((JSONObject)jsonChildObject.get(key)).get("4. close"));
             dias++;
         }
 
