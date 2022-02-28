@@ -7,6 +7,7 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>br.estudo.JUnit.entidade.Pessoa</class>
         <class>br.estudo.JUnit.entidade.BolsaDeValores</class>
+        <class>br.estudo.JUnit.entidade.HistoricoBolsaValores</class>
 
 		<properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://172.20.0.9:5432/postgres" />
