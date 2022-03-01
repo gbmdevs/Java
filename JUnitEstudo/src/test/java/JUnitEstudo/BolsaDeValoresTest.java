@@ -2,6 +2,7 @@
 package JUnitEstudo;
 
 import br.estudo.JUnit.entidade.BolsaDeValores;
+import br.estudo.JUnit.dao.BolsaDeValoresDao;
 
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
@@ -15,20 +16,8 @@ public class BolsaDeValoresTest {
 
     @Test
     public void buscarPapelBolsaDeValores(){
-        EntityManagerFactory entityManagerFactory  = Persistence.createEntityManagerFactory("junit-estudo");
-        EntityManager entityManager = entityManagerFactory.createEntityManager(); 
-
-        entityManager.getTransaction().begin();  
-
-        List<BolsaDeValores> listaBolsaValores = entityManager
-                .createQuery("Select bv FROM BolsaDeValores bv", BolsaDeValores.class)
-                .getResultList();
-
-        System.out.println("Tamanho de Papeis: " + listaBolsaValores.size()); 
-        for(BolsaDeValores resultadoPesquisa : listaBolsaValores){
-            System.out.println("Papel: " + resultadoPesquisa.getNomeTicket());
-        }       
-
+         BolsaDeValoresDao bolsaDao = new BolsaDeValoresDao();
+         bolsaDao.buscarTickets();
     }
 
     @Test

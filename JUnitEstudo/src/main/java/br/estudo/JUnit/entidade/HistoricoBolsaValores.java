@@ -13,6 +13,7 @@ import javax.persistence.FetchType;
 import br.estudo.JUnit.entidade.BolsaDeValores;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 @Table(name = "HIST_BOLSA_VALORES")
@@ -30,6 +31,8 @@ public class HistoricoBolsaValores implements Serializable {
     public BolsaDeValores getBolsaDeValores() {
         return bolsadevalores;
     }
+    @Column(name = "dataFechamento", unique=true)
+    private Date dataFechamento;
 
     @Column(name = "abertura")
     private BigDecimal abertura;
@@ -43,6 +46,7 @@ public class HistoricoBolsaValores implements Serializable {
     @Column(name = "minima")
     private BigDecimal minima;
 
+
     public void setBolsadevalores(BolsaDeValores bolsadevalores) {
         this.bolsadevalores = bolsadevalores;
     }
@@ -53,6 +57,14 @@ public class HistoricoBolsaValores implements Serializable {
 
     public void setIdHistBolsaValores(Integer idHistBolsaValores) {
         this.idHistBolsaValores = idHistBolsaValores;
+    }
+
+    public Date getDataFechamento() {
+        return this.dataFechamento;
+    }
+
+    public void setDataFechamento(Date dataFechamento) {
+        this.dataFechamento = dataFechamento;
     }
 
     public BigDecimal getAbertura() {
@@ -86,6 +98,11 @@ public class HistoricoBolsaValores implements Serializable {
     public void setMinima(BigDecimal minima) {
         this.minima = minima;
     }
-  
+    
+    @Override
+    public String toString(){
+        return "Fechamento = "+ this.dataFechamento;
+    }
+
 
 }
