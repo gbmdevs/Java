@@ -2,6 +2,11 @@ package br.estudo.JUnit.api;
 
 import java.net.URLConnection;
 import java.util.Iterator;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.MalformedURLException;
@@ -28,6 +33,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import java.math.BigDecimal;
+
+/* Query para pesquisa guardar aqui 
+
+select a.nomeTicket,b.dataFechamento,b.fechamento from bolsa_de_valores a,
+                       hist_bolsa_valores b
+where b.idTicket = a.idTicket
+  and dataFechamento = (select MAX(dataFechamento) from hist_bolsa_valores c
+                        where c.idTicket = a.idTicket)
+
+*/
 
 public class DadosMercadoFinanceiro{
 
@@ -70,15 +85,25 @@ public class DadosMercadoFinanceiro{
         while(iterator.hasNext()){
             HistoricoBolsaValores histBolsaVal = new HistoricoBolsaValores();
             key = (String)iterator.next();
-            Date dataFechamento = new SimpleDateFormat("yyyy-mm-dd").parse(key);
+            Date dataFechamento = new SimpleDateFormat("yyyy-MM-dd").parse(key);
             histBolsaVal.setDataFechamento(dataFechamento);
+            System.out.println("Bolsa ID " + bolsavalores.getIdTicket());
             histBolsaVal.setBolsadevalores(bolsavalores);
-            histBolsaVal.setAbertura(new BigDecimal(0));
-            histBolsaVal.setMaxima(new BigDecimal(0));
-            histBolsaVal.setMinima(new BigDecimal(0));
-            histBolsaVal.setFechamento(new BigDecimal(0));
+            histBolsaVal.setAbertura(((JSONObject)jsonChildObject.get(key)).getBigDecimal("1. open"));
+            histBolsaVal.setMaxima(((JSONObject)jsonChildObject.get(key)).getBigDecimal("2. high"));
+            histBolsaVal.setMinima(((JSONObject)jsonChildObject.get(key)).getBigDecimal("3. low"));
+            histBolsaVal.setFechamento(((JSONObject)jsonChildObject.get(key)).getBigDecimal("4. close"));
             System.out.println("Insercao: " + histBolsaVal.toString());
-            histbolsadao.inserirHistoricoBolsaValores(histBolsaVal);
+
+            EntityManagerFactory entityManagerFactory  = Persistence.createEntityManagerFactory("junit-estudo");
+            EntityManager entityManager = entityManagerFactory.createEntityManager(); 
+            entityManager.getTransaction().begin();     
+            entityManager.persist(histBolsaVal);    
+            entityManager.getTransaction().commit();    
+            entityManager.close();
+            entityManagerFactory.close();
+
+            //histbolsadao.inserirHistoricoBolsaValores(histBolsaVal);
             //System.out.println("Fechamento ("+key+"): "+((JSONObject)jsonChildObject.get(key)).get("4. close"));
             dias++;
         }

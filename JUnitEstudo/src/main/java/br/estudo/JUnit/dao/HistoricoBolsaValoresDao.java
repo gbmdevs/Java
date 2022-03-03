@@ -10,6 +10,7 @@ public class HistoricoBolsaValoresDao{
 
 
     public void inserirHistoricoBolsaValores(HistoricoBolsaValores historico){
+        
         EntityManagerFactory entityManagerFactory  = Persistence.createEntityManagerFactory("junit-estudo");
         EntityManager entityManager = entityManagerFactory.createEntityManager(); 
         entityManager.getTransaction().begin(); 
@@ -21,7 +22,7 @@ public class HistoricoBolsaValoresDao{
         entityManager.close();
         entityManagerFactory.close();
 
-
+  
     }
 
 }

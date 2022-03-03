@@ -11,6 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;  
 import javax.persistence.FetchType;  
 import br.estudo.JUnit.entidade.BolsaDeValores;
+import javax.persistence.CascadeType;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -19,19 +22,17 @@ import java.util.Date;
 @Table(name = "HIST_BOLSA_VALORES")
 public class HistoricoBolsaValores implements Serializable {
 
-    private BolsaDeValores bolsadevalores;
-
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)  
     @Column(name = "idHistBolsaValores")
     private Integer idHistBolsaValores;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="idTicket")
-    public BolsaDeValores getBolsaDeValores() {
-        return bolsadevalores;
-    }
-    @Column(name = "dataFechamento", unique=true)
+    @ManyToOne
+    @JoinColumn(name = "idTicket")
+    private BolsaDeValores bolsadevalores;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "dataFechamento")
     private Date dataFechamento;
 
     @Column(name = "abertura")
@@ -47,16 +48,20 @@ public class HistoricoBolsaValores implements Serializable {
     private BigDecimal minima;
 
 
-    public void setBolsadevalores(BolsaDeValores bolsadevalores) {
-        this.bolsadevalores = bolsadevalores;
-    }
-
     public Integer getIdHistBolsaValores() {
         return this.idHistBolsaValores;
     }
 
     public void setIdHistBolsaValores(Integer idHistBolsaValores) {
         this.idHistBolsaValores = idHistBolsaValores;
+    }
+
+    public BolsaDeValores getBolsadevalores() {
+        return this.bolsadevalores;
+    }
+
+    public void setBolsadevalores(BolsaDeValores bolsadevalores) {
+        this.bolsadevalores = bolsadevalores;
     }
 
     public Date getDataFechamento() {
@@ -98,10 +103,13 @@ public class HistoricoBolsaValores implements Serializable {
     public void setMinima(BigDecimal minima) {
         this.minima = minima;
     }
-    
+   
+
     @Override
     public String toString(){
-        return "Fechamento = "+ this.dataFechamento;
+        return " Fechamento = " +// this.dataFechamento + 
+               " Abertura   = " + this.abertura + 
+               " Minima     ="  + this.minima; 
     }
 
 

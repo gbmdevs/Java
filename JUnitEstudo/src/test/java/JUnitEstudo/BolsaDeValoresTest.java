@@ -29,8 +29,8 @@ public class BolsaDeValoresTest {
         entityManager.getTransaction().begin();  
 
         BolsaDeValores bolsa = new BolsaDeValores();
-        bolsa.setNomeTicket("USIM5");
-        bolsa.setDescricaoTicket("Usinas Siderurgicas de Minas Gerais A Pref Shs");
+        bolsa.setNomeTicket("BBSE3");
+        bolsa.setDescricaoTicket("BB Seguridade");
         bolsa.setNomeBalcao("SAO");
         entityManager.persist(bolsa);
 
