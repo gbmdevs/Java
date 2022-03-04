@@ -8,6 +8,8 @@ import javax.persistence.Persistence;
 
 import org.junit.Test;
 
+import br.estudo.JUnit.utilis.CargadeTabelas;
+
 /**
  * Unit test for simple App.
  */
@@ -24,7 +26,14 @@ public class AppTest
 
     @Test
     public void verificaEntidade(){
-          EntityManagerFactory entityManagerFactory  = Persistence.createEntityManagerFactory("junit-estudo");
-          EntityManager entityManager = entityManagerFactory.createEntityManager();
+          //EntityManagerFactory entityManagerFactory  = Persistence.createEntityManagerFactory("junit-estudo");
+          //EntityManager entityManager = entityManagerFactory.createEntityManager();
     }
+
+    @Test
+    public void carregaTabelas(){
+        CargadeTabelas carga = new CargadeTabelas();
+        carga.carregaTabelsInternas();
+    }
+
 }
