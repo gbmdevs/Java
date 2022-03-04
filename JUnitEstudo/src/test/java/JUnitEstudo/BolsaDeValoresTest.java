@@ -25,6 +25,7 @@ public class BolsaDeValoresTest {
          bolsaDao.buscarTickets();
     }
 
+    /*
     @Test
     public void inserirPapelBolsaDeValores(){
         try{
@@ -72,9 +73,7 @@ public class BolsaDeValoresTest {
             //System.out.println("Ja Existe");
             ex.printStackTrace();
         }
-
-
-    }
+    }*/
 
 
 

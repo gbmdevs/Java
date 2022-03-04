@@ -1,0 +1,52 @@
+{ "papeis": 
+     [ {
+         "nomeTicket": "BBAS3",
+         "descricao": "Banco do Brasil SA",
+         "nomeBalcao": "SAO"
+       },
+       {
+        "nomeTicket": "BBSE3",
+        "descricao": "BB Seguridade",
+        "nomeBalcao": "SAO"
+       },
+       {
+        "nomeTicket": "USIM5",
+        "descricao": "Usinas Siderurgicas de Minas Gerais A Pref Shs",
+        "nomeBalcao": "SAO"
+       },
+       {
+        "nomeTicket": "ITSA4",
+        "descricao": "Itausa SA Preference Shares",
+        "nomeBalcao": "SAO"
+       },
+       {
+        "nomeTicket": "VALE3",
+        "descricao": "Vale S.A",
+        "nomeBalcao": "SAO"
+       },
+       {
+        "nomeTicket": "TRIS3",
+        "descricao": "Trisul SA",
+        "nomeBalcao": "SAO"
+       },
+       {
+        "nomeTicket": "PRIO3",
+        "descricao": "PetroRio",
+        "nomeBalcao": "SAO"
+       },
+       {
+        "nomeTicket": "TRPL4",
+        "descricao": "CTEEP Cia Transm Energia Eletr Paulista Preference Shares",
+        "nomeBalcao": "SAO"
+       },
+       {
+        "nomeTicket": "TAEE4",
+        "descricao": "Taesa S.A",
+        "nomeBalcao": "SAO"
+       },
+       {
+        "nomeTicket": "CSMG3",
+        "descricao": "Companhia de Saneamento de Minas Gerais",
+        "nomeBalcao": "SAO"
+       }
+]}

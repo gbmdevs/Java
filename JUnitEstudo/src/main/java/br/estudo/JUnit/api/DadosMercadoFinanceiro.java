@@ -40,7 +40,7 @@ select a.nomeTicket,b.dataFechamento,b.fechamento from bolsa_de_valores a,
                        hist_bolsa_valores b
 where b.idTicket = a.idTicket
   and dataFechamento = (select MAX(dataFechamento) from hist_bolsa_valores c
-                        where c.idTicket = a.idTicket)
+                        where c.idTicket = a.idTicket) order by a.nomeTicket asc;
 
 */
 

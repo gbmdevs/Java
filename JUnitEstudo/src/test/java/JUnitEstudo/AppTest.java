@@ -32,8 +32,7 @@ public class AppTest
 
     @Test
     public void carregaTabelas(){
-        CargadeTabelas carga = new CargadeTabelas();
-        carga.carregaTabelsInternas();
+        new CargadeTabelas().carregaTabelsInternas();
     }
 
 }
