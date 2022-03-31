@@ -33,8 +33,9 @@
 
             <configuration>
                 <workingDirectory>src/main/frontend</workingDirectory>
+                <installDirectory>target</installDirectory>
             </configuration>
-            
+
             <executions>
                 <execution>
                     <id>install-node-and-npm</id>
