@@ -7,40 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  // Area de Criação dos Menus Sidebar
-   menus: any[] =  [
-     {
-       "nome": "Dashboard",
-       "link": "#",
-       "icon": "estate"
-     },
-     {
-      "nome": "Conteudo",
-      "link": "#",
-      "icon": "files-landscapes"
-     },
-     {
-      "nome": "Estatisticas",
-      "link": "#",
-      "icon": "chart"
-     },
-     {
-      "nome": "Likes",
-      "link": "#",
-      "icon": "thumbs-up"
-     },
-     {
-      "nome": "Comentarios",
-      "link": "#",
-      "icon": "comments"
-     },
-     {
-      "nome": "Compartilhamentos",
-      "link": "#",
-      "icon": "share"
-     }
-  ]
-
   constructor() { }
 
   ngOnInit(): void {
