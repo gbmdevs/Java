@@ -6,6 +6,7 @@
 /* Variaveis Locais e Constantes */
 :root{
     --lato: 'Lato', sans-serif;
+    --poppins: 'Poppins', sans-serif;
 
     --light: #F9F9F9;
     --blue: #3C91E6;
@@ -236,6 +237,24 @@ li {
 }
 
 
+
+/* MAIN - INICIO */
+
+#content main{
+    width: 100%;
+    padding: 36px 24px;
+    font-family: var(--poppins);
+}
+
+#content main .head-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* MAIN - FIM */
 
 /* NAVBAR - FIM */
 /* CONTENT - FIM */

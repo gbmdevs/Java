@@ -22,7 +22,13 @@
         <artifactId>planilha-web</artifactId>
         <version>${project.version}</version>
         <type>war</type>
-      </dependency>   
+     </dependency>   
+     <dependency>     
+        <groupId>PlanilhaV2</groupId>
+        <artifactId>planilha-banco</artifactId>
+        <version>${project.version}</version>
+        <type>war</type>
+      </dependency>  
   </dependencies>
 
 

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  
+  <parent>
+       <groupId>PlanilhaV2</groupId>
+       <artifactId>PlanilhaV2</artifactId>
+        <version>${project.version}</version>
+  </parent>
+
+
+    
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>PlanilhaV2</groupId>
+  <artifactId>planilha-banco</artifactId>
+  <packaging>war</packaging>
+  <version>${project.version}</version>
+  <name>planilha-banco</name>
+  <url>http://maven.apache.org</url>
+
+  <dependencies>
+      <dependency>
+       <groupId>javax.persistence</groupId>
+       <artifactId>javax.persistence-api</artifactId>
+       <version>2.2</version>
+    </dependency>
+
+    <dependency>
+       <groupId>org.hibernate</groupId>
+       <artifactId>hibernate-core</artifactId>
+       <version>5.6.5.Final</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+    <dependency>
+       <groupId>org.postgresql</groupId>
+       <artifactId>postgresql</artifactId>
+       <version>42.2.25</version>
+    </dependency>
+  </dependencies>
+
+   <build>
+      <finalName>planilha-banco</finalName>
+      <plugins>
+         <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-war-plugin</artifactId>
+         <version>2.6</version>
+         <configuration>
+           <failOnMissingWebXml>false</failOnMissingWebXml>
+         </configuration>
+         </plugin>
+      </plugins>
+  </build>
+
+
+  </project>

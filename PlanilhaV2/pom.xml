@@ -17,6 +17,7 @@
   </properties>
   
   <modules>
+     <module>planilha-banco</module>     
      <module>planilha-web</module>
      <module>planilha-ear</module>
   </modules>
