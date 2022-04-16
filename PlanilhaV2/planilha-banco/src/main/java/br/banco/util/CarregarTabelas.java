@@ -14,6 +14,12 @@ import java.nio.charset.StandardCharsets;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import br.banco.json.JsonBasico;
+
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+
 public class CarregarTabelas{
         
 
@@ -21,7 +27,6 @@ public class CarregarTabelas{
         EntityManagerFactory entityManagerFactory  = Persistence.createEntityManagerFactory("planilha-funcional");
         EntityManager entityManager = entityManagerFactory.createEntityManager(); 
         entityManager.getTransaction().begin(); 
-        System.out.println("Passou");
 
         InputStream is = this.getClass().getClassLoader().getResourceAsStream(arquivo);
         
@@ -37,12 +42,17 @@ public class CarregarTabelas{
                 System.out.println(linha);
                 sb.append(linha+"\n");
             }
-            System.out.println("Sb completo " + sb.toString());
+
+            jsonToObjeto(String.class,sb.toString());
 
             JSONObject jsonObject = new JSONObject(sb.toString());
             JSONArray jarray = jsonObject.getJSONArray("dados");
             String tamanho  = String.valueOf(jarray.length());
             System.out.println("Tamanho: " + tamanho);
+
+            for(int i = 0; i< jarray.length(); i++){
+                  System.out.println("("+i+"): " + jarray.getJSONObject(i));
+            }   
         }catch(IOException io){            
             io.printStackTrace();
             throw new IllegalArgumentException("Ocorreu um erro na leitura");
@@ -52,4 +62,15 @@ public class CarregarTabelas{
         entityManager.close();
         entityManagerFactory.close();
     }
+
+
+    // Captura o JSON para uma classse Genérica
+    public <T> void jsonToObjeto(Class<T> type, String json){
+         System.out.println("String recebida: " + json);
+         GsonBuilder gson = new GsonBuilder();
+         Type collectionType = new TypeToken<JsonBasico<T>>(){}.getType();
+         JsonBasico<T> jsonBasico = gson.create().fromJson(json, collectionType);
+         System.out.println("Saida JSOn object: " + jsonBasico.getDados());
+    }
+
 }
