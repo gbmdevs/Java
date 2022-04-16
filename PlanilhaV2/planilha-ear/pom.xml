@@ -17,6 +17,12 @@
   <packaging>ear</packaging>
 
   <dependencies>
+       <dependency>     
+        <groupId>PlanilhaV2</groupId>
+        <artifactId>planilha-rs</artifactId>
+        <version>${project.version}</version>
+        <type>war</type>
+      </dependency>  
      <dependency>     
         <groupId>PlanilhaV2</groupId>
         <artifactId>planilha-web</artifactId>
