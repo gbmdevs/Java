@@ -17,7 +17,13 @@ public class DetalhaTipoEstrategia extends ConverteJSON{
      public String buscarTiposEstrategias(){
            Estudante estudante = new Estudante();
            estudante.setNome("Jamal");
+
+           // Buscar todos os dados do tipo Estrategia
+
+
+
            return new ConverteJSON().retornaJSON(estudante);
+
      }
 
 }
