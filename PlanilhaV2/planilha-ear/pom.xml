@@ -33,7 +33,7 @@
 
 
   <build>
-      <finalName>PlanilhaV2</finalName>
+      <finalName>planilha-ear</finalName>
   </build>
 
   </project>
