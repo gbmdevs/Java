@@ -1,11 +1,8 @@
 package br.com.requisicao.dto;
 
-import java.util.List;
-
-public class Estudante{
+public class Professores{
 
     private String nome;
-    private List<Professores> professores;
 
     public String getNome() {
         return this.nome;
@@ -14,5 +11,4 @@ public class Estudante{
     public void setNome(String nome) {
         this.nome = nome;
     }
-
 }
