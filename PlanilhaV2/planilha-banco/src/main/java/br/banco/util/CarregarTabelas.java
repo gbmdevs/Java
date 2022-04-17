@@ -23,7 +23,7 @@ import java.lang.reflect.Type;
 public class CarregarTabelas{
         
 
-    public void carregarTabela(String arquivo){
+    public <T> void carregarTabela(String arquivo, Class<T> classe){
         EntityManagerFactory entityManagerFactory  = Persistence.createEntityManagerFactory("planilha-funcional");
         EntityManager entityManager = entityManagerFactory.createEntityManager(); 
         entityManager.getTransaction().begin(); 
@@ -43,7 +43,7 @@ public class CarregarTabelas{
                 sb.append(linha+"\n");
             }
 
-            jsonToObjeto(String.class,sb.toString());
+            //jsonToObjeto(classe,sb.toString());
 
             JSONObject jsonObject = new JSONObject(sb.toString());
             JSONArray jarray = jsonObject.getJSONArray("dados");
@@ -52,6 +52,7 @@ public class CarregarTabelas{
 
             for(int i = 0; i< jarray.length(); i++){
                   System.out.println("("+i+"): " + jarray.getJSONObject(i));
+                  jsonToObjeto(classe,jarray.getJSONObject(i).toString());
             }   
         }catch(IOException io){            
             io.printStackTrace();
