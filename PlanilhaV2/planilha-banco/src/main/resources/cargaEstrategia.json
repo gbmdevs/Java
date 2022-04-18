@@ -1,9 +1,8 @@
-{"dados": [{
-   "nomeEstrategia": "Ações B3",
-   "tipo": "B"
+[
+  {
+   "value": "Ações B3"
   },
   {
-   "nomeEstrategia": "Risco",
-   "tipo": "B"
+   "value": "Risco"
   }
-]}
+]

@@ -12,7 +12,7 @@ import javax.persistence.GenerationType;
 
 @Entity
 @Table(name = "TIPO_ESTRATEGIA")
-public class tipoEstrategia implements Serializable {
+public class TipoEstrategia implements Serializable {
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)  

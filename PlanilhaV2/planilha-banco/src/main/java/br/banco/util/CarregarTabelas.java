@@ -9,26 +9,33 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 
+import java.util.List;
+
 import java.nio.charset.StandardCharsets;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import br.banco.json.JsonBasico;
+import br.banco.json.TestObjeto;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 
+import br.banco.util.JSONtoObject;
+
 public class CarregarTabelas{
         
 
-    public <T> void carregarTabela(String arquivo, Class<T> classe){
+    public <T> void carregarTabela(List<T> lista, Class<T> classe){
         EntityManagerFactory entityManagerFactory  = Persistence.createEntityManagerFactory("planilha-funcional");
         EntityManager entityManager = entityManagerFactory.createEntityManager(); 
         entityManager.getTransaction().begin(); 
 
-        InputStream is = this.getClass().getClassLoader().getResourceAsStream(arquivo);
+        System.out.println("Tamanho recebido " + lista.size());
+
+        /* InputStream is = this.getClass().getClassLoader().getResourceAsStream(arquivo);
         
         if(is == null){
             throw new IllegalArgumentException("Arquivo não encontrado!");
@@ -43,7 +50,12 @@ public class CarregarTabelas{
                 sb.append(linha+"\n");
             }
 
-            //jsonToObjeto(classe,sb.toString());
+            //List<TestObjeto> list = new JSONtoObject().fromJsonAsList(TestObjeto[].class, sb.toString());
+            //System.out.println("Tamanho Lista: " + list.size());
+            //System.out.println("1 " + list.get(0)[0]);
+            //System.out.println("2 " + list.get(1).getValue());
+
+            jsonToObjeto(classe,sb.toString());
 
             JSONObject jsonObject = new JSONObject(sb.toString());
             JSONArray jarray = jsonObject.getJSONArray("dados");
@@ -52,12 +64,12 @@ public class CarregarTabelas{
 
             for(int i = 0; i< jarray.length(); i++){
                   System.out.println("("+i+"): " + jarray.getJSONObject(i));
-                  jsonToObjeto(classe,jarray.getJSONObject(i).toString());
-            }   
+                  //jsonToObjeto(classe,jarray.getJSONObject(i).toString());
+            } 
         }catch(IOException io){            
             io.printStackTrace();
             throw new IllegalArgumentException("Ocorreu um erro na leitura");
-        }
+        } */ 
 
 
         entityManager.close();
@@ -65,13 +77,13 @@ public class CarregarTabelas{
     }
 
 
-    // Captura o JSON para uma classse Genérica
+    /* Captura o JSON para uma classse Genérica
     public <T> void jsonToObjeto(Class<T> type, String json){
          System.out.println("String recebida: " + json);
          GsonBuilder gson = new GsonBuilder();
          Type collectionType = new TypeToken<JsonBasico<T>>(){}.getType();
          JsonBasico<T> jsonBasico = gson.create().fromJson(json, collectionType);
          System.out.println("Saida JSOn object: " + jsonBasico.getDados());
-    }
+    } */
 
 }
