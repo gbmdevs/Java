@@ -3,6 +3,7 @@ package br.banco.util;
 import javax.persistence.EntityManager;
 import java.io.Serializable;
 
+
 import javax.persistence.PersistenceContext;
 
 public abstract class DAOAbstratoJPA<T extends Serializable> {
@@ -12,13 +13,14 @@ public abstract class DAOAbstratoJPA<T extends Serializable> {
     @PersistenceContext(unitName = "planilha-funcional")
     private EntityManager entityManager;
 
-    public final void setClasee(final Class<T> classeToSet) {
+    public final void setClasse(final Class<T> classeToSet) {
         this.classe = classeToSet;
     }
 
-    public T create(final T entity) {
-        entityManager.persist(entity);
-        return entity;
+    public void create(final T entity) {
+        //entityManager.persist(entity);
+        //return entity;
+        System.out.println("Entrou");
     }
 
 }
