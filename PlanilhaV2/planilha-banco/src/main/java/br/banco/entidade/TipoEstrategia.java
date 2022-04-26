@@ -9,26 +9,27 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;  
 
+import br.banco.util.EntidadeBase;
 
 @Entity
 @Table(name = "TIPO_ESTRATEGIA")
-public class TipoEstrategia implements Serializable {
+public class TipoEstrategia implements EntidadeBase {
     
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)  
-    @Column(name = "idTipoEstrategia")
-    private Integer idTipoEstrategia;
+    private Long id;
 
-    @Column(name = "nomeEstrategia")
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+    @Column(name = "nomeEstrategia", unique=true)
     private String nomeEstrategia;
-
-    public Integer getIdTipoEstrategia() {
-        return this.idTipoEstrategia;
-    }
-
-    public void setIdTipoEstrategia(Integer idTipoEstrategia) {
-        this.idTipoEstrategia = idTipoEstrategia;
-    }
 
     public String getNomeEstrategia() {
         return this.nomeEstrategia;
