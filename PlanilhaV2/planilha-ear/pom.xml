@@ -19,6 +19,12 @@
   <dependencies>
        <dependency>     
         <groupId>PlanilhaV2</groupId>
+        <artifactId>planilha-banco</artifactId>
+        <version>${project.version}</version>
+        <type>war</type>
+      </dependency>  
+       <dependency>     
+        <groupId>PlanilhaV2</groupId>
         <artifactId>planilha-rs</artifactId>
         <version>${project.version}</version>
         <type>war</type>
@@ -29,12 +35,7 @@
         <version>${project.version}</version>
         <type>war</type>
      </dependency>   
-     <dependency>     
-        <groupId>PlanilhaV2</groupId>
-        <artifactId>planilha-banco</artifactId>
-        <version>${project.version}</version>
-        <type>war</type>
-      </dependency>  
+
   </dependencies>
 
 

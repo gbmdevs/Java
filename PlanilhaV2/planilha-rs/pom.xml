@@ -32,12 +32,27 @@
     <version>2.1.1</version>
 </dependency>
 
+<dependency>
+    <groupId>javax.inject</groupId>
+    <artifactId>javax.inject</artifactId>
+    <version>1</version>
+</dependency>
+
 <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
 <dependency>
     <groupId>javax.xml.bind</groupId>
     <artifactId>jaxb-api</artifactId>
     <version>2.3.1</version>
 </dependency>
+
+<dependency>     
+   <groupId>PlanilhaV2</groupId>
+   <artifactId>planilha-banco</artifactId>
+   <version>${project.version}</version>
+   <type>ejb</type>
+   <scope>compile</scope>
+</dependency>  
+
 
   </dependencies>
 

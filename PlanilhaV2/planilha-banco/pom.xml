@@ -13,8 +13,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>PlanilhaV2</groupId>
   <artifactId>planilha-banco</artifactId>
-  <packaging>war</packaging>
-  <version>${project.version}</version>
+  <packaging>ejb</packaging>
   <name>planilha-banco</name>
   <url>http://maven.apache.org</url>
 
@@ -56,19 +55,30 @@
       <artifactId>gson</artifactId>
       <version>2.8.8</version>
    </dependency>
+
+<dependency>
+    <groupId>javax.inject</groupId>
+    <artifactId>javax.inject</artifactId>
+    <version>1</version>
+</dependency>
+
+<dependency>
+    <groupId>javax.ws.rs</groupId>
+    <artifactId>javax.ws.rs-api</artifactId>
+    <version>2.0</version>
+</dependency>
+   
   </dependencies>
 
    <build>
-      <finalName>planilha-banco</finalName>
       <plugins>
-         <plugin>
-         <groupId>org.apache.maven.plugins</groupId>
-         <artifactId>maven-war-plugin</artifactId>
-         <version>2.6</version>
-         <configuration>
-           <failOnMissingWebXml>false</failOnMissingWebXml>
-         </configuration>
-         </plugin>
+       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-ejb-plugin</artifactId>
+        <configuration>
+            <ejbVersion>3.0</ejbVersion>
+        </configuration>
+    </plugin>
       </plugins>
   </build>
 

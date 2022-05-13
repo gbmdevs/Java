@@ -17,6 +17,7 @@
   </properties>
   
   <modules>
+     <module>planilha-modelo</module>   
      <module>planilha-banco</module>     
      <module>planilha-rs</module>
      <module>planilha-web</module>
