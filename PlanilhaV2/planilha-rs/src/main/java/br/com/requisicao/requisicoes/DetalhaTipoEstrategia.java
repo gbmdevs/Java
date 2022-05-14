@@ -15,22 +15,20 @@ import javax.inject.Inject;
 
 import  br.banco.util.DaoGenerico;
 
+import java.util.List;
+
 @Path("/tipoestrategia")
 public class DetalhaTipoEstrategia extends ConverteJSON{
  
      
-
      @GET
      public String buscarTiposEstrategias(){
            TipoEstrategia estudante = new TipoEstrategia();
-
            // Buscar todos os dados do tipo Estrategia
            DaoGenerico<TipoEstrategia> dao = new DaoGenerico<TipoEstrategia>();
-           estudante = dao.findById(TipoEstrategia.class, 1L);
+           List<TipoEstrategia> lista = dao.findAll(TipoEstrategia.class);
 
-           System.out.println("Passou do find");
-
-           return new ConverteJSON().retornaJSON(estudante);
+           return new ConverteJSON().retornaJSON(lista);
 
      }
 
