@@ -6,3 +6,4 @@ Planilha/Planilha/target/
 JAXRS/target/
 target/
 node_modules/
+*.pem
