@@ -7,10 +7,7 @@
   <groupId>angular13-springboot</groupId>
   <artifactId>angular13-springboot</artifactId>
   <version>1.0</version>  
-  <packaging>jar</packaging>
-
-  <name>angular13-springboot</name>
-  <url>http://www.example.com</url>
+  <packaging>pom</packaging>
 
    <!-- Root para o repositorio do spring-->
   <parent>
@@ -20,80 +17,10 @@
 		<relativePath/> 
 	</parent>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
+  <modules>
+      <module>frontend</module>
+      <module>backend</module>
+  </modules>
 
-  <dependencies>
-  	  <dependency>
-		  	<groupId>org.springframework.boot</groupId>
-		  	<artifactId>spring-boot-starter-web</artifactId>
-	  </dependency>
-
-     <!-- H2 Database-->
-     <dependency>
-         <groupId>com.h2database</groupId>
-         <artifactId>h2</artifactId>
-         <scope>runtime</scope>
-     </dependency>
-
-    <!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
-    <dependency>
-       <groupId>javax.persistence</groupId>
-       <artifactId>javax.persistence-api</artifactId>
-       <version>2.2</version>
-    </dependency>
-
-    <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-	 </dependency>
-
-  </dependencies>
-
-  <build>
-     <resources>
-        <resource>
-           <directory>src/main/resources</directory>
-           <excludes>
-              <exclude>/frontend/angular-app/node_modules/**</exclude>
-           </excludes>
-        </resource>
-        <resource>
-           <directory>src/main/java</directory>
-        </resource>   
-     </resources>
-     
-     <finalName>angular13-springboot</finalName>
-     <plugins>
-       <plugin>
-         		<groupId>org.codehaus.mojo</groupId>
-				    <artifactId>exec-maven-plugin</artifactId>
-            <version>1.6.0</version>
-            <executions>
-                <execution>
-                    <phase>validate</phase>
-                    <goals>
-                       <goal>exec</goal>
-                    </goals>
-                </execution>
-            </executions>
-            <configuration>
-               <executable>ng</executable>
-               <workingDirectory>src/main/resources/frontend/angular-app</workingDirectory>
-               <arguments>
-                    <argument>build </argument>
-               </arguments>
-            </configuration>
-        </plugin>
-
-        <plugin>
-				  <groupId>org.springframework.boot</groupId>
-				  <artifactId>spring-boot-maven-plugin</artifactId>
-			  </plugin>
-
-     </plugins>
-  </build>
+  
 </project>
