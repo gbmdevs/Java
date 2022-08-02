@@ -13,8 +13,8 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
-      "architect": {
-        "build": {
+      "architect": {           
+          "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "../../static", // "dist/angular-app",
@@ -66,6 +66,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 3200,
+            "host": "0.0.0.0"
+          },
           "configurations": {
             "production": {
               "browserTarget": "angular-app:build:production"
