@@ -1,7 +1,14 @@
-<h1> Single Page Application</h1>
-<p>
-<nav>
-    <a class="button" routerLink="/crisis-list">Crisis Center</a>
-    <a class="button" routerLink="/heroes-list">Heroes</a>
-</nav>
-<router-outlet></router-outlet>
+<div id="app">
+   <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <a href="#" class="navbar-brand">Jamal</a>
+        <ul class="navbar-nav mr-auto" routerLinkActive="active">
+            <li class="nav-item">
+              <a href="/home" class="nav-link" routerLink="home">Home </a>
+            </li>
+        </ul>    
+   </nav>
+   <div class="container">
+        <router-outlet></router-outlet>
+   </div>
+</div>
+

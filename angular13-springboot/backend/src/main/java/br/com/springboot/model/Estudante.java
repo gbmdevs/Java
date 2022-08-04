@@ -4,6 +4,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;  
 import javax.persistence.Id;  
 import javax.persistence.Table;  
+import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+
+import br.com.springboot.model.Login;
 
 @Entity
 @Table
@@ -14,7 +18,12 @@ public class Estudante{
 
     @Column
     private String nome;
-    
+
+    @OneToOne
+    @JoinColumn(name = "idConta", referencedColumnName = "idConta", insertable = false, updatable = false)
+    private Login login;
+
+  
     public int getId() {
         return this.id;
     }
@@ -30,5 +39,13 @@ public class Estudante{
     public void setNome(String nome) {
         this.nome = nome;
     }
-  
+
+    public Login getLogin() {
+        return this.login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }
+
 }
