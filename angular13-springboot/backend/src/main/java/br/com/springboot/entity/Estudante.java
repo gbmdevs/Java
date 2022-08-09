@@ -1,4 +1,4 @@
-package br.com.springboot.model;
+package br.com.springboot.entity;
 
 import javax.persistence.Column;  
 import javax.persistence.Entity;  
@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import javax.persistence.OneToOne;
 import javax.persistence.JoinColumn;
 
-import br.com.springboot.model.Login;
+import br.com.springboot.entity.Login;
 
 @Entity
 @Table

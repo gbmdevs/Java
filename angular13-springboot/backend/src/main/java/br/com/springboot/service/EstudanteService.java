@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.stereotype.Service;
 
-import br.com.springboot.model.Estudante;
+import br.com.springboot.entity.Estudante;
 import br.com.springboot.repository.EstudanteRepository;
 
 @Service

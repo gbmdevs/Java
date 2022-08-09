@@ -1,6 +1,6 @@
 package br.com.springboot.controller;
 
-import br.com.springboot.model.Estudante;
+import br.com.springboot.entity.Estudante;
 import br.com.springboot.service.EstudanteService;
 
 import org.springframework.web.bind.annotation.GetMapping;

@@ -11,7 +11,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-@Component
+//@Component
 public class URLRewriteFilter implements  Filter{
 
     private final String API_PATTERN = "^\\/api\\/(.+)$";
