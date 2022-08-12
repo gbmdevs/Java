@@ -4,18 +4,17 @@ import {DataSource} from '@angular/cdk/collections';
 import {MatTableDataSource} from '@angular/material/table';
 export interface PeriodicElement {
    name: string;
-   position: number;
-   weight: number;
-   symbol: string;
+   dataVencimento: string,
+   valor: number,
+   situacao: string
  }
  
 
 const ELEMENT_DATA: PeriodicElement[] = [
-   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-   {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-   {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-   {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'}
+   {name: 'Cartão de Crédito', dataVencimento: "22/10/2022", valor: 3000, situacao: 'S'},
+   {name: 'INSS - Pró labore', dataVencimento: "22/10/2022", valor: 3000, situacao: 'N'},
+   {name: 'INSS - Pró labore', dataVencimento: "22/10/2022", valor: 3000, situacao: 'N'},
+   {name: 'INSS - Pró labore', dataVencimento: "22/10/2022", valor: 3000, situacao: 'S'}
  ];
 
  @Component({
@@ -29,7 +28,7 @@ export class DashboardComponent implements OnInit {
    isPfActive = false;
    isPjActive = false;
 
-   displayedColumns: string[] = ['position','name'];
+   displayedColumns: string[] = ['name','dataVencimento','valor','situacao'];
    dataSource = ELEMENT_DATA;
 
    lista = [{
