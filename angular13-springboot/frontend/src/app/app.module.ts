@@ -8,8 +8,14 @@ import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-
+// Material IO ( Estudar como é montado a parte do Front-end)
+import {MatBadgeModule} from '@angular/material/badge';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -17,12 +23,18 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     HomeComponent,
     LoginComponent,
     PageNotFoundComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatBadgeModule,
+    MatTabsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
