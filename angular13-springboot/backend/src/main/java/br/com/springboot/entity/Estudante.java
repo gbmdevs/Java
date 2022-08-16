@@ -19,9 +19,9 @@ public class Estudante{
     @Column
     private String nome;
 
-    @OneToOne
-    @JoinColumn(name = "idConta", referencedColumnName = "idConta", insertable = false, updatable = false)
-    private Login login;
+    //@OneToOne
+    //@JoinColumn(name = "idConta", referencedColumnName = "idConta", insertable = false, updatable = false)
+    //private Login login;
 
   
     public int getId() {
@@ -40,12 +40,12 @@ public class Estudante{
         this.nome = nome;
     }
 
-    public Login getLogin() {
+    /* public Login getLogin() {
         return this.login;
     }
 
     public void setLogin(Login login) {
         this.login = login;
-    }
+    } */
 
 }

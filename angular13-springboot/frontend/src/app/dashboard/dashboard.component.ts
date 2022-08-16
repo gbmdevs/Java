@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {DataSource} from '@angular/cdk/collections';
 
+import { DataService } from '../data.service';
+
 import {MatTableDataSource} from '@angular/material/table';
 export interface PeriodicElement {
    name: string;
@@ -49,9 +51,19 @@ export class DashboardComponent implements OnInit {
     "value": "R$ 3000"
    }];
 
-  constructor() { }
+   Estudantes: any = [];
+  constructor( private dataService: DataService) {
+      
+  } 
 
   ngOnInit(): void {
+    console.log(this.carregaEstudantes());
+  }
+
+  carregaEstudantes(){
+    return this.dataService.get_estudantes().subscribe((data: {}) =>{
+       this.Estudantes = data;
+    });
   }
 
   selecaoPj(): void{

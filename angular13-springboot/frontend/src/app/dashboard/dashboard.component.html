@@ -175,6 +175,16 @@
                     </div>
                 </div>   --> 
             </div>    
+            <div class="col-lg-6 col-md-12">
+                <div *ngIf="Estudantes.length !== 0">
+                    <mat-card>
+                        <h3 class="mb-3 text-center">Estudantes</h3>
+                         <div *ngFor="let estudantes of Estudantes">
+                             <div>{{estudantes.nome}}</div>
+                         </div>
+                    </mat-card>
+                </div>
+            </div>
         </div>    
 
 

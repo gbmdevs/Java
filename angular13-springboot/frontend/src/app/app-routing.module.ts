@@ -9,8 +9,8 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent},
-  {path: '', redirectTo: 'dashboard', pathMatch: 'full'}/*,
-  {path: '**', pathMatch: 'full', component: PageNotFoundComponent}*/
+  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  {path: '**', pathMatch: 'full', component: PageNotFoundComponent}
 ];
 
 @NgModule({
