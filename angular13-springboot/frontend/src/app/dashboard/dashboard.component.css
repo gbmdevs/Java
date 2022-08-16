@@ -9,3 +9,15 @@ td.mat-cell{
 th.mat-header-cell{
     padding: 10px
 }
+
+.feito{
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(70 163 101);
+}
+
+.pendente{
+    font-size: 25px;
+    font-weight: bold;
+    color: rgba(255, 0, 0, 0.733);
+}

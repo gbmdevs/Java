@@ -11,10 +11,10 @@ export interface PeriodicElement {
  
 
 const ELEMENT_DATA: PeriodicElement[] = [
-   {name: 'Cartão de Crédito', dataVencimento: "22/10/2022", valor: 3000, situacao: 'S'},
-   {name: 'INSS - Pró labore', dataVencimento: "22/10/2022", valor: 3000, situacao: 'N'},
-   {name: 'INSS - Pró labore', dataVencimento: "22/10/2022", valor: 3000, situacao: 'N'},
-   {name: 'INSS - Pró labore', dataVencimento: "22/10/2022", valor: 3000, situacao: 'S'}
+   {name: 'Cartão de Crédito',     dataVencimento: "22/10/2022", valor: 3000, situacao: 'N'},
+   {name: 'INSS - Pró labore',     dataVencimento: "22/10/2022", valor: 3000, situacao: 'N'},
+   {name: 'DAS - Documento Arre.', dataVencimento: "22/10/2022", valor: 3000, situacao: 'N'},
+   {name: 'Aluguel Apto',          dataVencimento: "22/10/2022", valor: 3000, situacao: 'S'}
  ];
 
  @Component({
