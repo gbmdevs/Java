@@ -17,8 +17,8 @@
 		<relativePath/> 
 	</parent>
 
-  <modules>
-      <module>frontend</module>
+  <modules><!--
+      <module>frontend</module>-->
       <module>backend</module>
   </modules>
 
