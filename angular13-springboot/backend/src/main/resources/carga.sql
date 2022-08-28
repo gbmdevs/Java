@@ -1,3 +1,0 @@
-INSERT INTO LOGIN(id_CONTA,login,senha) VALUES(1,'admin','admin');
-
-INSERT INTO ESTUDANTE(ID,NOME,ID_CONTA) VALUES(1,'Guilherme',1);

@@ -25,11 +25,11 @@ import org.springframework.batch.core.Job;
 @RestController
 @RequestMapping("/api")
 public class MainController{
-     @Autowired
-     JobLauncher jobLauncher;
+    // @Autowired
+    // JobLauncher jobLauncher;
  
-     @Autowired
-     Job processJob;
+    // @Autowired
+    // Job processJob;
      
      @Autowired
      EstudanteService estudanteService;
@@ -48,7 +48,7 @@ public class MainController{
           return estudante.getId();
      }
 
-    // Invocar o job
+    /* Invocar o job
     @RequestMapping("/invokejob")
     public void handle() throws Exception {
  
@@ -58,5 +58,5 @@ public class MainController{
  
         //return "Batch job has been invoked";
         System.out.println("Rodou o JOB");
-    }
+    } */
 }

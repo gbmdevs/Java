@@ -20,7 +20,7 @@ import br.com.springboot.step.Reader;
 import br.com.springboot.step.Writer;
 
 
-@Configuration
+//@Configuration
 public class BatchConfig{
 
     @Autowired
