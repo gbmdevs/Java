@@ -109,8 +109,8 @@ public String buscaGastosListTipo() throws SQLException{
 
 public Double totalSalarySum(Integer spenttype) throws SQLException{
     Conexao conexao = new Conexao();
-    conexao.sql = "Select sum(spentvalue) from gastos " +
-                  "where spenttype = " + spenttype;
+    conexao.sql = "Select sum(a.spentvalue) from gastos a , tipogasto b " +
+                  "where b.isPrincipal = 'S' and a.spenttype = b.idtypespent ";
     conexao.stmt = conexao.con.prepareStatement(conexao.sql);
     ResultSet rs = conexao.stmt.executeQuery();
     rs.next();
