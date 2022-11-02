@@ -7,3 +7,5 @@ JAXRS/target/
 target/
 node_modules/
 *.pem
+*.war
+*.jar
