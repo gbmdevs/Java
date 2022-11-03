@@ -18,8 +18,6 @@ public class ProdutoServiceTest {
 
     @Test
     public void deveRetornarListaProdutos() {
-         Produto pro = new Produto();
-         pro.setProdutoId("01");
         List<Produto> produtos = produtoService.getProdutos();
         //assertEquals(produtos, getProductStub());
         assertEquals(0,0);

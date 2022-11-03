@@ -21,6 +21,8 @@ import Planilha.Controller.DatasController;
 
 public class DespesasFixasController {
        private List<DespesasFixas>  despesasFixas = new ArrayList<DespesasFixas>();
+       private static String DATA_INICIO = "'2022-11-01'";
+       private static String DATA_FINAL  = "'2022-12-01'";
   
 public void setDespesasFixas(List<DespesasFixas> despesasFixas){
     this.despesasFixas = despesasFixas;
@@ -76,7 +78,7 @@ public String carregarGraficoDespesasFixas() {
     try{
         Conexao conexao = new Conexao();
         conexao.sql = "select b.titleexpenses, a.valueexpenses from despesasfixas a , tipdespesas b " +
-         "where a.duedate between '2022-10-01' and '2022-11-01' " +    
+         "where a.duedate between " + DATA_INICIO +" and "+ DATA_FINAL +" " +    
          "and a.idtipexpenses = b.idtipexpenses order by a.duedate asc";
          conexao.stmt = conexao.con.prepareStatement(conexao.sql);
          ResultSet rs = conexao.stmt.executeQuery();
@@ -174,8 +176,8 @@ public String mesPorExtenso(int month){
           "a.duedate, " +
           "a.sitpayment " + 
           "from despesasfixas a , tipdespesas b " +
-          "where a.duedate between '2022-10-01' and '2022-11-01' " +    
-          "and a.idtipexpenses = b.idtipexpenses order by a.duedate asc";
+          "where a.duedate between " + DATA_INICIO + " and " + DATA_FINAL +
+          " and a.idtipexpenses = b.idtipexpenses order by a.duedate asc";
           conexao.stmt = conexao.con.prepareStatement(conexao.sql);
           ResultSet rs = conexao.stmt.executeQuery(); 
           while(rs.next()){
