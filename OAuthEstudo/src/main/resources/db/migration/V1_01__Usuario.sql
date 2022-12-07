@@ -14,3 +14,8 @@ CREATE TABLE permissao(
 CREATE TABLE usuario (
     id bigint NOT NULL
 );
+
+
+CREATE TABLE segurancaapi (
+     id bigint NOT NULL
+);
