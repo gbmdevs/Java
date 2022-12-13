@@ -16,7 +16,8 @@
 	</parent>
 
    <properties>     
-                <version.oltu>1.0.2</version.oltu>
+          <version.oltu>1.0.2</version.oltu>
+          <sonar.host.url>http://172.20.0.7:9000</sonar.host.url>
    </properties>
 
   <dependencies>
@@ -124,6 +125,22 @@
         </execution>
     </executions>
   </plugin>  
+
+<plugin>
+   <groupId>org.sonarsource.scanner.maven</groupId>
+   <artifactId>sonar-maven-plugin</artifactId>
+   <version>3.5.0.1254</version>
+   <executions>
+       <execution>
+          <id>verify-sonar</id>
+          <phase>verify</phase>
+          <goals>
+             <goal>sonar</goal>
+          </goals>
+        </execution>
+    </executions>
+</plugin>
+
 </plugins> 
 </build>
 

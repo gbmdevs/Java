@@ -4,6 +4,9 @@ server:
       client:
           id:     "exemploaplicativocliente"
           secret: "9834ba657bb2c60b5bb53de6f4201905"
+sonar:
+   host:
+      url: 172.20.0.7
 
 spring:
    datasource:
