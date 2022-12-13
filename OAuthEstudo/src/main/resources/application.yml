@@ -1,5 +1,9 @@
 server:
    port: 5000
+   app:
+      client:
+          id:     "exemploaplicativocliente"
+          secret: "9834ba657bb2c60b5bb53de6f4201905"
 
 spring:
    datasource:

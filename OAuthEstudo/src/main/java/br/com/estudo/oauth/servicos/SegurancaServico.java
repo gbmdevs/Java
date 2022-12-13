@@ -14,19 +14,23 @@ import org.apache.oltu.oauth2.common.error.OAuthError.CodeResponse;
 import org.apache.oltu.oauth2.as.request.OAuthTokenRequest;
 import org.apache.oltu.oauth2.as.response.OAuthASResponse;
 
+
 import org.apache.commons.lang.StringUtils;
 
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.stereotype.Service;
 
 @Service
 public class SegurancaServico {
 
-    private final String APP_CLIENT_ID     = "exemploaplicativocliente";
-    private final String APP_CLIENT_SECRET = "9834ba657bb2c60b5bb53de6f4201905";
+    @Value("${server.app.client.id}")
+    private String APP_CLIENT_ID;
+     @Value("${server.app.client.secret}")
+    private String APP_CLIENT_SECRET;
 
     @Autowired
     UsuarioRepositorio usuarioRepo;
@@ -51,12 +55,13 @@ public class SegurancaServico {
             String usuario = oauthRequest.getUsername();
             System.out.println("Usuario: " + usuario + " Senha: " + senha);
 
+            /*
             try{
                  this.usuarioRepo.
             }catch(UsuarioOuSenhaInvalidaException e){
                 return this.retornarErroOAuth(HttpServletResponse.SC_UNAUTHORIZED, CodeResponse.UNAUTHORIZED_CLIENT, e);
 
-            }
+            }*/
 
             return OAuthASResponse.tokenResponse(HttpServletResponse.SC_OK)
             .setParam("nome","Jamalzin")
