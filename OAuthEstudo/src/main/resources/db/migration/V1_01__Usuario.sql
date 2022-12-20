@@ -7,12 +7,17 @@ CREATE TABLE permissao(
     id bigint NOT NULL,
     dataatualizacao timestamp,
     datacriacao timestamp,
-    descricao varchar(255),
+    descricao varchar(255)
 );
 
+CREATE TABLE perfil(
+    id bigint NOT NULL
+);
 
 CREATE TABLE usuario (
-    id bigint NOT NULL
+    id bigint NOT NULL,
+    login VARCHAR(20) NOT NULL,
+    senha VARCHAR(20) NOT NULL
 );
 
 

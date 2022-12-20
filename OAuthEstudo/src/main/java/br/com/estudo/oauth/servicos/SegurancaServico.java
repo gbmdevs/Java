@@ -13,6 +13,8 @@ import org.apache.oltu.oauth2.common.message.OAuthResponse;
 import org.apache.oltu.oauth2.common.error.OAuthError.CodeResponse;
 import org.apache.oltu.oauth2.as.request.OAuthTokenRequest;
 import org.apache.oltu.oauth2.as.response.OAuthASResponse;
+import org.apache.oltu.oauth2.as.issuer.OAuthIssuerImpl;
+import org.apache.oltu.oauth2.as.issuer.MD5Generator;
 
 
 import org.apache.commons.lang.StringUtils;
@@ -29,7 +31,7 @@ public class SegurancaServico {
 
     @Value("${server.app.client.id}")
     private String APP_CLIENT_ID;
-     @Value("${server.app.client.secret}")
+    @Value("${server.app.client.secret}")
     private String APP_CLIENT_SECRET;
 
     @Autowired
@@ -55,13 +57,16 @@ public class SegurancaServico {
             String usuario = oauthRequest.getUsername();
             System.out.println("Usuario: " + usuario + " Senha: " + senha);
 
-            /*
+
+            
             try{
-                 this.usuarioRepo.
+                 this.usuarioRepo.findByLoginAndSenha(usuario,senha);
             }catch(UsuarioOuSenhaInvalidaException e){
                 return this.retornarErroOAuth(HttpServletResponse.SC_UNAUTHORIZED, CodeResponse.UNAUTHORIZED_CLIENT, e);
 
-            }*/
+            }
+
+            String acessoToken =  new OAuthIssuerImpl(new MD5Generator()).accessToken();
 
             return OAuthASResponse.tokenResponse(HttpServletResponse.SC_OK)
             .setParam("nome","Jamalzin")
