@@ -4,6 +4,8 @@ import br.com.estudo.oauth.exceptions.TokenInvalidoException;
 import br.com.estudo.oauth.exceptions.UsuarioOuSenhaInvalidaException;
 import br.com.estudo.oauth.repository.UsuarioRepositorio;
 
+import br.com.estudo.oauth.model.Usuario;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,7 +26,13 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
+import br.com.estudo.oauth.utils.FormatadorUtil;
+
 import org.springframework.stereotype.Service;
+
+// Log do Servidor
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Service
 public class SegurancaServico {
@@ -33,6 +41,8 @@ public class SegurancaServico {
     private String APP_CLIENT_ID;
     @Value("${server.app.client.secret}")
     private String APP_CLIENT_SECRET;
+
+    //private static Logger LOGGER = LoggerFactory.getLogger(SegurancaServico.class);
 
     @Autowired
     UsuarioRepositorio usuarioRepo;
@@ -54,13 +64,11 @@ public class SegurancaServico {
 
             // Pesquisar por usuario e senha
             String senha   = oauthRequest.getPassword();
-            String usuario = oauthRequest.getUsername();
-            System.out.println("Usuario: " + usuario + " Senha: " + senha);
-
-
+            String login = oauthRequest.getUsername();
+            Usuario usuario = null;
             
-            try{
-                 this.usuarioRepo.findByLoginAndSenha(usuario,senha);
+            try{  
+                usuario = this.retornarPorUsuarioeSenha(login,senha);                 
             }catch(UsuarioOuSenhaInvalidaException e){
                 return this.retornarErroOAuth(HttpServletResponse.SC_UNAUTHORIZED, CodeResponse.UNAUTHORIZED_CLIENT, e);
 
@@ -69,7 +77,11 @@ public class SegurancaServico {
             String acessoToken =  new OAuthIssuerImpl(new MD5Generator()).accessToken();
 
             return OAuthASResponse.tokenResponse(HttpServletResponse.SC_OK)
-            .setParam("nome","Jamalzin")
+            .setParam("login",usuario.getLogin())
+            .setParam("perfil",usuario.getPerfil().getNome())
+            .setParam("nome",usuario.getNome())
+            .setParam("criptografia",FormatadorUtil.encryptMD5(senha))
+            //.setParam("permissoes",usuario.getPerfil().getPermissoes())
             .buildJSONMessage();
         }catch(OAuthProblemException ex) {
             return this.retornarErroOAuth(HttpServletResponse.SC_UNAUTHORIZED,CodeResponse.INVALID_REQUEST,ex);
@@ -80,13 +92,14 @@ public class SegurancaServico {
 
     // Validar todos os dados Recebidos na requisição
     public void validarAcessoAplicativo(String appClientId, String appClientSecret) throws TokenInvalidoException{
+         //LOGGER.info("Chave de verificação OAUTH: {} ",  appClientSecret);
          if(StringUtils.isBlank(appClientId)){
             throw new TokenInvalidoException("Atributo clientID é nulo.");
          }
          if(StringUtils.isBlank(appClientSecret)){
             throw new TokenInvalidoException("Atributo clientSecret é nulo.");
          }
-         if(!appClientId.equalsIgnoreCase(APP_CLIENT_ID) && !appClientSecret.equalsIgnoreCase(APP_CLIENT_SECRET)){
+         if(!appClientId.equalsIgnoreCase(APP_CLIENT_ID) || !appClientSecret.equalsIgnoreCase(APP_CLIENT_SECRET)){
             throw new TokenInvalidoException("Seguranca: aplicativo nao autorizado.");
          }
     }
@@ -102,6 +115,15 @@ public class SegurancaServico {
         }catch(OAuthSystemException ex){
             throw new RuntimeException(ex);
         }
+    }
+
+    // Buscar por usuario e senha
+    public Usuario retornarPorUsuarioeSenha(String login, String senha) throws UsuarioOuSenhaInvalidaException{
+         Usuario usuario =  this.usuarioRepo.findByLoginAndSenha(login,senha);
+         if(usuario == null){
+              throw new UsuarioOuSenhaInvalidaException("Usuário não encontrado.");
+         }
+         return usuario;
     }
 
 }
