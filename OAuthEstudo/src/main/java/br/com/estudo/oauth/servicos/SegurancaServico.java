@@ -42,7 +42,7 @@ public class SegurancaServico {
     @Value("${server.app.client.secret}")
     private String APP_CLIENT_SECRET;
 
-    //private static Logger LOGGER = LoggerFactory.getLogger(SegurancaServico.class);
+    private static Logger logger = LoggerFactory.getLogger(SegurancaServico.class);
 
     @Autowired
     UsuarioRepositorio usuarioRepo;
@@ -68,11 +68,12 @@ public class SegurancaServico {
             Usuario usuario = null;
             
             try{  
-                usuario = this.retornarPorUsuarioeSenha(login,senha);                 
+                usuario = this.retornarPorUsuarioeSenha(login,FormatadorUtil.encryptMD5(senha));                 
             }catch(UsuarioOuSenhaInvalidaException e){
                 return this.retornarErroOAuth(HttpServletResponse.SC_UNAUTHORIZED, CodeResponse.UNAUTHORIZED_CLIENT, e);
-
             }
+
+            logger.debug("Usuario encontrado: {} ", usuario);
 
             String acessoToken =  new OAuthIssuerImpl(new MD5Generator()).accessToken();
 
@@ -92,7 +93,7 @@ public class SegurancaServico {
 
     // Validar todos os dados Recebidos na requisição
     public void validarAcessoAplicativo(String appClientId, String appClientSecret) throws TokenInvalidoException{
-         //LOGGER.info("Chave de verificação OAUTH: {} ",  appClientSecret);
+         logger.info("Chave de verificacao OAUTH: {} ", appClientSecret, appClientId);
          if(StringUtils.isBlank(appClientId)){
             throw new TokenInvalidoException("Atributo clientID é nulo.");
          }

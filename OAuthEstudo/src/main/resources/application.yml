@@ -10,7 +10,7 @@ sonar:
 
 spring:
    datasource:
-      url: jdbc:h2:mem:bancotest
+      url: jdbc:h2:mem:bancotest;MODE=MYSQL
       username: admin
       password: admin
       driverClassName: org.h2.Driver
@@ -20,11 +20,16 @@ spring:
         enabled: true
         settings.web-allow-others: true
    jpa:
-      hibernate.ddl-auto: validate    
+      hibernate.ddl-auto: none   
 # Flyway Config
 flyway:
    url: jdbc:h2:mem:bancotest
    baseline-on-migrate: true
    enabled: true
    validate-on-migrate: true
+
+
+# Log4j - Log
+logging:
+    file: app.log  
       

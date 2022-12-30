@@ -6,16 +6,24 @@ import javax.persistence.Column;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
+import javax.persistence.GeneratedValue;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.NamedEntityGraph;
 
 import br.com.estudo.oauth.utils.Modelos;
+import java.util.UUID;
 
 @Entity
 @NamedEntityGraph(name = "perfil.permissoes")
 public class Usuario extends Modelos{ 
 
    @Id
-   private Long id;
+   @GeneratedValue(generator = "uuid2")
+   @GenericGenerator(name = "uuid2", strategy = "uuid2")
+   @Column(columnDefinition = "VARCHAR(36)")
+   @Type(type="uuid-char")
+   private UUID id;
   
    @NotEmpty
    @Size(min = 1, max = 20)
@@ -34,11 +42,11 @@ public class Usuario extends Modelos{
 
 
    @Override
-   public Long getId() {
+   public UUID getId() {
       return this.id;
    }
 
-   public void setId(Long id) {
+   public void setId(UUID id) {
       this.id = id;
    }
 
@@ -75,5 +83,9 @@ public class Usuario extends Modelos{
       this.nome = nome;
    }
 
+   @Override
+   public String toString(){
+      return "Usuario : { id: " + this.id + ", nome: "+ this.nome + ", login: " + this.login + "}";
+   }
 
 }

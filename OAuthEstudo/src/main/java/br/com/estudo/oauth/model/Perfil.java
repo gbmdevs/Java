@@ -14,13 +14,23 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import javax.persistence.GeneratedValue;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.Column;
+
+import java.util.UUID;
 
 @Entity
 public class Perfil {
     
     @Id    
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "VARCHAR(36)")
+    @Type(type="uuid-char")
+    private UUID id;
 
 
     private String nome;
@@ -35,12 +45,12 @@ public class Perfil {
     private List<Usuario> usuarios;
 
 
-
-    public Long getId() {
+    
+    public UUID getId() {
         return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
