@@ -9,6 +9,8 @@ import br.com.estudo.oauth.model.Usuario;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.util.Date;
+
 import org.apache.oltu.oauth2.common.exception.OAuthSystemException;
 import org.apache.oltu.oauth2.common.exception.OAuthProblemException;
 import org.apache.oltu.oauth2.common.message.OAuthResponse;
@@ -28,7 +30,12 @@ import org.springframework.beans.factory.annotation.Value;
 
 import br.com.estudo.oauth.utils.FormatadorUtil;
 
+import br.com.estudo.oauth.utils.DateUtils;
+
 import org.springframework.stereotype.Service;
+
+
+import java.text.SimpleDateFormat;
 
 // Log do Servidor
 import org.slf4j.Logger;
@@ -73,16 +80,18 @@ public class SegurancaServico {
                 return this.retornarErroOAuth(HttpServletResponse.SC_UNAUTHORIZED, CodeResponse.UNAUTHORIZED_CLIENT, e);
             }
 
-            logger.debug("Usuario encontrado: {} ", usuario);
+            logger.info("Usuario encontrado: {} ", usuario);
 
             String acessoToken =  new OAuthIssuerImpl(new MD5Generator()).accessToken();
+            Date proximaDataExp = this.retornarProximaDataExpiracao();
+
+            logger.info("Proxima Expiracao: {}",proximaDataExp.toString());
 
             return OAuthASResponse.tokenResponse(HttpServletResponse.SC_OK)
             .setParam("login",usuario.getLogin())
             .setParam("perfil",usuario.getPerfil().getNome())
             .setParam("nome",usuario.getNome())
             .setParam("criptografia",FormatadorUtil.encryptMD5(senha))
-            //.setParam("permissoes",usuario.getPerfil().getPermissoes())
             .buildJSONMessage();
         }catch(OAuthProblemException ex) {
             return this.retornarErroOAuth(HttpServletResponse.SC_UNAUTHORIZED,CodeResponse.INVALID_REQUEST,ex);
@@ -116,6 +125,18 @@ public class SegurancaServico {
         }catch(OAuthSystemException ex){
             throw new RuntimeException(ex);
         }
+    }
+
+    // Proxima data de Expiração
+    public Date retornarProximaDataExpiracao(){
+        Date agora = new Date();
+        int dia = DateUtils.retornarUnidade(agora, DateUtils.DIA);
+        int mes = DateUtils.retornarUnidade(agora, DateUtils.MES);
+        int ano = DateUtils.retornarUnidade(agora, DateUtils.ANO);
+        logger.info("Dia: {}",dia);
+        logger.info("Mes: {}",mes);
+        logger.info("Data Atual: {}",agora.toString());
+        return DateUtils.retornarData(dia + "/" + mes + "/" + ano + " 23:59:59", new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"));
     }
 
     // Buscar por usuario e senha
