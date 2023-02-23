@@ -3,8 +3,10 @@ package br.com.estudo.oauth.servicos;
 import br.com.estudo.oauth.exceptions.TokenInvalidoException;
 import br.com.estudo.oauth.exceptions.UsuarioOuSenhaInvalidaException;
 import br.com.estudo.oauth.repository.UsuarioRepositorio;
+import br.com.estudo.oauth.repository.SegurancaRepositorio;
 
 import br.com.estudo.oauth.model.Usuario;
+import br.com.estudo.oauth.model.SegurancaAPI;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,6 +56,13 @@ public class SegurancaServico {
     @Autowired
     UsuarioRepositorio usuarioRepo;
 
+    @Autowired
+    SegurancaRepositorio segurancaRepo;
+
+    private SegurancaAPI retornarPorUsuario(Usuario usuario) {
+         return this.segurancaRepo.findByUsuario(usuario);
+    }
+
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public OAuthResponse logarOAuth(HttpServletRequest requisicao){
         try{
@@ -85,7 +94,12 @@ public class SegurancaServico {
             String acessoToken =  new OAuthIssuerImpl(new MD5Generator()).accessToken();
             Date proximaDataExp = this.retornarProximaDataExpiracao();
 
+            logger.info("Token novo: {}",acessoToken);
             logger.info("Proxima Expiracao: {}",proximaDataExp.toString());
+
+            this.atualizarToken(usuario,acessoToken,proximaDataExp);
+
+
 
             return OAuthASResponse.tokenResponse(HttpServletResponse.SC_OK)
             .setParam("login",usuario.getLogin())
@@ -147,5 +161,18 @@ public class SegurancaServico {
          }
          return usuario;
     }
+
+    // Atualizar o token do usuario
+    private void atualizarToken(Usuario usuario,String token, Date proximaDataExpiracao ) throws TokenInvalidoException{
+        // Verificar o usuario
+        if(usuario == null){
+            throw new TokenInvalidoException("Problema interno ao criar token: usuario nulo");
+        }
+
+        SegurancaAPI segurancaAPI = this.retornarPorUsuario(usuario);
+        logger.info("Seguranca API : {}",segurancaAPI);
+    }
+
+
 
 }

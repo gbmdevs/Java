@@ -24,6 +24,3 @@ CREATE TABLE usuario (
 INSERT INTO usuario values('d6dbec62-8782-11ed-a1eb-0242ac120002','teste','Guilherme Gois Braga de Medeiros','698dc19d489c4e4db73e28a713eab07b','806e3829-8942-4488-8cbf-686f19bed22f');
 
 
-CREATE TABLE segurancaapi (
-     id bigint NOT NULL
-);
