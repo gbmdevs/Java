@@ -1,7 +1,5 @@
 package br.com.estudos.oauth2.controller;
 
-import br.com.estudos.oauth2.utils.TokenGenerator;
-
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
