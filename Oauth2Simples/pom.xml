@@ -4,7 +4,7 @@
   <groupId>br.com.estudos.oauth2</groupId>
   <artifactId>Oauth2Simples</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <name>Oauth2Simples</name>
   <url>http://maven.apache.org</url>
 
