@@ -33,21 +33,18 @@ public class AuthController{
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestParam("nome")  String nome){
-        
-        Usuarios usuario = usuariorepo.findByName(nome);
-
-        if(usuario == null){
-           return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-        return ResponseEntity.ok(usuario);          
+    @PostMapping("/signup")
+    public ResponseEntity<?> registerUser(){
+        return ResponseEntity.badRequest().body("Error: Usuario ja existente");
     }
 
     @RequestMapping(value="/authenticate", method = RequestMethod.POST)
-    public void createAuthenticationToke(@RequestBody JwtRequest authenticationRequest) throws Exception{
+    public ResponseEntity<?> createAuthenticationToke(@RequestBody JwtRequest authenticationRequest) throws Exception{
         authenticate(authenticationRequest.getUsername(),authenticationRequest.getPassword());
+        //Usuarios usuario = usuariorepo.findByName(authenticationRequest.getUsername());
         System.out.println("Entrou aqui!");
+        return ResponseEntity.ok("Pronto");
+        
     }
 
     private void authenticate(String username, String password) throws Exception{

@@ -24,6 +24,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
+  private String[] URLS_WHITELIST = {
+     "/authenticate",
+     "/signup",
+     "/h2-console/**"
+  };
+
   @Autowired
   private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
@@ -41,19 +47,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
        auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
   }
 
-@Bean
-public PasswordEncoder passwordEncoder() {
-return new BCryptPasswordEncoder();
-}
+  @Bean
+  public PasswordEncoder passwordEncoder() {
+      return new BCryptPasswordEncoder(); 
+  }
 
   @Override
   protected void configure(HttpSecurity httpSecurity) throws Exception {
      httpSecurity.csrf().disable()
      //Não checa essas requisições
-     .authorizeRequests().antMatchers("/authenticate").permitAll()
+     .authorizeRequests().antMatchers(URLS_WHITELIST).permitAll()
      // Qualquer outra requisição deve ser checada
      .anyRequest().authenticated().and()
      .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement();
+     
+     //fix H2 database console: Refused to display ' in a frame because it set 'X-Frame-Options' to 'deny'
+     httpSecurity.headers().frameOptions().sameOrigin();
   }
 
 }
