@@ -7,12 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 
-
 import br.com.estudos.oauth2.service.UsarioAuthenticationService;
+import br.com.estudos.oauth2.service.UsuarioRegistrationService;
 import br.com.estudos.oauth2.service.TokenService;
 import br.com.estudos.oauth2.dto.DadosLoginDTO;
 import br.com.estudos.oauth2.dto.UsuarioResponseDTO;
 import br.com.estudos.oauth2.dto.UsuarioAutenticadoDTO;
+import br.com.estudos.oauth2.dto.UsuarioRegistrationDTO;
 import br.com.estudos.oauth2.model.Usuario;
 
 @RestController
@@ -20,6 +21,9 @@ public class AuthController{
 
     @Autowired
     UsarioAuthenticationService usuarioAuthService;
+
+    @Autowired
+    UsuarioRegistrationService usuarioRegisterService;
 
     @Autowired
     TokenService tokenService;
@@ -30,5 +34,12 @@ public class AuthController{
         System.out.println(tokenService.generateToken());
         return new ResponseEntity<UsuarioAutenticadoDTO>(UsuarioAutenticadoDTO.toDTO(usuario, "Bearer "),HttpStatus.CREATED);
     }
+
+    @PostMapping("/user")
+    public ResponseEntity<UsuarioAutenticadoDTO> registrar(@RequestBody UsuarioRegistrationDTO dadosRegistro){
+        Usuario usuario = usuarioRegisterService.register(dadosRegistro.toUser());
+        return new ResponseEntity<UsuarioAutenticadoDTO>(UsuarioAutenticadoDTO.toDTO(usuario, "Bearer "),HttpStatus.CREATED);
+    }
+
 
 }
