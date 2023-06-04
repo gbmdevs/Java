@@ -38,9 +38,12 @@ public class AuthController{
     }
 
     @PostMapping("/user")
-    public ResponseEntity<UsuarioAutenticadoDTO> registrar(@RequestBody UsuarioRegistrationDTO dadosRegistro){
-        Usuario usuario = usuarioRegisterService.register(dadosRegistro.toUser());
-        return new ResponseEntity<UsuarioAutenticadoDTO>(UsuarioAutenticadoDTO.toDTO(usuario, "Bearer "),HttpStatus.CREATED);
+    public String registrar(@RequestBody UsuarioRegistrationDTO dadosRegistro){
+        System.out.println(dadosRegistro.toString());
+        //Usuario usuario = usuarioRegisterService.register(dadosRegistro.toUser());
+        usuarioRegisterService.register(dadosRegistro.toUser());
+        //return new ResponseEntity<UsuarioAutenticadoDTO>(UsuarioAutenticadoDTO.toDTO(usuario, "Bearer "),HttpStatus.CREATED);
+        return "Strubg";
     }
 
 

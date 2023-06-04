@@ -37,4 +37,10 @@ public class UsuarioRegistrationDTO{
     }
 
 
+    @Override
+    public String toString(){
+        return "Usuario recebido = [ " + this.nome + ", " + this.email + ", " + this.senha + 
+         "]";
+    }
+
 }

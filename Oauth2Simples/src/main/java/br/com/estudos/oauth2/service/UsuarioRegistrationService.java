@@ -9,10 +9,13 @@ import br.com.estudos.oauth2.model.Usuario;
 @Service
 public class UsuarioRegistrationService{
     
+    @Autowired
     private UsuarioRepository repository;
 
-    public Usuario register(Usuario usuario){
-       return repository.save(usuario);
+    public void register(Usuario usuario){
+       usuario.toString();
+       //usuario.setUUID("10bc86a2-02e5-11ee-be56-0242ac120002");
+       repository.save(usuario);
     }
     
 }
