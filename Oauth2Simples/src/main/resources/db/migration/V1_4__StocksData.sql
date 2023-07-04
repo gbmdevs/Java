@@ -1,0 +1,3 @@
+CREATE TABLE stocks_data(
+    id VARCHAR(36) NOT NULL PRIMARY KEY
+);

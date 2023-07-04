@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 public class Usuario { 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @Column(name="nome")

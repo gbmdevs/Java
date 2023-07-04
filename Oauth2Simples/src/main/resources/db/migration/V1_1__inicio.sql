@@ -1,9 +1,0 @@
-CREATE TABLE Usuario (
-    id VARCHAR(36) NOT NULL,
-    nome VARCHAR(60),
-    email VARCHAR(25),
-    senha VARCHAR(25),
-    token VARCHAR(140)
-);
-
-INSERT INTO USUARIO VALUES('806e3829-8942-4488-8cbf-686f19bed22f','Jamal','teste@teste.com.br','a','eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODMyMDY5MzEsInN1YiI6IlRlc3QgSldUIEFQSSIsImV4cCI6MTY4MzIwODczMX0.BYCwC8EBtd1VYbkDyUYju0kn7U-1l1L6TFKu8NkNttU');
