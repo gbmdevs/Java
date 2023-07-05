@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.util.UriComponentsBuilder;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -20,7 +22,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
+import br.com.estudos.oauth2.model.Stocks;
+import br.com.estudos.oauth2.service.StocksService;
+
 import java.util.Date;
+import java.util.List;
 import java.text.SimpleDateFormat;
 
 
@@ -31,6 +37,14 @@ public class StockController{
 
     @Value("${url.retrieve.stocks.data}")
     private String url;
+
+    @Autowired
+    private StocksService service;
+
+    @GetMapping
+    public List<Stocks> findAllStockTickets(){
+        return service.findAll();
+    }
 
     @GetMapping(value = "/retrivedata")
     public void loadDataStocksinDBspecificDate(@RequestParam(required = false) String dataInicio,
@@ -58,7 +72,7 @@ public class StockController{
            CSVParser csvParser = new CSVParser(reader,format);
 
            for(CSVRecord record : csvParser){
-              System.out.println(record.get(0) +","+ record.get(1)+","+ record.get(2));
+              System.out.println(record.get(0) +","+ record.get(1)+","+ record.get(2)+","+ record.get(3));
            }
 
            csvParser.close();
