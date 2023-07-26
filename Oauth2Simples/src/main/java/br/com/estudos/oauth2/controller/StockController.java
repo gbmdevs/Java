@@ -29,9 +29,9 @@ import br.com.estudos.oauth2.service.StocksDataService;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.text.SimpleDateFormat;
 import java.math.BigDecimal;
-
 
 @RestController
 @CrossOrigin
@@ -58,10 +58,16 @@ public class StockController{
                                                @RequestParam(required = false) String ticket){
 
         System.out.println("Entrou na carga" + dataInicio + "," + dataFinal);
+        
+        Optional<Stocks> stock = service.findByTicket(ticket);
+
+        String urlConcat = stock.get().getTicket() + "." +
+                           stock.get().getRegion() +"?";
+
         changeDateToUnixTimeStamp(dataInicio);
         changeDateToUnixTimeStamp(dataFinal);
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(url+ticket+"?")
+        UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(url+urlConcat)
             .queryParam("period1", changeDateToUnixTimeStamp(dataInicio))
             .queryParam("period2", changeDateToUnixTimeStamp(dataFinal))
             .queryParam("interval", "1d")
@@ -80,6 +86,7 @@ public class StockController{
            for(CSVRecord record : csvParser){
               System.out.println(record.get(0) +","+ record.get(1)+","+ record.get(2)+","+ record.get(3));
               StocksData stockdata = new StocksData();
+              stockdata.setStocks(stock.get());
               stockdata.setOpen(new BigDecimal(record.get(1)));
               serviceStockData.createStockData(stockdata);              
            }

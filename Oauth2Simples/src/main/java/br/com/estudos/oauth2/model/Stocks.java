@@ -3,6 +3,9 @@ package br.com.estudos.oauth2.model;
 import javax.persistence.Entity;
 import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.GenerationType;
+import javax.persistence.GeneratedValue;
+import org.hibernate.annotations.Type;
 
 import java.util.UUID;
 
@@ -10,6 +13,8 @@ import java.util.UUID;
 public class Stocks{
 
     @Id
+    @GeneratedValue
+    @Type(type = "uuid-char")
     private UUID id;
 
     @Column(name="ticket")
@@ -17,6 +22,9 @@ public class Stocks{
 
     @Column(name="name")
     private String name;
+
+    @Column(name="region")
+    private String region;
 
     public UUID getId() {
         return this.id;
@@ -38,4 +46,15 @@ public class Stocks{
         this.name = name;
     }
 
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getRegion() {
+        return this.region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
 }

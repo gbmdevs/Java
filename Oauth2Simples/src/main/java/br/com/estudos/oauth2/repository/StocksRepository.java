@@ -13,5 +13,7 @@ public interface StocksRepository extends CrudRepository<Stocks,Long>{
 
     List<Stocks> findAll();
 
+    Optional<Stocks> findByTicket(String ticket);
+
 
 }

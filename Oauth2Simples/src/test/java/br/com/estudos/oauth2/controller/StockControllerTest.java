@@ -30,4 +30,14 @@ public class StockControllerTest{
                .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
+    @Test
+    public void testGetRetriveDataStock() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.get("/stocks/retrivedata")
+               .param("dataInicio","2023-07-01")
+               .param("dataFinal","2023-07-26")
+               .param("ticket","BBAS3"))
+               .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+
 }
