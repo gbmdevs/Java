@@ -1,4 +1,3 @@
-
 package br.com.estudo.oauth;
 
 import org.junit.Test;
@@ -10,10 +9,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@AutoConfigureMockMvc
 public class SpringAppTest { 
 
     @Test
-    public void test(){
+    public void testApp(){
         System.out.println("Test");
     }
 

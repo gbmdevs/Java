@@ -17,7 +17,7 @@
   <parent>
     	<groupId>org.springframework.boot</groupId>
 		  <artifactId>spring-boot-starter-parent</artifactId>
-		  <version>2.6.15</version>
+		  <version>2.5.0</version>
 		  <relativePath /> 
   </parent>
 
@@ -88,29 +88,51 @@
     <version>1.9.0</version>
 </dependency>
 
+<dependency>
+  <groupId>junit</groupId>
+  <artifactId>junit</artifactId>
+  <version>4.12</version>
+ </dependency>
+
+
   </dependencies>
 
   <build>
       <plugins>
-    <plugin>
-      <groupId>org.jacoco</groupId>
-      <artifactId>jacoco-maven-plugin</artifactId>
-      <version>0.8.7</version>
-      <executions>
+            <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.4.3</version>
+        <configuration>
+            <includes>
+               <include>**/*Test.java</include>
+            </includes>
+        </configuration>
+      </plugin>
+
+        <plugin>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.8.4</version>
+    <executions>
         <execution>
-          <id>prepare-agent</id>
-          <goals>
-            <goal>prepare-agent</goal>
-          </goals>
-        </execution>
+            <goals>
+                <goal>prepare-agent</goal>
+            </goals>
+        </execution>    
         <execution>
-          <id>report</id>
-          <goals>
-            <goal>report</goal>
-          </goals>
+            <id>report</id>
+            <phase>prepare-package</phase>
+            <goals>
+                <goal>report</goal>
+            </goals>
         </execution>
-      </executions>
-    </plugin>
-  </plugins>
+    </executions>
+  </plugin>  
+        
+       
+
+      
+     </plugins>
   </build>
 </project>
