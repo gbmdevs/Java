@@ -17,9 +17,9 @@ public class LoggingAspect {
     private LogDetailsRepository logRepository;
 
     // Pegar o log durante a inserção
-    @AfterReturning(pointcut = "execution(* org.springframework.data.repository.CrudRepository.save(..))", returning = "result")
+    //@AfterReturning(pointcut = "execution(* org.springframework.data.repository.CrudRepository.save(..))", returning = "result")
     public void logInsertion(JoinPoint joinPoint, Object result) {
-       System.out.println("Entrei no log da insercao");
+       //System.out.println("Entrei no log da insercao");
        if(result instanceof Usuario){
           System.out.println("Entrou na log do usuario");
           Usuario logUsuario = (Usuario) result;

@@ -23,11 +23,14 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
 import br.com.estudos.oauth2.model.Stocks;
+import br.com.estudos.oauth2.model.StocksData;
 import br.com.estudos.oauth2.service.StocksService;
+import br.com.estudos.oauth2.service.StocksDataService;
 
 import java.util.Date;
 import java.util.List;
 import java.text.SimpleDateFormat;
+import java.math.BigDecimal;
 
 
 @RestController
@@ -40,6 +43,9 @@ public class StockController{
 
     @Autowired
     private StocksService service;
+
+    @Autowired
+    private StocksDataService serviceStockData;
 
     @GetMapping
     public List<Stocks> findAllStockTickets(){
@@ -56,11 +62,11 @@ public class StockController{
         changeDateToUnixTimeStamp(dataFinal);
 
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(url+ticket+"?")
-        .queryParam("period1", changeDateToUnixTimeStamp(dataInicio))
-        .queryParam("period2", changeDateToUnixTimeStamp(dataFinal))
-        .queryParam("interval", "1d")
-        .queryParam("events", "history")
-        .queryParam("includeAdjustedClose", "true");
+            .queryParam("period1", changeDateToUnixTimeStamp(dataInicio))
+            .queryParam("period2", changeDateToUnixTimeStamp(dataFinal))
+            .queryParam("interval", "1d")
+            .queryParam("events", "history")
+            .queryParam("includeAdjustedClose", "true");
 
         System.out.println(builder.toUriString());
 
@@ -73,6 +79,9 @@ public class StockController{
 
            for(CSVRecord record : csvParser){
               System.out.println(record.get(0) +","+ record.get(1)+","+ record.get(2)+","+ record.get(3));
+              StocksData stockdata = new StocksData();
+              stockdata.setOpen(new BigDecimal(record.get(1)));
+              serviceStockData.createStockData(stockdata);              
            }
 
            csvParser.close();
