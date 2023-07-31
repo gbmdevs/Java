@@ -7,4 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 @Repository
 public interface StockDataRepository extends CrudRepository<StocksData,Long>{
 
+
 }

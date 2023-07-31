@@ -16,4 +16,6 @@ public class StocksDataService{
         repository.save(stocskData);
     }
 
+    
+
 }

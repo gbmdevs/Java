@@ -87,6 +87,7 @@ public class StockController{
               System.out.println(record.get(0) +","+ record.get(1)+","+ record.get(2)+","+ record.get(3));
               StocksData stockdata = new StocksData();
               stockdata.setStocks(stock.get());
+              stockdata.setDateClose(new Date(record.get(0)));
               stockdata.setOpen(new BigDecimal(record.get(1)));
               serviceStockData.createStockData(stockdata);              
            }
