@@ -93,6 +93,7 @@ public class StockController{
               stockdata.setStocks(stock.get());
               stockdata.setDateClose(dataClose);
               stockdata.setOpen(new BigDecimal(record.get(1)));
+              stockdata.setValueClose(new BigDecimal(record.get(3)));
               serviceStockData.createStockData(stockdata);   
              }catch(Exception ex){
                  System.out.println("Caiu na exception");

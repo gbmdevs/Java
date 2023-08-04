@@ -16,6 +16,10 @@ public class StocksDataService{
         repository.save(stocskData);
     }
 
+    public Object[] findMaxDateCloseAndMaxValueClose(){
+        return repository.findMaxDateCloseAndMaxValueClose();
+    }
+
     
 
 }

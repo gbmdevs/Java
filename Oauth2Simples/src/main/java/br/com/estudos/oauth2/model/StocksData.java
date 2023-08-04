@@ -31,6 +31,17 @@ public class StocksData{
     @Column
     private BigDecimal open;
 
+    @Column(name="value_close")
+    private BigDecimal valueClose;
+
+    public BigDecimal getValueClose() {
+        return this.valueClose;
+    }
+
+    public void setValueClose(BigDecimal valueClose) {
+        this.valueClose = valueClose;
+    }
+
     public void setId(UUID id) {
         this.id = id;
     }

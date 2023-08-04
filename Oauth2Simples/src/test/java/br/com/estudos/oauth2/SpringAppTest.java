@@ -8,12 +8,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import org.springframework.test.context.ActiveProfiles;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringAppTest { 
 
     @Test
-    public void AplicativoRodando(){
+    public void contextLoads(){
         System.out.println("Test");
     }
 

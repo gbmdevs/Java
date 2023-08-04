@@ -26,18 +26,22 @@ public class StocksUserOperations{
     @JoinColumn(name="date_operate_buy")
     private Date dateOperateBuy;
 
-    public Date getDateOperateBuy() {
-        return this.dateOperateBuy;
+    @JoinColumn(name="stock_value_buy")
+    private Double stockValueBuy;
+
+    @JoinColumn(name="qtd_stocks_buy")
+    private Integer qtdStocksBuy;
+
+    public Integer getQtdStocksBuy() {
+        return this.qtdStocksBuy;
     }
 
-    public void setDateOperateBuy(Date dateOperateBuy) {
-        this.dateOperateBuy = dateOperateBuy;
+    public void setQtdStocksBuy(Integer qtdStocksBuy) {
+        this.qtdStocksBuy = qtdStocksBuy;
     }
-
-
 
     public UUID getId() {
-       return this.id;   
+        return this.id;
     }
 
     public void setId(UUID id) {
@@ -52,7 +56,21 @@ public class StocksUserOperations{
         this.stock = stock;
     }
 
-    
+    public Date getDateOperateBuy() {
+        return this.dateOperateBuy;
+    }
+
+    public void setDateOperateBuy(Date dateOperateBuy) {
+        this.dateOperateBuy = dateOperateBuy;
+    }
+
+    public Double getStockValueBuy() {
+        return this.stockValueBuy;
+    }
+
+    public void setStockValueBuy(Double stockValueBuy) {
+        this.stockValueBuy = stockValueBuy;
+    }
 
 
 }
