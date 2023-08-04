@@ -1,8 +1,8 @@
 CREATE TABLE stocks_user_operations(
     id VARCHAR(36) NOT NULL PRIMARY KEY,
     stocks_id VARCHAR(36) NOT NULL,
-    dateOperateBuy DATE DEFAULT NULL,
-    dateOperateSell DATE DEFAULT NULL,
+    date_Operate_Buy DATE DEFAULT NULL,
+    date_Operate_Sell DATE DEFAULT NULL,
     stockValueBuy decimal DEFAULT 0,
     stockValueSell decimal DEFAULT 0,
     QtdStocksBuy Integer DEFAULT 0,

@@ -63,4 +63,9 @@ public class StocksData{
         this.dateClose = dateClose;
     }
 
+    @Override
+    public String toString(){
+        return "[StocksData { Dateclose = "+ this.dateClose +" } ]";
+    }
+
 }

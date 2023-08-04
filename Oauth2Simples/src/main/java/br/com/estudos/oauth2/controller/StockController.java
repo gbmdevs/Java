@@ -76,6 +76,8 @@ public class StockController{
 
         System.out.println(builder.toUriString());
 
+        SimpleDateFormat formatar = new SimpleDateFormat("yyyy-MM-dd");
+
         try{
            InputStream inputStream = new URL(builder.toUriString()).openStream();
            InputStreamReader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
@@ -84,12 +86,17 @@ public class StockController{
            CSVParser csvParser = new CSVParser(reader,format);
 
            for(CSVRecord record : csvParser){
+             try{
               System.out.println(record.get(0) +","+ record.get(1)+","+ record.get(2)+","+ record.get(3));
               StocksData stockdata = new StocksData();
+              Date dataClose = formatar.parse(record.get(0));
               stockdata.setStocks(stock.get());
-              stockdata.setDateClose(new Date(record.get(0)));
+              stockdata.setDateClose(dataClose);
               stockdata.setOpen(new BigDecimal(record.get(1)));
-              serviceStockData.createStockData(stockdata);              
+              serviceStockData.createStockData(stockdata);   
+             }catch(Exception ex){
+                 System.out.println("Caiu na exception");
+             }          
            }
 
            csvParser.close();

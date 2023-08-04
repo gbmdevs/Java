@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.GeneratedValue;
 import org.hibernate.annotations.Type;
 import java.util.UUID;
+import java.util.Date;
 
 @Entity
 @Table(name="STOCKS_USER_OPERATIONS")
@@ -22,8 +23,21 @@ public class StocksUserOperations{
     @JoinColumn(name="stocks_id")
     private Stocks stock;
 
+    @JoinColumn(name="date_operate_buy")
+    private Date dateOperateBuy;
+
+    public Date getDateOperateBuy() {
+        return this.dateOperateBuy;
+    }
+
+    public void setDateOperateBuy(Date dateOperateBuy) {
+        this.dateOperateBuy = dateOperateBuy;
+    }
+
+
+
     public UUID getId() {
-        return this.id;
+       return this.id;   
     }
 
     public void setId(UUID id) {
@@ -37,6 +51,8 @@ public class StocksUserOperations{
     public void setStock(Stocks stock) {
         this.stock = stock;
     }
+
+    
 
 
 }

@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import br.com.estudos.oauth2.model.StocksUserOperations;
 
-import br.com.estudos.oauth2.service.StocksUserOperationsService;
+import br.com.estudos.oauth2.service.UserResumeService;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import br.com.estudos.oauth2.dto.ResumePositionsStocks;
 
 import java.util.List;
 
@@ -21,11 +23,11 @@ import java.util.List;
 public class UserResumeController{
 
     @Autowired
-    private StocksUserOperationsService serviceUserOperations;
+    private  UserResumeService userResumeService;
 
     @GetMapping(value = "/stocks-positions")
-    public List<StocksUserOperations> returnListUserStockPositions(){
-        return serviceUserOperations.returnAllStocksOperations();
+    public List<ResumePositionsStocks>returnListUserStockPositions(){
+        return userResumeService.buscarPosicoesUsuario();
     }
 
 
