@@ -4,13 +4,16 @@ import br.com.estudos.oauth2.model.StocksData;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import java.math.BigDecimal;
+import br.com.estudos.oauth2.model.Stocks;
 
 @Repository
 public interface StockDataRepository extends CrudRepository<StocksData,Long>{
 
 
-   @Query("SELECT sd.valueClose FROM StocksData sd WHERE sd.stocks.id = '8ea3e3c5-b419-469d-a9b3-5e46abdc97dc' "+
-            "and sd.dateClose = ( select max(sd2.dateClose) from StocksData sd2 where sd2.stocks.id = '8ea3e3c5-b419-469d-a9b3-5e46abdc97dc')")
-   Object[] findMaxDateCloseAndMaxValueClose();
+   @Query("SELECT sd.valueClose FROM StocksData sd WHERE sd.stocks = :stocks "+
+            " and sd.dateClose = ( select max(sd2.dateClose) from StocksData sd2 where sd2.stocks = :stocks )")
+   BigDecimal findMaxDateCloseAndMaxValueClose(@Param("stocks") Stocks stocks);
 
 }

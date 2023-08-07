@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import br.com.estudos.oauth2.repository.StockDataRepository;
 import br.com.estudos.oauth2.model.StocksData;
+import br.com.estudos.oauth2.model.Stocks;
+import java.math.BigDecimal;
 
 @Service
 public class StocksDataService{
@@ -16,8 +18,8 @@ public class StocksDataService{
         repository.save(stocskData);
     }
 
-    public Object[] findMaxDateCloseAndMaxValueClose(){
-        return repository.findMaxDateCloseAndMaxValueClose();
+    public BigDecimal findMaxDateCloseAndMaxValueClose(Stocks stock){
+        return repository.findMaxDateCloseAndMaxValueClose(stock);
     }
 
     

@@ -4,6 +4,7 @@ import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
+import javax.persistence.Column;
 import javax.persistence.ManyToOne;
 import javax.persistence.GeneratedValue;
 import org.hibernate.annotations.Type;
@@ -23,13 +24,13 @@ public class StocksUserOperations{
     @JoinColumn(name="stocks_id")
     private Stocks stock;
 
-    @JoinColumn(name="date_operate_buy")
+    @Column(name="date_operate_buy")
     private Date dateOperateBuy;
 
-    @JoinColumn(name="stock_value_buy")
+    @Column(name="stock_value_buy")
     private Double stockValueBuy;
 
-    @JoinColumn(name="qtd_stocks_buy")
+    @Column(name="qtd_stocks_buy")
     private Integer qtdStocksBuy;
 
     public Integer getQtdStocksBuy() {

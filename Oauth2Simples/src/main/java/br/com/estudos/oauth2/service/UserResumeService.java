@@ -6,6 +6,7 @@ import br.com.estudos.oauth2.dto.ResumePositionsStocks;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import java.math.BigDecimal;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -24,13 +25,13 @@ public class UserResumeService{
        List<ResumePositionsStocks> listaResume = new ArrayList();
        for(StocksUserOperations operacoes : lista){
           ResumePositionsStocks resumo = new ResumePositionsStocks();
-          Object[] teste = serviceStocksData.findMaxDateCloseAndMaxValueClose();
+          BigDecimal teste = serviceStocksData.findMaxDateCloseAndMaxValueClose(operacoes.getStock());
           resumo.setTicket(operacoes.getStock().getTicket());
           resumo.setDateOperationBuy(operacoes.getDateOperateBuy());
           resumo.setPriceBuy(operacoes.getStockValueBuy());
           resumo.setQtdPriceBuy(operacoes.getQtdStocksBuy());
           resumo.setPercentValuation(calculatePercentPosition(operacoes));
-          resumo.setActualPrice((Double) teste[0]);
+          resumo.setActualPrice(teste);
           listaResume.add(resumo);            
        }
        return listaResume;

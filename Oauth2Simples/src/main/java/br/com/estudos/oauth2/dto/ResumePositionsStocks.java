@@ -1,6 +1,7 @@
 package br.com.estudos.oauth2.dto;
 
 import java.util.Date;
+import java.math.BigDecimal;
 
 public class ResumePositionsStocks{
 
@@ -9,7 +10,8 @@ public class ResumePositionsStocks{
     private Double  percentValuation;   
     private Integer qtdPriceBuy;
     private Double  priceBuy;
-    private Double  actualPrice;
+    private BigDecimal  actualPrice;
+
 
     public String getTicket() {
         return this.ticket;
@@ -51,12 +53,13 @@ public class ResumePositionsStocks{
         this.priceBuy = priceBuy;
     }
 
-    public Double getActualPrice() {
+    public BigDecimal getActualPrice() {
         return this.actualPrice;
     }
 
-    public void setActualPrice(Double actualPrice) {
+    public void setActualPrice(BigDecimal actualPrice) {
         this.actualPrice = actualPrice;
     }
+
 
 }

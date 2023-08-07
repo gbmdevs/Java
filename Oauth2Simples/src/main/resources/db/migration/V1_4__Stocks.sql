@@ -11,5 +11,5 @@ CREATE TABLE stocks(
 INSERT INTO stocks values('64f0f5fe-f7f1-40c1-a977-b697c7abff2a','e2f78b05-6345-4d00-a3f7-7aa04faeb1d2','BBAS3','SA','Banco do Brasil S.A','S');
 INSERT INTO stocks values('8ea3e3c5-b419-469d-a9b3-5e46abdc97dc','e2f78b05-6345-4d00-a3f7-7aa04faeb1d2','ITSA4','SA','Itausa','S');
 INSERT INTO stocks values('a4533fe5-70dc-45f6-99d0-87e663b743f8','e2f78b05-6345-4d00-a3f7-7aa04faeb1d2','USIM5','SA','Usiminas','S');
-INSERT INTO stocks values('fd520d1b-23dc-427d-8632-b23f11fa47f5','e2f78b05-6345-4d00-a3f7-7aa04faeb1d2','TAEE3F','SA','Taesa','S');
-INSERT INTO stocks values('80581280-5815-41fb-8c8d-03ddee00ee51','e2f78b05-6345-4d00-a3f7-7aa04faeb1d2','VALE3F','SA','Vale SA','S'); 
+INSERT INTO stocks values('fd520d1b-23dc-427d-8632-b23f11fa47f5','e2f78b05-6345-4d00-a3f7-7aa04faeb1d2','TAEE4','SA','Taesa','S');
+INSERT INTO stocks values('80581280-5815-41fb-8c8d-03ddee00ee51','e2f78b05-6345-4d00-a3f7-7aa04faeb1d2','VALE3','SA','Vale SA','S'); 
