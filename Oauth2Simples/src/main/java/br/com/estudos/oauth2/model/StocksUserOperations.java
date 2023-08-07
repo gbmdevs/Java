@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import org.hibernate.annotations.Type;
 import java.util.UUID;
 import java.util.Date;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name="STOCKS_USER_OPERATIONS")
@@ -28,7 +29,7 @@ public class StocksUserOperations{
     private Date dateOperateBuy;
 
     @Column(name="stock_value_buy")
-    private Double stockValueBuy;
+    private BigDecimal stockValueBuy;
 
     @Column(name="qtd_stocks_buy")
     private Integer qtdStocksBuy;
@@ -65,11 +66,11 @@ public class StocksUserOperations{
         this.dateOperateBuy = dateOperateBuy;
     }
 
-    public Double getStockValueBuy() {
+    public BigDecimal getStockValueBuy() {
         return this.stockValueBuy;
     }
 
-    public void setStockValueBuy(Double stockValueBuy) {
+    public void setStockValueBuy(BigDecimal stockValueBuy) {
         this.stockValueBuy = stockValueBuy;
     }
 

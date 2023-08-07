@@ -5,11 +5,11 @@ import java.math.BigDecimal;
 
 public class ResumePositionsStocks{
 
-    private String  ticket;
-    private Date    dateOperationBuy;
-    private Double  percentValuation;   
-    private Integer qtdPriceBuy;
-    private Double  priceBuy;
+    private String      ticket;
+    private Date        dateOperationBuy;
+    private BigDecimal  percentValuation;   
+    private Integer     qtdPriceBuy;
+    private BigDecimal  priceBuy;
     private BigDecimal  actualPrice;
 
 
@@ -29,11 +29,11 @@ public class ResumePositionsStocks{
         this.dateOperationBuy = dateOperationBuy;
     }
 
-    public Double getPercentValuation() {
+    public BigDecimal getPercentValuation() {
         return this.percentValuation;
     }
 
-    public void setPercentValuation(Double percentValuation) {
+    public void setPercentValuation(BigDecimal percentValuation) {
         this.percentValuation = percentValuation;
     }
 
@@ -45,11 +45,11 @@ public class ResumePositionsStocks{
         this.qtdPriceBuy = qtdPriceBuy;
     }
 
-    public Double getPriceBuy() {
+    public BigDecimal getPriceBuy() {
         return this.priceBuy;
     }
 
-    public void setPriceBuy(Double priceBuy) {
+    public void setPriceBuy(BigDecimal priceBuy) {
         this.priceBuy = priceBuy;
     }
 
