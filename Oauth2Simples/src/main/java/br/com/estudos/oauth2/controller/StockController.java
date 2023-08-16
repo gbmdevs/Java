@@ -87,7 +87,9 @@ public class StockController{
 
            for(CSVRecord record : csvParser){
              try{
-              System.out.println(record.get(0) +","+ record.get(1)+","+ record.get(2)+","+ record.get(3));
+              System.out.println(record.get(0) +","+ record.get(1)+","+ record.get(2)+","+ record.get(3)+","
+                                 + record.get(4)+","                                 
+                                 + record.get(5));
               StocksData stockdata = new StocksData();
               Date dataClose = formatar.parse(record.get(0));
               stockdata.setStocks(stock.get());

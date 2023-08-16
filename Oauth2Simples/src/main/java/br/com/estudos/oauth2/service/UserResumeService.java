@@ -2,7 +2,7 @@ package br.com.estudos.oauth2.service;
 
 import br.com.estudos.oauth2.dto.ResumePositionsStocks;
 import br.com.estudos.oauth2.model.StocksUserOperations;
-import br.com.estudos.oauth2.dto.ResumePositionsStocks;
+import br.com.estudos.oauth2.dto.ResumeInvestmentBalance;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +37,10 @@ public class UserResumeService{
           listaResume.add(resumo);            
        }
        return listaResume;
+   }
+
+   public ResumeInvestmentBalance returnInvestimentBalance(){
+      return new ResumeInvestmentBalance();
    }
 
    private BigDecimal calculatePercentPosition(BigDecimal priceBuy, BigDecimal actualPrice){

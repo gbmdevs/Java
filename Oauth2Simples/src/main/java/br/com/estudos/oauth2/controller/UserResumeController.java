@@ -13,6 +13,9 @@ import br.com.estudos.oauth2.service.UserResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.estudos.oauth2.dto.ResumePositionsStocks;
+import br.com.estudos.oauth2.dto.ResumeInvestmentBalance;
+
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -28,6 +31,11 @@ public class UserResumeController{
     @GetMapping(value = "/stocks-positions")
     public List<ResumePositionsStocks>returnListUserStockPositions(){
         return userResumeService.buscarPosicoesUsuario();
+    }
+
+    @GetMapping(value ="/investment/balance")
+    public ResponseEntity<ResumeInvestmentBalance> returnInvestmentbalance(){
+        return ResponseEntity.ok(userResumeService.returnInvestimentBalance());
     }
 
 

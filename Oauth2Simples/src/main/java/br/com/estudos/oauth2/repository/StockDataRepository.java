@@ -13,7 +13,8 @@ public interface StockDataRepository extends CrudRepository<StocksData,Long>{
 
 
    @Query("SELECT sd.valueClose FROM StocksData sd WHERE sd.stocks = :stocks "+
-            " and sd.dateClose = ( select max(sd2.dateClose) from StocksData sd2 where sd2.stocks = :stocks )")
+            " and sd.dateClose = ( select max(sd2.dateClose) from StocksData sd2 where sd2.stocks = :stocks " +
+            " and sd.valueClose > 0 or sd.valueClose IS NOT NULL ) ") 
    BigDecimal findMaxDateCloseAndMaxValueClose(@Param("stocks") Stocks stocks);
 
 }
