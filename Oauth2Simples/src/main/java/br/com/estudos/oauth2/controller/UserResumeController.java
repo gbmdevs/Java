@@ -29,13 +29,13 @@ public class UserResumeController{
     private  UserResumeService userResumeService;
 
     @GetMapping(value = "/stocks-positions")
-    public List<ResumePositionsStocks>returnListUserStockPositions(){
+    public List<ResumePositionsStocks> returnListUserStockPositions(){
         return userResumeService.buscarPosicoesUsuario();
     }
 
     @GetMapping(value ="/investment/balance")
-    public ResponseEntity<ResumeInvestmentBalance> returnInvestmentbalance(){
-        return ResponseEntity.ok(userResumeService.returnInvestimentBalance());
+    public List<ResumeInvestmentBalance> returnInvestmentbalance(){
+        return userResumeService.returnInvestimentBalance();
     }
 
 

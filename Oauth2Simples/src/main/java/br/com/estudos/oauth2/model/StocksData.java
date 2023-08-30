@@ -33,6 +33,17 @@ public class StocksData{
 
     @Column(name="value_close")
     private BigDecimal valueClose;
+    
+    @Column(name="adj_close")
+    private BigDecimal adjClose;
+
+    public BigDecimal getAdjClose() {
+        return this.adjClose;
+    }
+
+    public void setAdjClose(BigDecimal adjClose) {
+        this.adjClose = adjClose;
+    }
 
     public BigDecimal getValueClose() {
         return this.valueClose;

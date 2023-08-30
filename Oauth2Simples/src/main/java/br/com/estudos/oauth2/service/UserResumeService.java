@@ -2,6 +2,7 @@ package br.com.estudos.oauth2.service;
 
 import br.com.estudos.oauth2.dto.ResumePositionsStocks;
 import br.com.estudos.oauth2.model.StocksUserOperations;
+import br.com.estudos.oauth2.model.TypeBalance;
 import br.com.estudos.oauth2.dto.ResumeInvestmentBalance;
 
 import org.springframework.stereotype.Service;
@@ -22,6 +23,9 @@ public class UserResumeService{
    @Autowired
    private StocksDataService serviceStocksData;
 
+   @Autowired
+   private TypeBalanceService typeBalanceService;
+
    public List<ResumePositionsStocks> buscarPosicoesUsuario(){
        List<StocksUserOperations> lista = serviceUserOperations.returnAllStocksOperations();
        List<ResumePositionsStocks> listaResume = new ArrayList();
@@ -39,8 +43,14 @@ public class UserResumeService{
        return listaResume;
    }
 
-   public ResumeInvestmentBalance returnInvestimentBalance(){
-      return new ResumeInvestmentBalance();
+   public List<ResumeInvestmentBalance> returnInvestimentBalance(){
+      List<ResumeInvestmentBalance> resumeListInvest = new ArrayList();
+      List<TypeBalance> lista = typeBalanceService.findAllByBroker();
+      lista.forEach(item -> {
+           resumeListInvest.add(new ResumeInvestmentBalance(item));
+      });
+      System.out.println("Tamanho do broker: " + lista.size());
+      return resumeListInvest;
    }
 
    private BigDecimal calculatePercentPosition(BigDecimal priceBuy, BigDecimal actualPrice){

@@ -11,6 +11,7 @@ public class ResumePositionsStocks{
     private Integer     qtdPriceBuy;
     private BigDecimal  priceBuy;
     private BigDecimal  actualPrice;
+    private BigDecimal  resultOperation;
 
 
     public String getTicket() {
@@ -59,6 +60,14 @@ public class ResumePositionsStocks{
 
     public void setActualPrice(BigDecimal actualPrice) {
         this.actualPrice = actualPrice;
+    }
+
+    public BigDecimal getResultOperation() {
+        return (this.resultOperation == null ? new BigDecimal(0.0) : this.resultOperation);
+    }
+
+    public void setResultOperation(BigDecimal resultOperation) {
+        this.resultOperation = resultOperation;
     }
 
 

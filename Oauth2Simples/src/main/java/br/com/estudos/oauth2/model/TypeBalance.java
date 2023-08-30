@@ -23,6 +23,12 @@ public class TypeBalance{
     @Column(name="situation")
     private String situation;
 
+    @Column(name="type_company")
+    private String typeCompany;    
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
     public UUID getId() {
         return this.id;
     }
@@ -41,6 +47,14 @@ public class TypeBalance{
 
     public void setSituation(String situation) {
         this.situation = situation;
+    }
+
+    public String getTypeCompany() {
+        return this.typeCompany;
+    }
+
+    public void setTypeCompany(String typeCompany) {
+        this.typeCompany = typeCompany;
     }
 
 }

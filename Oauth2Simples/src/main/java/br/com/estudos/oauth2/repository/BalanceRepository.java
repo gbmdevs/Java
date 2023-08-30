@@ -14,7 +14,7 @@ import java.util.List;
 public interface BalanceRepository extends CrudRepository<Balance,Long>{
      
      @Query("SELECT new br.com.estudos.oauth2.dto.ResumeBalance(e.typeBalance,sum(e.value)) FROM Balance e " +
-            "where e.typeBalance.situation = 'S' " + 
+            "where e.typeBalance.situation = 'S' AND e.typeBalance.typeCompany = 'BANK' " + 
             "group by e.typeBalance.id")
      List<ResumeBalance> sumBalanceByTypeBalance();
 

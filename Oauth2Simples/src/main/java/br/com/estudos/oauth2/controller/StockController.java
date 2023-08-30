@@ -89,13 +89,15 @@ public class StockController{
              try{
               System.out.println(record.get(0) +","+ record.get(1)+","+ record.get(2)+","+ record.get(3)+","
                                  + record.get(4)+","                                 
-                                 + record.get(5));
+                                 + record.get(5)+","
+                                 + record.get(6));
               StocksData stockdata = new StocksData();
               Date dataClose = formatar.parse(record.get(0));
               stockdata.setStocks(stock.get());
               stockdata.setDateClose(dataClose);
               stockdata.setOpen(new BigDecimal(record.get(1)));
               stockdata.setValueClose(new BigDecimal(record.get(3)));
+              stockdata.setAdjClose(new BigDecimal(record.get(5)));
               serviceStockData.createStockData(stockdata);   
              }catch(Exception ex){
                  System.out.println("Caiu na exception");
