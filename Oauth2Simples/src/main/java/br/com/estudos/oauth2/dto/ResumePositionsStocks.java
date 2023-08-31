@@ -55,7 +55,7 @@ public class ResumePositionsStocks{
     }
 
     public BigDecimal getActualPrice() {
-        return this.actualPrice;
+        return (this.actualPrice == null ? new BigDecimal(0.0) : this.actualPrice);
     }
 
     public void setActualPrice(BigDecimal actualPrice) {

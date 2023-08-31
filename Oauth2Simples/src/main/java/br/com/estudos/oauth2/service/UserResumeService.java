@@ -13,6 +13,7 @@ import java.math.RoundingMode;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.stream.IntStream;
 
 @Service
 public class UserResumeService{
@@ -46,10 +47,10 @@ public class UserResumeService{
    public List<ResumeInvestmentBalance> returnInvestimentBalance(){
       List<ResumeInvestmentBalance> resumeListInvest = new ArrayList();
       List<TypeBalance> lista = typeBalanceService.findAllByBroker();
-      lista.forEach(item -> {
-           resumeListInvest.add(new ResumeInvestmentBalance(item));
-      });
-      System.out.println("Tamanho do broker: " + lista.size());
+      IntStream.range(0,lista.size()).forEach(index ->{
+          resumeListInvest.add(new ResumeInvestmentBalance(lista.get(index)));
+          resumeListInvest.get(index).setTotalBalance(sumQuantityValueStock(lista.get(index)));
+      });         
       return resumeListInvest;
    }
 
@@ -64,5 +65,15 @@ public class UserResumeService{
       }
    }
      
+
+   private BigDecimal sumQuantityValueStock(TypeBalance broker){
+      Double sum = 0.0;
+      List<ResumePositionsStocks> lista = buscarPosicoesUsuario();
+      for(ResumePositionsStocks operacoes : lista){
+         Double value = (operacoes.getActualPrice().doubleValue() * operacoes.getQtdPriceBuy());
+         sum = sum + value;
+      }
+      return new BigDecimal(sum).setScale(2,RoundingMode.DOWN);
+   } 
 
 }

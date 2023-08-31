@@ -18,7 +18,7 @@ public class ResumeInvestmentBalance{
         this.totalBalance     = new BigDecimal(0.0);
     }
     public BigDecimal getAvailableBalance() {
-        return this.availableBalance;
+        return (this.availableBalance == null ? new BigDecimal(0.0) : this.availableBalance);
     }
 
     public void setAvailableBalance(BigDecimal availableBalance) {
@@ -26,7 +26,7 @@ public class ResumeInvestmentBalance{
     }
 
     public BigDecimal getTotalBalance() {
-        return this.totalBalance;
+        return (this.totalBalance == null ? new BigDecimal(0.0) : this.totalBalance);
     }
 
     public void setTotalBalance(BigDecimal totalBalance) {
