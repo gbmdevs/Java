@@ -3,10 +3,17 @@ package br.com.estudos.oauth2.dto;
 import java.math.BigDecimal;
 import br.com.estudos.oauth2.model.TypeBalance;
 
+import br.com.estudos.oauth2.annotation.ExcelHeaderColumn;
+
 public class ResumeInvestmentBalance{
 
+    @ExcelHeaderColumn("Tipo de Balanço")
     private TypeBalance typeBalance;
+
+    @ExcelHeaderColumn("Saldo Disponivel")
     private BigDecimal  availableBalance;
+
+    @ExcelHeaderColumn("Total Investido")
     private BigDecimal  totalBalance;
 
     public ResumeInvestmentBalance(TypeBalance typeBalance){

@@ -3,9 +3,13 @@ package br.com.estudos.oauth2.dto;
 import java.util.Date;
 import java.math.BigDecimal;
 
+import br.com.estudos.oauth2.annotation.ExcelHeaderColumn;
+
 public class ResumePositionsStocks{
 
+    @ExcelHeaderColumn("Ação")
     private String      ticket;
+    @ExcelHeaderColumn("Data de Compra")
     private Date        dateOperationBuy;
     private BigDecimal  percentValuation;   
     private Integer     qtdPriceBuy;

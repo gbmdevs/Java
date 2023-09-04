@@ -14,8 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.estudos.oauth2.dto.ResumePositionsStocks;
 import br.com.estudos.oauth2.dto.ResumeInvestmentBalance;
+import br.com.estudos.oauth2.utils.ExportToExcelFile;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
@@ -38,5 +40,10 @@ public class UserResumeController{
         return userResumeService.returnInvestimentBalance();
     }
 
+    @GetMapping(value="export")
+    public ResponseEntity<byte[]> export(){
+        List<ResumePositionsStocks> lista =  userResumeService.buscarPosicoesUsuario();
+        return new ResponseEntity<>(ExportToExcelFile.writeToExcel("teste", lista ),HttpStatus.OK);
+    }
 
 }
