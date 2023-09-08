@@ -2,6 +2,7 @@ package br.com.estudos.oauth2.utils;
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.util.CellRangeAddress;
 
 import java.io.OutputStream;
 import java.io.ByteArrayOutputStream;
@@ -17,10 +18,13 @@ import java.util.ArrayList;
 import java.util.stream.IntStream;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.text.SimpleDateFormat;  
 
 import br.com.estudos.oauth2.annotation.ExcelHeaderColumn;
 
 public class ExportToExcelFile{
+
+     private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
 
      public static <T> byte[]  writeToExcel(String fileName, List<T> data){
           try { 
@@ -61,7 +65,7 @@ public class ExportToExcelFile{
                      }else if(value instanceof Double){
                         cell.setCellValue((Double) value);
                      }else if(value instanceof Date){
-                        cell.setCellValue((Date) value);
+                        cell.setCellValue(dateToStringFormat((Date) value));
                      }else if (value instanceof BigDecimal) {
                         BigDecimal bigDecimal = (BigDecimal) value;
                         double doubleValue    = bigDecimal.doubleValue();
@@ -74,6 +78,13 @@ public class ExportToExcelFile{
 
              }
              
+
+            for(int columnIndex = 0; columnIndex < columnCount; columnIndex++){
+               sheet.autoSizeColumn(columnIndex);
+            }
+
+             // Defenir o auto filtro para pesquisa de dados
+             sheet.setAutoFilter(new CellRangeAddress(0, 0, 0, columnCount - 1));
 
              workbook.write(outputStream);
              byte[] excelBytes = outputStream.toByteArray();
@@ -109,6 +120,12 @@ public class ExportToExcelFile{
         }
         return s.substring(0,1).toUpperCase() + s.substring(1);
 
+     }
+
+     // Retornar Data para String
+     public static String dateToStringFormat(Date date){
+        return (String) sdf.format(date);
+         
      }
 
  

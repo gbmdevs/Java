@@ -11,7 +11,9 @@ public class ResumePositionsStocks{
     private String      ticket;
     @ExcelHeaderColumn("Data de Compra")
     private Date        dateOperationBuy;
+    @ExcelHeaderColumn("Percentual de valorizacao")
     private BigDecimal  percentValuation;   
+    @ExcelHeaderColumn("Qtde. Compra")
     private Integer     qtdPriceBuy;
     private BigDecimal  priceBuy;
     private BigDecimal  actualPrice;
