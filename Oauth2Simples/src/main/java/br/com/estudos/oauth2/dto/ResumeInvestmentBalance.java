@@ -37,7 +37,7 @@ public class ResumeInvestmentBalance{
     }
 
     public void setTotalBalance(BigDecimal totalBalance) {
-        this.totalBalance = totalBalance;
+        this.totalBalance = totalBalance.add(this.availableBalance);
     }
 
     public TypeBalance getTypeBalance() {

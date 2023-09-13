@@ -27,6 +27,10 @@ public class UserResumeService{
    @Autowired
    private TypeBalanceService typeBalanceService;
 
+   @Autowired
+   private BalanceService balanceService;
+
+
    public List<ResumePositionsStocks> buscarPosicoesUsuario(){
        List<StocksUserOperations> lista = serviceUserOperations.returnAllStocksOperations();
        List<ResumePositionsStocks> listaResume = new ArrayList();
@@ -48,7 +52,9 @@ public class UserResumeService{
       List<ResumeInvestmentBalance> resumeListInvest = new ArrayList();
       List<TypeBalance> lista = typeBalanceService.findAllByBroker();
       IntStream.range(0,lista.size()).forEach(index ->{
-          resumeListInvest.add(new ResumeInvestmentBalance(lista.get(index)));
+          resumeListInvest.add(new ResumeInvestmentBalance(lista.get(index)));          
+          resumeListInvest.get(index).setAvailableBalance(
+                   balanceService.findAvailableBalanceByTypeBalance(lista.get(index).getId()));
           resumeListInvest.get(index).setTotalBalance(sumQuantityValueStock(lista.get(index)));
       });         
       return resumeListInvest;

@@ -14,8 +14,10 @@ public class ResumePositionsStocks{
     @ExcelHeaderColumn("Percentual de valorizacao")
     private BigDecimal  percentValuation;   
     @ExcelHeaderColumn("Qtde. Compra")
-    private Integer     qtdPriceBuy;
+    private Integer     qtdPriceBuy;    
+    @ExcelHeaderColumn("Preço de Compra")
     private BigDecimal  priceBuy;
+    @ExcelHeaderColumn("Ultimo Fechamento")
     private BigDecimal  actualPrice;
     private BigDecimal  resultOperation;
 

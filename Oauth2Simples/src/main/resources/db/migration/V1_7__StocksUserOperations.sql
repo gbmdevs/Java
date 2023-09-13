@@ -19,3 +19,5 @@ CREATE TABLE stocks_user_operations(
 INSERT INTO stocks_user_operations values('f7e2055f-fa79-4c2f-b173-bff576dd03ed',select id from stocks where ticket = 'VALE3','1b41e479-b407-4f3c-a69a-de788ef2de90','2023-05-26',NULL,66.50,NULL,6,NULL,399,NULL,'A');
 INSERT INTO stocks_user_operations values('d3c0173f-40c8-4302-ae22-7513e8caad58',select id from stocks where ticket = 'TAEE4','1b41e479-b407-4f3c-a69a-de788ef2de90','2023-07-20',NULL,12.03,NULL,25,NULL,300.75,NULL,'A');
 INSERT INTO stocks_user_operations values('dc946d1c-6f50-432c-b508-a1ee2c752bb8',select id from stocks where ticket = 'MXRF11','1b41e479-b407-4f3c-a69a-de788ef2de90','2023-09-05',NULL,NULL,NULL,201,NULL,NULL,NULL,'I');
+INSERT INTO stocks_user_operations values('98af887f-e8e7-4e68-800c-97d0987eb36a',select id from stocks where ticket = 'HASH11','1b41e479-b407-4f3c-a69a-de788ef2de90','2023-09-13',NULL,NULL,NULL,77,NULL,NULL,NULL,'I');
+INSERT INTO stocks_user_operations values('e8eb546b-12e7-4d5a-80bd-42e9ef91c633',select id from stocks where ticket = 'BBSE3','1b41e479-b407-4f3c-a69a-de788ef2de90','2023-09-13',NULL,NULL,NULL,16,NULL,NULL,NULL,'R');
