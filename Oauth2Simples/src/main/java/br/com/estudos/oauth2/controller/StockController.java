@@ -70,7 +70,7 @@ public class StockController{
         Optional<Stocks> stock = service.findByTicket(ticket);
         serviceStockData.loadDataStocksinDBspecificDate(dataInicio,dataFinal,stock.get().getTicket());
 
-    }
+    } 
 
 
 }
