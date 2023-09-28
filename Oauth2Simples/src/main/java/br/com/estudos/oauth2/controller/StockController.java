@@ -71,6 +71,6 @@ public class StockController{
         serviceStockData.loadDataStocksinDBspecificDate(dataInicio,dataFinal,stock.get().getTicket());
 
     } 
-
+ 
 
 }
