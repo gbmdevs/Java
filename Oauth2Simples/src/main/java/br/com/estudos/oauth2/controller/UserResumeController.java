@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import br.com.estudos.oauth2.model.StocksUserOperations;
 
 import br.com.estudos.oauth2.service.UserResumeService;
+import br.com.estudos.oauth2.service.ViewdeTesteService;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import br.com.estudos.oauth2.utils.ExportToExcelFile;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
+import br.com.estudos.oauth2.model.ViewDeTeste;
 
 import java.util.List;
 
@@ -29,6 +31,9 @@ public class UserResumeController{
 
     @Autowired
     private  UserResumeService userResumeService;
+
+    @Autowired
+    private ViewdeTesteService viewDetesteService;
 
     @GetMapping(value = "/stocks-positions")
     public List<ResumePositionsStocks> returnListUserStockPositions(){
@@ -43,7 +48,8 @@ public class UserResumeController{
     @GetMapping(value="export")
     public ResponseEntity<byte[]> export(){
         List<ResumePositionsStocks> lista =  userResumeService.buscarPosicoesUsuario();
-        return new ResponseEntity<>(ExportToExcelFile.writeToExcel("teste", lista ),HttpStatus.OK);
+        List<ViewDeTeste> lista2 = viewDetesteService.findAll();
+        return new ResponseEntity<>(ExportToExcelFile.writeToExcel("teste", lista2 ),HttpStatus.OK);
     }
 
 }
