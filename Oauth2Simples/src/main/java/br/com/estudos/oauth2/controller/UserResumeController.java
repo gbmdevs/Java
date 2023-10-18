@@ -49,7 +49,7 @@ public class UserResumeController{
     public ResponseEntity<byte[]> export(){
         List<ResumePositionsStocks> lista =  userResumeService.buscarPosicoesUsuario();
         List<ViewDeTeste> lista2 = viewDetesteService.findAll();
-        return new ResponseEntity<>(ExportToExcelFile.writeToExcel("teste", lista2 ),HttpStatus.OK);
+        return new ResponseEntity<>(ExportToExcelFile.writeToExcel("teste", lista ),HttpStatus.OK);
     }
 
 }

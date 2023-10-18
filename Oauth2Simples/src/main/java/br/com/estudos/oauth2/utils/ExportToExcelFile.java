@@ -54,7 +54,9 @@ public class ExportToExcelFile{
 					   try {
 						   method = classz.getMethod("get" + capitalizeFirstCaracter(nameField));
 					   } catch (NoSuchMethodException nme) {
-					   	method = classz.getMethod("get" + nameField);
+                     if(!classz.getMethod("get" + nameField).isSynthetic()){                        
+					      	method = classz.getMethod("get" + nameField);
+                     }
 					   }
                   Object value = method.invoke(t, (Object[]) null);
                   if(value != null){

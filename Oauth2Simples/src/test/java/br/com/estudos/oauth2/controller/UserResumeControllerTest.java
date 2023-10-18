@@ -26,7 +26,22 @@ public class UserResumeControllerTest{
     
     @Test
     public void testGetAllStocksPositions() throws Exception{
-        mockMvc.perform(MockMvcRequestBuilders.get("/user-resume/stocks-positions"))
+        mockMvc.perform(MockMvcRequestBuilders
+               .get("/user-resume/stocks-positions"))
+               .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void testGetReturnOfInvestiment() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders
+               .get("/user-resume/investment/balance"))
+               .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void testExportAllStocksPositions() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders
+               .get("/user-resume/export"))
                .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
