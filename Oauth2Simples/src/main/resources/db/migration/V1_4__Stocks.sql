@@ -17,3 +17,4 @@ INSERT INTO stocks values('f8c0e808-42aa-4bc4-8b42-e5941139cf1c','943740d8-4ece-
 INSERT INTO stocks values('d017b5e6-2d65-4503-8f98-51073a21ec36','3f4a334b-103f-4289-99de-91fb3e818ed6','HASH11','SA','Hash Index','S'); 
 INSERT INTO stocks values('25d554be-f700-437b-8711-bd71fb4b0d2a','e2f78b05-6345-4d00-a3f7-7aa04faeb1d2','BBSE3','SA','BB Seguridade','S');
 INSERT INTO stocks values('21a30a19-a9d0-4203-bd0a-b9fae8c559fd','e2f78b05-6345-4d00-a3f7-7aa04faeb1d2','VIVT3','SA','Vivo Fibra telefonica','S');
+INSERT INTO stocks values('f8aa288e-26ef-4c6d-b9d3-f5e05b79d543','e2f78b05-6345-4d00-a3f7-7aa04faeb1d2','CMIG3','SA','Companhia Energética de Minas Gerais S.A','S');

@@ -23,3 +23,4 @@ INSERT INTO stocks_user_operations values('98af887f-e8e7-4e68-800c-97d0987eb36a'
 INSERT INTO stocks_user_operations values('e8eb546b-12e7-4d5a-80bd-42e9ef91c633',select id from stocks where ticket = 'BBSE3','1b41e479-b407-4f3c-a69a-de788ef2de90','2023-09-13',NULL,NULL,NULL,16,NULL,NULL,NULL,'R');
 INSERT INTO stocks_user_operations values('38065e60-af24-4298-b6e0-4b9fc94c77a2',select id from stocks where ticket = 'VIVT3','1b41e479-b407-4f3c-a69a-de788ef2de90','2023-09-24',NULL,NULL,NULL,7,NULL,NULL,NULL,'R');
 INSERT INTO stocks_user_operations values('ab2ca7d4-8fc2-4f2c-9fa7-b04bb0429b5e',select id from stocks where ticket = 'BBAS3','1b41e479-b407-4f3c-a69a-de788ef2de90','2023-09-24',NULL,NULL,NULL,12,NULL,NULL,NULL,'R');
+INSERT INTO stocks_user_operations values('b6c046d5-ade2-44ac-8a38-6d18801871a5',select id from stocks where ticket = 'CMIG3','1b41e479-b407-4f3c-a69a-de788ef2de90','2023-10-20',NULL,16.10,NULL,22,NULL,354.20,NULL,'A');
