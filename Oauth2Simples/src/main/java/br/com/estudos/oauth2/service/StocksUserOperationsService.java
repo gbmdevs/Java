@@ -16,6 +16,10 @@ public class StocksUserOperationsService{
     public List<StocksUserOperations> returnAllStocksOperations(){
         return repository.findAll();
     }
+
+    public List<StocksUserOperations> findBySitOperation(String status){
+        return repository.findBySitOperation(status);
+    }
    
 
 }

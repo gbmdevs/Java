@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.estudos.oauth2.model.StocksUserOperations;
 
@@ -36,8 +37,8 @@ public class UserResumeController{
     private ViewdeTesteService viewDetesteService;
 
     @GetMapping(value = "/stocks-positions")
-    public List<ResumePositionsStocks> returnListUserStockPositions(){
-        return userResumeService.buscarPosicoesUsuario();
+    public List<ResumePositionsStocks> returnListUserStockPositions(@RequestParam(required = false) String status){
+        return userResumeService.buscarPosicoesUsuario(status.toUpperCase());
     }
 
     @GetMapping(value ="/investment/balance")
@@ -47,7 +48,7 @@ public class UserResumeController{
 
     @GetMapping(value="export")
     public ResponseEntity<byte[]> export(){
-        List<ResumePositionsStocks> lista =  userResumeService.buscarPosicoesUsuario();
+        List<ResumePositionsStocks> lista =  userResumeService.buscarPosicoesUsuario("A");
         List<ViewDeTeste> lista2 = viewDetesteService.findAll();
         return new ResponseEntity<>(ExportToExcelFile.writeToExcel("teste", lista ),HttpStatus.OK);
     }

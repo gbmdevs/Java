@@ -10,4 +10,6 @@ public interface StocksUserOperationsRepository extends CrudRepository<StocksUse
 
    List<StocksUserOperations> findAll();
 
+   List<StocksUserOperations> findBySitOperation(String sitOperation);
+
 }

@@ -34,6 +34,17 @@ public class StocksUserOperations{
     @Column(name="qtd_stocks_buy")
     private Integer qtdStocksBuy;
 
+    @Column(name="sit_operation")
+    private String sitOperation;
+
+    public String getSitOperation() {
+        return this.sitOperation;
+    }
+
+    public void setSitOperation(String sitOperation) {
+        this.sitOperation = sitOperation;
+    }
+
     public Integer getQtdStocksBuy() {
         return this.qtdStocksBuy;
     }

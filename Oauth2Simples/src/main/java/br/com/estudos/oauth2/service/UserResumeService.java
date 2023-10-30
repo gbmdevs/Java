@@ -31,8 +31,8 @@ public class UserResumeService{
    private BalanceService balanceService;
 
 
-   public List<ResumePositionsStocks> buscarPosicoesUsuario(){
-       List<StocksUserOperations> lista = serviceUserOperations.returnAllStocksOperations();
+   public List<ResumePositionsStocks> buscarPosicoesUsuario(String status){
+       List<StocksUserOperations> lista = serviceUserOperations.findBySitOperation(status);
        List<ResumePositionsStocks> listaResume = new ArrayList();
        for(StocksUserOperations operacoes : lista){
           ResumePositionsStocks resumo = new ResumePositionsStocks();
@@ -74,7 +74,7 @@ public class UserResumeService{
 
    private BigDecimal sumQuantityValueStock(TypeBalance broker){
       Double sum = 0.0;
-      List<ResumePositionsStocks> lista = buscarPosicoesUsuario();
+      List<ResumePositionsStocks> lista = buscarPosicoesUsuario("A");
       for(ResumePositionsStocks operacoes : lista){
          Double value = (operacoes.getActualPrice().doubleValue() * operacoes.getQtdPriceBuy());
          sum = sum + value;

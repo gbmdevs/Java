@@ -61,13 +61,9 @@ public class StockController{
 
     @PostMapping(value="/loadall")
     public void loadAllMetaData(){
-        /*
-        for(int i = 0 ; i < 100 ; i++){
-            System.out.println(i + " = " + counter.incrementAndGet());
-        }*/
         List<Stocks> stocks = service.findAll();
         IntStream.range(0,stocks.size()).forEach(i -> {
-            serviceStockData.loadDataStocksinDBspecificDate("2022-05-01","2999-12-31",stocks.get(i).getTicket());
+            serviceStockData.loadDataStocksinDBspecificDate("2023-09-01","2999-12-31",stocks.get(i).getTicket());
         });
     }
 

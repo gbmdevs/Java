@@ -10,7 +10,7 @@ CREATE TABLE stocks_user_operations(
     QtdStocksSell Integer DEFAULT 0,
     valueBuy decimal DEFAULT 0,
     valueSell decimal DEFAULT 0,
-    situationOperation VARCHAR(1) DEFAULT NULL,
+    sit_operation VARCHAR(1) DEFAULT NULL,
     CONSTRAINT fk_stocks FOREIGN KEY(stocks_id) REFERENCES stocks(id),
     CONSTRAINT fk_type_balance FOREIGN KEY(type_balance_id) REFERENCES type_balance(id)
 );
