@@ -4,32 +4,40 @@ import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Column;
+import javax.persistence.Table;
 import javax.persistence.PrePersist;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.GrantedAuthority;
+import java.util.Arrays;
+import java.util.Collection;
+
+@Table(name = "usuarios")
 @Entity
-public class Usuario { 
+public class Usuario implements UserDetails { 
 
     @Id
+    @Column(nullable = false)
     private UUID id;
-
-    @Column(name="nome")
-    private String nome;
+    
+    @Column(name="username")
+    private String username;
 
     @Column(name="email")
     private String email;
 
-    @Column(name="senha")
-    private String senha;
+    @Column(name="password")
+    private String password;
 
     @Column(name="token")
     private String token;
 
-    public Usuario(String nome,String email,String senha){
-        this.nome  = nome;
+    public Usuario(String username,String email,String password){
+        this.username  = username;
         this.email = email;
-        this.senha = senha;
+        this.password = password;
         this.token = "";
         this.id = UUID.randomUUID();
     }
@@ -48,11 +56,11 @@ public class Usuario {
     }
 
     public String getNome() {
-        return this.nome;
+        return this.username;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -77,8 +85,42 @@ public class Usuario {
     }
 
     @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Arrays.asList();
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+   @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
     public String toString(){
-        return "Usuario = [ ID =  "+ this.id + ", Email = " + this.email + ", Nome = " + this.nome  + ", Senha = " + this.senha + "]";
+        return "Usuario = [ ID =  "+ this.id + ", Email = " + this.email + ", Nome = " + this.username  + ", password = " + this.password + "]";
     }
 
 }
