@@ -14,7 +14,7 @@ import org.springframework.security.core.GrantedAuthority;
 import java.util.Arrays;
 import java.util.Collection;
 
-@Table(name = "usuarios")
+@Table(name = "usuario")
 @Entity
 public class Usuario implements UserDetails { 
 

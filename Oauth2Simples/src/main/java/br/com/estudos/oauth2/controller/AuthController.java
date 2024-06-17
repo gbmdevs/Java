@@ -11,34 +11,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.estudos.oauth2.service.UsarioAuthenticationService;
 import br.com.estudos.oauth2.service.UsuarioRegistrationService;
-import br.com.estudos.oauth2.service.TokenService;
-import br.com.estudos.oauth2.dto.DadosLoginDTO;
-import br.com.estudos.oauth2.dto.UsuarioResponseDTO;
-import br.com.estudos.oauth2.dto.UsuarioAutenticadoDTO;
-import br.com.estudos.oauth2.dto.UsuarioRegistrationDTO;
+import br.com.estudos.oauth2.service.AuthenticationService;
+import br.com.estudos.oauth2.service.jwt.JwtService;
+import br.com.estudos.oauth2.service.TokenService;  
+import br.com.estudos.oauth2.dto.login.LoginUserDTO;
+import br.com.estudos.oauth2.dto.login.LoginResponse;
 import br.com.estudos.oauth2.model.Usuario;
 
 import br.com.estudos.oauth2.dto.auth.*;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/auth")
+@Slf4j
 public class AuthController{
+ 
+    private final AuthenticationService authenticationService;
+    private final JwtService jwtService;
 
-    @Autowired
-    UsarioAuthenticationService usuarioAuthService;
-
-    @Autowired
-    UsuarioRegistrationService usuarioRegisterService;
-
-    @Autowired
-    TokenService tokenService;
-
-    @PostMapping("/login")
-    public void autenticar(@RequestBody DadosLoginDTO dadosLogin){
-        System.out.println("Logando");
+    public AuthController( AuthenticationService authenticationService,JwtService jwtService) {
+        this.authenticationService = authenticationService;
+        this.jwtService = jwtService;
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> autenticar(@RequestBody LoginUserDTO login){
+        log.info("Entrou no login: {}",login);
+        Usuario user = authenticationService.authenticate(login);
+        String jwtToken = jwtService.generateToken(user);
+        log.info("Usuario= {} Token = {}",user,jwtToken);
+        LoginResponse loginResponse = new LoginResponse(jwtToken,jwtService.getJwtExpiration());
+        return ResponseEntity.ok(loginResponse);
+    }
+/*
     @PostMapping("/user")
     public String registrar(@RequestBody UsuarioRegistrationDTO dadosRegistro){
         System.out.println(dadosRegistro.toString());
@@ -52,7 +59,7 @@ public class AuthController{
     @PostMapping("/authenticate")
     public void createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
         System.out.println("Entrou na função");
-    }
+    }*/
 
 
 }

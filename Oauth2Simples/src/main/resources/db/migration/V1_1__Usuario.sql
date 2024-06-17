@@ -1,9 +1,9 @@
 CREATE TABLE Usuario (
     id VARCHAR(36) NOT NULL PRIMARY KEY,
-    nome VARCHAR(60),
+    username VARCHAR(60),
     email VARCHAR(25),
-    senha VARCHAR(25),
+    password VARCHAR(25),
     token VARCHAR(140)
 );
 
---INSERT INTO USUARIO VALUES('806e3829-8942-4488-8cbf-686f19bed22f','Jamal','teste@teste.com.br','a','eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODMyMDY5MzEsInN1YiI6IlRlc3QgSldUIEFQSSIsImV4cCI6MTY4MzIwODczMX0.BYCwC8EBtd1VYbkDyUYju0kn7U-1l1L6TFKu8NkNttU');
+insert into usuario values('6630f0bf-055e-45e7-90a0-055f032ceea9','Emaloka','guih.smi2@gmail.com',NULL,NULL);
