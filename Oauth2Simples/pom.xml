@@ -62,7 +62,7 @@
     <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
-        <version>1.7.36</version>
+        <version>${slf4j.version}</version>
     </dependency>
 
     <!-- Lombok -->
@@ -90,19 +90,13 @@
     <version>0.11.5</version>
   </dependency>
   
-  <!-- Jacoco para Cobertura de testes-->
+  <!-- Jacoco para cobertura de testes-->
   <dependency>
     <groupId>org.jacoco</groupId>
     <artifactId>jacoco-maven-plugin</artifactId>
     <version>0.8.7</version>
   </dependency>
 
-  <!-- Logs para execução-->
-  <dependency>
-     <groupId>org.slf4j</groupId>
-     <artifactId>slf4j-api</artifactId>
-     <version>${slf4j.version}</version>
-  </dependency>
 
   <dependency>
      <groupId>ch.qos.logback</groupId>
@@ -232,8 +226,7 @@
             </goals>
         </execution>
     </executions>
-  </plugin>  
-        
+  </plugin>
        
 
       

@@ -36,9 +36,9 @@ public class SecurityConfig  {
             .authorizeRequests().antMatchers("/auth/**").permitAll()
             .antMatchers("/h2-console/**").permitAll()
             .anyRequest()
-            .authenticated();
-            //.and()
-            //.addFilterBefore(jwtAuthenticationFilter,UsernamePasswordAuthenticationFilter.class);
+            .authenticated()
+            .and()
+            .addFilterBefore(jwtAuthenticationFilter,UsernamePasswordAuthenticationFilter.class);
         return http.build();   
    }
 

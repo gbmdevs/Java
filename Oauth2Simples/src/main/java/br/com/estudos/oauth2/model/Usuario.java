@@ -9,6 +9,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
+import org.hibernate.annotations.Type;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.GrantedAuthority;
 import java.util.Arrays;
@@ -20,6 +21,7 @@ public class Usuario implements UserDetails {
 
     @Id
     @Column(nullable = false)
+    @Type(type="uuid-char")
     private UUID id;
     
     @Column(name="username")

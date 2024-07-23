@@ -41,9 +41,6 @@ public class StocksDataService{
     @Autowired
     private StocksService service;
 
-    @Autowired
-    private StocksDataService serviceStockData;
-
     public void createStockData(StocksData stocskData){
         repository.save(stocskData);
     }
@@ -95,7 +92,7 @@ public class StocksDataService{
               stockdata.setOpen(new BigDecimal(record.get(1)));
               stockdata.setValueClose(new BigDecimal(record.get(3)));
               stockdata.setAdjClose(new BigDecimal(record.get(5)));
-              serviceStockData.createStockData(stockdata);   
+              createStockData(stockdata);
              }catch(Exception ex){
                  System.out.println("Caiu na exception");
              }          
@@ -113,7 +110,7 @@ public class StocksDataService{
         long epochTime = 0;
         try{
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date      = sdf.parse(data);
+        Date date = sdf.parse(data);
         epochTime = date.getTime() / 1000;
         System.out.println("Data "+epochTime);
         }catch(Exception ex){
