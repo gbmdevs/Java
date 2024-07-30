@@ -17,8 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.ActiveProfiles;
 import org.flywaydb.test.annotation.FlywayTest;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@ExtendWith(SpringExtension.class)
+@RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringAppTest {
 
@@ -30,6 +29,11 @@ public class SpringAppTest {
     public void setup(){
         flyway.clean();
         flyway.migrate();
+    }
+
+    @Test
+    public void main() {
+        SpringBootAppStart.main(new String[]{});
     }
 
 } 

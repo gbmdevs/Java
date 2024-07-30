@@ -6,10 +6,11 @@ security:
           expiration-time: 86400000
           secretKey: "3cfa76ef14937c1c0ea519f8fc057a80fcd04a7420f8e8bcd0a7567c272e007b"
 server:
-    port: 5000
+    port: 9990
 
 #Banco de Dados Local
 spring:
+    profiles.active: "test"
     jackson: 
       time-zone: America/Sao_Paulo
     datasource:
