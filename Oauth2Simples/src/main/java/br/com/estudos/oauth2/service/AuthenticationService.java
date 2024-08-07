@@ -1,5 +1,6 @@
 package br.com.estudos.oauth2.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.com.estudos.oauth2.repository.UsuarioRepository;
 import br.com.estudos.oauth2.model.Usuario;
@@ -14,11 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AuthenticationService{
 
-    private final UsuarioRepository userRepository;
-
-    public AuthenticationService(UsuarioRepository userRepository){
-        this.userRepository=userRepository;
-    }
+    @Autowired
+    private  UsuarioRepository userRepository;
 
     public Usuario authenticate(LoginUserDTO input) {
          log.info("Authenticar = {}",input);
