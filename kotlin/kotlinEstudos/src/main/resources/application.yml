@@ -1,0 +1,18 @@
+server:
+   port: 5000
+
+spring:
+    jackson: 
+      time-zone: America/Sao_Paulo
+    datasource:
+      url: jdbc:h2:mem:bancodev;MODE=PostgreSQL
+      username: admin
+      password: admin
+      driverClassName: org.h2.Driver
+    h2: 
+      console:
+           path: /h2-console
+           enabled: true
+           settings.web-allow-others: true
+    jpa: 
+       hibernate.ddl-auto: update
