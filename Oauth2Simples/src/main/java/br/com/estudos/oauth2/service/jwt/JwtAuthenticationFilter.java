@@ -66,6 +66,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
             filterChain.doFilter(request, response);
         }catch (Exception ex){
             log.warn("Erro no token: ",ex);
+            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
             handlerExceptionResolver.resolveException(request,response,null,ex);
         }
 
