@@ -12,6 +12,8 @@ import br.com.kotlin.estudos.model.Usuario
 import br.com.kotlin.estudos.services.AuthenticationService
 import br.com.kotlin.estudos.services.JwtService
 
+import org.springframework.web.bind.annotation.CrossOrigin
+
 import org.springframework.http.ResponseEntity
 
 @RestController

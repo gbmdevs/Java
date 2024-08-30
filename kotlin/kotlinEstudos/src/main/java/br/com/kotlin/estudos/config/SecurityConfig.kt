@@ -15,6 +15,7 @@ class SecurityConfig(private val jwtAuthenticationFilter: JwtAuthenticationFilte
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain{
         http.csrf().disable()
+            .cors().disable()
             .headers().frameOptions().disable().and() //Para o H2Console
             .authorizeRequests().antMatchers("/auth/**").permitAll()
             .antMatchers("/h2-console/**").permitAll()
