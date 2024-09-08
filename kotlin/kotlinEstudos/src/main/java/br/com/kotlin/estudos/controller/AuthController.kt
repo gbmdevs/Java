@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import br.com.kotlin.estudos.model.dto.LoginUserDTO
 import br.com.kotlin.estudos.model.dto.LoginResponse
 import br.com.kotlin.estudos.model.dto.RegisterUserDto
-import br.com.kotlin.estudos.model.Usuario
+import br.com.kotlin.estudos.model.repository.Usuario
 import br.com.kotlin.estudos.services.AuthenticationService
 import br.com.kotlin.estudos.services.JwtService
 
