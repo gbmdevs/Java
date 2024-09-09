@@ -10,6 +10,4 @@ import org.springframework.stereotype.Repository
 @Repository
 interface TipDespesaRepository : CrudRepository<TipDespesa, Long> {
 
-    //fun findAll()
-
 }
