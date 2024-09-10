@@ -8,32 +8,32 @@ package br.com.kotlin.estudos.model.repository
 import jakarta.persistence.*
 import java.util.UUID
 
-import br.com.kotlin.estudos.model.repository.Usuario
-
-import org.hibernate.annotations.Type
-
 //import javax.persistence.JoinColumn
 
-import org.springframework.security.core.GrantedAuthority
+import org.hibernate.annotations.JdbcTypeCode
+import org.hibernate.type.SqlTypes
+import com.fasterxml.jackson.annotation.JsonIgnore
 
 @Entity
 @Table(name = "TIP_DESP_FIXA")
 class TipDespesa(
-
     @Id
     @Column(nullable = false)
-    //@Type(type="uuid-char")
-    val id: UUID = UUID.randomUUID(),
+    @JdbcTypeCode(SqlTypes.CHAR)
+      val id: UUID = UUID.randomUUID(),
 
-    @JoinColumn(name="stocks_id")
-    @Column(name = "usuario_id")
-    var usuario: Usuario,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="usuario_id")
+    @JdbcTypeCode(SqlTypes.CHAR)
+    @JsonIgnore
+        var usuario: Usuario?,
 
-    @Column(name = "tipo")
-    var tipo: String,
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "tipo",insertable = false)
+     val tipo: Long?,
 
-    @Column(name = "tipo_desc")
-    var tipoDesc: String,
+        @Column(name = "tipo_desc")
+        var tipoDesc: String,
 ) {
 
     /*override fun toString(): String {

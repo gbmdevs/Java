@@ -37,10 +37,9 @@ class JwtAuthenticationFilter(
         try {
             val jwt: String = authHeader.substring(7)
             val userEmail: String = jwtService.extractUsername(jwt)
-            val authentication: Authentication = SecurityContextHolder.getContext().getAuthentication()
+            val authentication: Authentication? = SecurityContextHolder.getContext().getAuthentication()
             if(userEmail != null && authentication == null){
                 val userDetails = userDetailsService.loadUserByUsername(userEmail)
-                println("Entrou na validação jwt")
                 if(jwtService.isTokenValid(jwt, userDetails)){
                     val authToken = UsernamePasswordAuthenticationToken(
                         userDetails,
@@ -53,6 +52,7 @@ class JwtAuthenticationFilter(
             }
             filterChain.doFilter(request, response)
         }catch(ex: Exception){
+            println(ex)
             handlerExceptionResolver.resolveException(request, response, null, ex);
         }
     }
