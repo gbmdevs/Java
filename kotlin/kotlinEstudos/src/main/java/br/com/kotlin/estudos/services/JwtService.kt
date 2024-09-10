@@ -29,6 +29,7 @@ class JwtService{
     }
 
     fun isTokenExpired(token: String): Boolean{
+        println("Entrou no expirado")
         return extractExpiration(token).before(Date())
     }
 

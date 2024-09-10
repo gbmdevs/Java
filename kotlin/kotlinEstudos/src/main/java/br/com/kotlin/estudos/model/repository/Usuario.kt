@@ -1,11 +1,15 @@
 package br.com.kotlin.estudos.model.repository
 
 import org.springframework.security.core.userdetails.UserDetails
-import javax.persistence.Entity
-import javax.persistence.Table
-import javax.persistence.Column
-import javax.persistence.Id
+//import javax.persistence.Entity
+//import javax.persistence.Table
+//import javax.persistence.Column
+//import javax.persistence.Id
+//import java.util.UUID
+
 import java.util.UUID
+
+import jakarta.persistence.*
 
 import org.hibernate.annotations.Type
 
@@ -17,7 +21,7 @@ class Usuario(
 
     @Id
     @Column(nullable = false)
-    @Type(type="uuid-char")
+    //@Type(type="uuid-char")
     val id: UUID = UUID.randomUUID(),
 
     @Column(name = "username")

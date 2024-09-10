@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.web.SecurityFilterChain
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher
+import org.springframework.security.config.http.SessionCreationPolicy
 
 @Configuration
 @EnableWebSecurity
@@ -16,11 +18,15 @@ class SecurityConfig(private val jwtAuthenticationFilter: JwtAuthenticationFilte
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain{
         http.csrf().disable()
             .cors().disable()
-            .headers().frameOptions().disable().and() //Para o H2Console
-            .authorizeRequests().antMatchers("/auth/**").permitAll()
-            .antMatchers("/h2-console/**").permitAll()
-            .anyRequest()
-            .authenticated()
+            .headers().frameOptions().disable()
+            .and() 
+            .authorizeHttpRequests()
+            .requestMatchers(AntPathRequestMatcher("/auth/**")).permitAll()
+            .requestMatchers(AntPathRequestMatcher("/h2-console/**")).permitAll()           
+            .anyRequest().authenticated()
+            .and()
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .addFilterBefore(jwtAuthenticationFilter,UsernamePasswordAuthenticationFilter::class.java)
         return http.build()

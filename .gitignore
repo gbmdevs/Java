@@ -9,3 +9,5 @@ node_modules/
 *.pem
 *.war
 *.jar
+.gradle/
+build/

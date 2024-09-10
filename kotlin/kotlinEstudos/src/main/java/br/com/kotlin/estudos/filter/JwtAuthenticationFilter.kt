@@ -10,9 +10,10 @@ import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.web.authentication.WebAuthenticationDetails
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource
-import javax.servlet.http.HttpServletRequest
-import javax.servlet.http.HttpServletResponse
-import javax.servlet.FilterChain
+import jakarta.servlet.FilterChain
+import jakarta.servlet.ServletException
+import jakarta.servlet.http.HttpServletRequest
+import jakarta.servlet.http.HttpServletResponse
 import lombok.extern.slf4j.Slf4j
 import lombok.NonNull
 import br.com.kotlin.estudos.services.JwtService
@@ -39,6 +40,7 @@ class JwtAuthenticationFilter(
             val authentication: Authentication = SecurityContextHolder.getContext().getAuthentication()
             if(userEmail != null && authentication == null){
                 val userDetails = userDetailsService.loadUserByUsername(userEmail)
+                println("Entrou na validação jwt")
                 if(jwtService.isTokenValid(jwt, userDetails)){
                     val authToken = UsernamePasswordAuthenticationToken(
                         userDetails,
@@ -51,9 +53,8 @@ class JwtAuthenticationFilter(
             }
             filterChain.doFilter(request, response)
         }catch(ex: Exception){
-
+            handlerExceptionResolver.resolveException(request, response, null, ex);
         }
-
     }
 
 }
