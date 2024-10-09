@@ -1,14 +1,8 @@
 package br.com.kotlin.estudos.model.repository
- 
-//import javax.persistence.Entity
-//import javax.persistence.Table
-//import javax.persistence.Column
-//import javax.persistence.Id
-//import java.util.UUID
+
 import jakarta.persistence.*
 import java.util.UUID
 
-//import javax.persistence.JoinColumn
 
 import org.hibernate.annotations.JdbcTypeCode
 import org.hibernate.type.SqlTypes
@@ -20,7 +14,7 @@ class TipDespesa(
     @Id
     @Column(nullable = false)
     @JdbcTypeCode(SqlTypes.CHAR)
-      val id: UUID = UUID.randomUUID(),
+    val id: UUID = UUID.randomUUID(),
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="usuario_id")
