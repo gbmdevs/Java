@@ -1,0 +1,6 @@
+CREATE TABLE TYPE_BALANCE(
+    type SERIAL NOT NULL PRIMARY KEY,
+    type_name VARCHAR(15) NOT NULL,
+    type_desc VARCHAR(30),
+    is_active BOOLEAN DEFAULT true
+);
