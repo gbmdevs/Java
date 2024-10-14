@@ -22,5 +22,12 @@ class BalanceController(
         return balanceService.findByResumeBalance()
     }
 
+    @GetMapping("/historic")
+    @ResponseStatus(HttpStatus.OK)
+    fun findHistoricByBalance(): List<BalanceResumeResponse>?{
+        println("Entrou balance")
+        return balanceService.findByResumeBalance()
+    }
+
 
 }

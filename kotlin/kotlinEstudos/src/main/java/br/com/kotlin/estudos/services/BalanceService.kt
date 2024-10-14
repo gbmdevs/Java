@@ -14,7 +14,6 @@ class BalanceService(
 
     fun findByResumeBalance(): List<BalanceResumeResponse>?{
         try {
-
             return balanceRepository.findByResumeBalance()
         }catch (ex: Exception){
             println(ex)

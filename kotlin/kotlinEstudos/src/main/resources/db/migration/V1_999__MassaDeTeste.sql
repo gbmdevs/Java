@@ -12,6 +12,6 @@ insert into balance values('ae7cf29e-744a-4979-8e5d-449dedad0ba8','0a232a0e-82e8
 
 insert into stock values('e4557f86-5770-45f5-ac90-327c2e48e1b4','VALE3','Vale Brasil','SA',true);
 insert into stock values('6d4a2098-2dcb-474a-a262-afacd99fb67e','BBAS3','Banco do Brasil','SA',true);
-insert into stock values('6583fac0-732c-4d2d-940d-8cf851709175','HASH11','Banco do Brasil','SA',true);
+insert into stock values('6583fac0-732c-4d2d-940d-8cf851709175','HASH11','Hash Crypto','SA',true);
 insert into stock values('2ac0bfe8-68bc-45a0-80ba-ef485dc71eb3','MXRF11','Fundo IFIX','SA',true);
 insert into stock values('8fa10054-1e6c-4378-b0b9-11f274262917','USIM5','Fundo IFIX','SA',true);
