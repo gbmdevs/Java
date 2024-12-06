@@ -21,8 +21,7 @@ class SecurityConfig(private val jwtAuthenticationFilter: JwtAuthenticationFilte
 
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain{
-        http.csrf().disable()
-            .cors().disable()
+        http.csrf().disable().cors().and()
             .headers().frameOptions().disable()
             .and()
             .authorizeHttpRequests()
@@ -36,22 +35,6 @@ class SecurityConfig(private val jwtAuthenticationFilter: JwtAuthenticationFilte
             .authenticationProvider(authenticationProvider)
             .addFilterBefore(jwtAuthenticationFilter,UsernamePasswordAuthenticationFilter::class.java)
         return http.build()
-    }
-
-
-    @Bean
-    fun corsConfigurationSource(): CorsConfigurationSource {
-        val configuration: CorsConfiguration  = CorsConfiguration();
-
-        configuration.allowedOrigins = listOf("http://localhost:4200");
-        configuration.allowedMethods =  listOf("GET","POST");
-        configuration.allowedHeaders = listOf("Authorization","Content-Type");
-        configuration.allowCredentials = true
-
-        val source = UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**",configuration);
-
-        return source
     }
 
 }
