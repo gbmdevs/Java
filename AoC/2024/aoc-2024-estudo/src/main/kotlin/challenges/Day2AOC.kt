@@ -20,8 +20,8 @@ fun day2AOC() {
         lines.forEach { line ->
             if (line.isNotBlank()) {
                 val numbers = line.trim().split(Regex("\\s+")).map { it.toInt() }
-                totalIsSafe = totalIsSafe(numbers,totalIsSafe)
-                totalIsSafeRefact = totalIsSafe(numbers,totalIsSafeRefact)
+                totalIsSafe = totalIsSafe(numbers,totalIsSafe,false)
+                totalIsSafeRefact = totalIsSafe(numbers,totalIsSafeRefact,true)
 
             }
         }
@@ -30,18 +30,23 @@ fun day2AOC() {
         println("*-----------------------------------------------------------*")
     }
 }
-fun totalIsSafe(numbers: List<Int>,totalIsSafe: Int) : Int {
+fun totalIsSafe(numbers: List<Int>,totalIsSafe: Int, refactFlag: Boolean) : Int {
     var isInc  = false
     var isDesc = false
     var isSafe = true
     var diffAnt = 0
     var i = 0
-    println("Entrada: $numbers")
+    var removeCount = 0
+    //println("Entrada: $numbers")
     do {
         var diff = (numbers[i] - numbers[i+1]) * -1
         if(diff == 0){
-            isSafe = false
-            break
+            if(refactFlag == true){
+               removeCount++
+            }else{
+              isSafe = false
+              break
+            }
         }
         if(i == 0 ){
             if(diff > 3 || diff < -3){
@@ -60,9 +65,11 @@ fun totalIsSafe(numbers: List<Int>,totalIsSafe: Int) : Int {
                 break
             }
         }
+        //println(removeCount)
         diffAnt = diff
         i++
     }while(i < numbers.size -1)
-    if(isSafe) println("Safe: $numbers")
+    //println("Saida: $numbers")
+    //if(isSafe) println("Safe: $numbers")
     return if (isSafe) totalIsSafe + 1 else totalIsSafe
  }

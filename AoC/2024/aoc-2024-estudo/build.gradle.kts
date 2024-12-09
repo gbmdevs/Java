@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.9.10" // Certifique-se de usar a versão mais recente
+    kotlin("jvm") version "1.9.10"
     application
 }
 
