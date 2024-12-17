@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.9.10"
+    kotlin("jvm") version "2.1.0"
     application
 }
 
@@ -15,5 +15,13 @@ application {
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
+    testImplementation(kotlin("test"))
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
+
+kotlin {
+    jvmToolchain(17)
 }
