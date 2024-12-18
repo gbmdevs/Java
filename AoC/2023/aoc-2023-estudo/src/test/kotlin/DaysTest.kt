@@ -5,7 +5,8 @@ import org.junit.jupiter.api.TestFactory
 class DaysTest {
     @TestFactory
     fun answers() = listOf(
-        Answer(Day01, 142,281)
+        Answer(Day01, 142,281),
+        Answer(Day02, 8,2286)
     ).map {
         DynamicTest.dynamicTest("Day ${it.day.number} - ${it.day.title}"){
             if (it.day.partOneTestExamples.isNotEmpty()) {
