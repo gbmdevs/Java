@@ -20,7 +20,6 @@ class BalanceRepository(
          GROUP BY tb.type, tb.type_name""".trimIndent()
 
         return jdbcTemplate.query(sql, BalanceRowMapper())
-
     }
 
 }

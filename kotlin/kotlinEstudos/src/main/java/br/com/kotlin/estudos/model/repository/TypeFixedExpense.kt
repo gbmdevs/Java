@@ -9,8 +9,8 @@ import org.hibernate.type.SqlTypes
 import com.fasterxml.jackson.annotation.JsonIgnore
 
 @Entity
-@Table(name = "TIP_DESP_FIXA")
-class TipDespesa(
+@Table(name = "TIP_FIXED_EXP")
+class TypeFixedExpense(
     @Id
     @Column(nullable = false)
     @JdbcTypeCode(SqlTypes.CHAR)
@@ -20,11 +20,11 @@ class TipDespesa(
     @JoinColumn(name="usuario_id")
     @JdbcTypeCode(SqlTypes.CHAR)
     @JsonIgnore
-        var usuario: Usuario?,
+    var usuario: Usuario?,
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tipo",insertable = false)
-     val tipo: Long?,
+    val tipo: Long?,
 
         @Column(name = "tipo_desc")
         var tipoDesc: String,

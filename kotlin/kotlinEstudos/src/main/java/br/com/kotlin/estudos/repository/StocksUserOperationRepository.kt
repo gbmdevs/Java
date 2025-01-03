@@ -1,10 +1,10 @@
 package br.com.kotlin.estudos.repository
 
-import br.com.kotlin.estudos.model.repository.Stock
+import br.com.kotlin.estudos.model.repository.StockUserOperation
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface StocksRepository: CrudRepository<Stock,Long> {
+interface StocksUserOperationRepository: CrudRepository<StockUserOperation,Long> {
 
 }

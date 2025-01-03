@@ -7,7 +7,7 @@ import br.com.kotlin.estudos.repository.TypeFixedExpenseRepository
 
 
 @Service
-class TipoDespesaFixaService(
+class FixedExpensiveService(
     private val typeFixedExpenseRepository: TypeFixedExpenseRepository,
     private val usuarioService: UsuarioService
 ){

@@ -1,6 +1,6 @@
 insert into usuario values('0a232a0e-82e8-4d6a-bd3b-f629fc2e8f80','guih.smi2@gmail.com','$2a$10$mv3sE8fvLKRR85AoC1NPN.sPsFaDYrSPKijFaaxVr1lsVnYZLRi1W',NULL,'Guilherme Gois Braga de Medeiros');
 
-insert into tip_desp_fixa values('ee122e7d-e1e8-4ded-822b-2ea4accbe092','0a232a0e-82e8-4d6a-bd3b-f629fc2e8f80',1,'Fatura Claro');
+insert into TYPE_FIXED_EXPENSE values('ee122e7d-e1e8-4ded-822b-2ea4accbe092','0a232a0e-82e8-4d6a-bd3b-f629fc2e8f80',1,'Fatura Claro',true);
 --insert into tip_desp_fixa values('02643520-60db-4cb9-9c60-864e31ba26ce','0a232a0e-82e8-4d6a-bd3b-f629fc2e8f80',2,'Nubank - Cartão');
 
 insert into type_balance values(1,'Iti Itaú','Conta corrente do iti itau.',true);
@@ -22,6 +22,9 @@ insert into stock values('1ec8c1f5-63f9-47b3-9b14-cf00408a805c','ITSA4','Itausa 
 insert into stock values('4561494c-f0d8-45b4-9011-835e3595b1b9','ITUB4','Banco Itau SA','SA',true);
 
 -- Operacoes Stock
+insert into STOCK_USER_OPER values('b356cdf9-8592-4727-adbc-4a3c4ae58e58','0a232a0e-82e8-4d6a-bd3b-f629fc2e8f80','e4557f86-5770-45f5-ac90-327c2e48e1b4',6,55,'2024-12-30',330);
+insert into STOCK_USER_OPER values('54e3763c-dcfd-4ae2-9526-862380d5c61a','0a232a0e-82e8-4d6a-bd3b-f629fc2e8f80','6d4a2098-2dcb-474a-a262-afacd99fb67e',14,24.2,'2024-12-30',338.8);
+insert into STOCK_USER_OPER values('aeb4694f-f37a-4e7e-8d72-cfdce092afaf','0a232a0e-82e8-4d6a-bd3b-f629fc2e8f80','75e66db5-6838-438e-b523-7b383409a7ef',9,35.20,'2024-12-30',316.80);
 
 insert into STOCK_USER_OPER values('7d01ad5d-c446-489a-bfc2-0ceab5577ce8','0a232a0e-82e8-4d6a-bd3b-f629fc2e8f80','da8d4258-cd7d-4a3a-8549-8e573684305e',30,12.45,'2024-12-09',373.50);
 insert into STOCK_USER_OPER values('a405e3e0-fa42-4040-aafa-bbf20951fd88','0a232a0e-82e8-4d6a-bd3b-f629fc2e8f80','fe444b6a-922a-4362-90da-e6bea369b926',5,103.35,'2024-11-18',516.75);
