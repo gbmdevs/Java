@@ -3,7 +3,7 @@ package br.com.kotlin.estudos.services
 import org.springframework.stereotype.Service
 
 import br.com.kotlin.estudos.repository.UsuarioRepository
-import br.com.kotlin.estudos.model.repository.Usuario
+import br.com.kotlin.estudos.model.repository.financial.Usuario
 import br.com.kotlin.estudos.model.dto.LoginUserDTO
 import br.com.kotlin.estudos.model.dto.RegisterUserDto
 
@@ -30,7 +30,7 @@ class AuthenticationService(
             return userRepository.save(user)
         }
 
-        fun authenticate(input: LoginUserDTO): Usuario{
+        fun authenticate(input: LoginUserDTO): Usuario {
             authenticationManager.authenticate(UsernamePasswordAuthenticationToken(
                 input.email,
                 input.password

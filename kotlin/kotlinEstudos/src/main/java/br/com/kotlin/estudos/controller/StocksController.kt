@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.bind.annotation.RequestMapping
 import br.com.kotlin.estudos.services.StockDataService
 import org.springframework.web.bind.annotation.PostMapping
-import br.com.kotlin.estudos.model.stock.ChartResponse
+import br.com.kotlin.estudos.model.repository.stock.ChartResponse
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RequestBody
 

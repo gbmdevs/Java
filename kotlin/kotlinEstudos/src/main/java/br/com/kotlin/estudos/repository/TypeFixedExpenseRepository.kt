@@ -1,6 +1,6 @@
 package br.com.kotlin.estudos.repository
 
-import br.com.kotlin.estudos.model.repository.TypeFixedExpense
+import br.com.kotlin.estudos.model.repository.financial.TypeFixedExpense
 
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository

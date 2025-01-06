@@ -1,6 +1,6 @@
 package br.com.kotlin.estudos.services
 
-import br.com.kotlin.estudos.model.repository.Usuario
+import br.com.kotlin.estudos.model.repository.financial.Usuario
 import br.com.kotlin.estudos.repository.UsuarioRepository
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetails

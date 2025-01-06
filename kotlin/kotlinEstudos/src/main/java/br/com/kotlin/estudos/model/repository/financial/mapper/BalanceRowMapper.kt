@@ -1,4 +1,4 @@
-package br.com.kotlin.estudos.model.repository.mapper
+package br.com.kotlin.estudos.model.repository.financial.mapper
 
 import br.com.kotlin.estudos.model.dto.balance.BalanceResumeResponse
 import org.springframework.jdbc.core.RowMapper

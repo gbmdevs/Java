@@ -1,4 +1,4 @@
-package br.com.kotlin.estudos.model.repository
+package br.com.kotlin.estudos.model.repository.financial
 
 import org.springframework.security.core.userdetails.UserDetails
 
@@ -17,7 +17,7 @@ import org.springframework.security.core.GrantedAuthority
 class Usuario(
 
     @Id
-    @Column(nullable = false)
+    @Column(name="id",nullable = false)
     @JdbcTypeCode(SqlTypes.CHAR)
     val id: UUID = UUID.randomUUID(),
 

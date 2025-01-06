@@ -8,7 +8,7 @@ import java.util.*
 
 
 @Service
-class TipoDespesaFixaService(
+class TypeFixedExpensiveService(
     private val typeFixedExpenseRepository: TypeFixedExpenseRepository,
     private val usuarioService: UsuarioService
 ){
@@ -20,7 +20,7 @@ class TipoDespesaFixaService(
             val tipDespesa = TypeFixedExpense(
                     typeDesc = tipDespesaDTO.tipDespesaDesc,
                     usuario = usuarioService.findUserByEmailAuth(),
-                    isFixed =  true,
+                    isFixed = true,
                     id = UUID.randomUUID()
             )
             return typeFixedExpenseRepository.save(tipDespesa)

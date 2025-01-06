@@ -1,4 +1,4 @@
-package br.com.kotlin.estudos.model.repository
+package br.com.kotlin.estudos.model.repository.financial
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import java.util.*

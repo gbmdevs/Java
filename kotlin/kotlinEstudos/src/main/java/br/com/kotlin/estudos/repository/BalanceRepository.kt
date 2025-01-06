@@ -1,11 +1,8 @@
 package br.com.kotlin.estudos.repository
 
 import br.com.kotlin.estudos.model.dto.balance.BalanceResumeResponse
-import br.com.kotlin.estudos.model.repository.Balance
-import br.com.kotlin.estudos.model.repository.mapper.BalanceRowMapper
-import org.springframework.data.jpa.repository.Query
+import br.com.kotlin.estudos.model.repository.financial.mapper.BalanceRowMapper
 
-import org.springframework.data.repository.CrudRepository
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Repository
 

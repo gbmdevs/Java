@@ -1,33 +1,32 @@
-package br.com.kotlin.estudos.model.repository
+package br.com.kotlin.estudos.model.repository.financial
 
+import br.com.kotlin.estudos.model.repository.financial.id.TypeFixedExpenseId
 import jakarta.persistence.*
-import java.util.UUID
 
 
 import org.hibernate.annotations.JdbcTypeCode
 import org.hibernate.type.SqlTypes
 import com.fasterxml.jackson.annotation.JsonIgnore
+import java.util.*
 
 @Entity
-@Table(name = "TIP_FIXED_EXP")
+@Table(name = "TYPE_FIXED_EXPENSE")
 class TypeFixedExpense(
     @Id
-    @Column(nullable = false)
+    @Column(name = "id",insertable = false)
     @JdbcTypeCode(SqlTypes.CHAR)
-    val id: UUID = UUID.randomUUID(),
+    val id: UUID,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="usuario_id")
+    @JoinColumn(name="usuario_id",referencedColumnName ="id")
     @JdbcTypeCode(SqlTypes.CHAR)
     @JsonIgnore
     var usuario: Usuario?,
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tipo",insertable = false)
-    val tipo: Long?,
-
-        @Column(name = "tipo_desc")
-        var tipoDesc: String,
+    @Column(name = "type_desc")
+    var typeDesc: String,
+    @Column(name = "is_fixed")
+    var isFixed: Boolean
 ) {
 
     /*override fun toString(): String {

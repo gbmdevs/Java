@@ -1,12 +1,10 @@
-package br.com.kotlin.estudos.model.repository
+package br.com.kotlin.estudos.model.repository.financial
 
-import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 import java.util.*
 import org.hibernate.annotations.JdbcTypeCode
 import org.hibernate.type.SqlTypes
 import java.math.BigDecimal
-import java.sql.Date
 import java.time.LocalDate
 
 @Entity

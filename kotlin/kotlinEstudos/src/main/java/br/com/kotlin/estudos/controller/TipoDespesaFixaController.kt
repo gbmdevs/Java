@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.GetMapping
 import br.com.kotlin.estudos.services.TipoDespesaFixaService
-import br.com.kotlin.estudos.model.repository.TypeFixedExpense
+import br.com.kotlin.estudos.model.repository.financial.TypeFixedExpense
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 
@@ -21,7 +21,7 @@ class TipoDespesaFixaController(
     }
 
     @PostMapping("/tipdespesa")
-    fun cadastrarTipDespesa(@RequestBody tipdespesaDTO: TipDespesaDTO): TypeFixedExpense{
+    fun cadastrarTipDespesa(@RequestBody tipdespesaDTO: TipDespesaDTO): TypeFixedExpense {
         return tipDespesaService.salvar(tipdespesaDTO)
     }
 }

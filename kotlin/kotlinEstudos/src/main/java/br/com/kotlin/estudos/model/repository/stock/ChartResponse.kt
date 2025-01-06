@@ -1,18 +1,18 @@
-package br.com.kotlin.estudos.model.stock
+package br.com.kotlin.estudos.model.repository.stock
 
 data class ChartResponse(
         val chart: ChartResult
 )
 
 data class ChartResult(
-        val result: List<Result>,
-        val error: String? = null
+    val result: List<Result>,
+    val error: String? = null
 )
 
 data class Result(
-        val meta: Meta,
-        val timestamp: List<Long>,
-        val indicators: Indicators
+    val meta: Meta,
+    val timestamp: List<Long>,
+    val indicators: Indicators
 )
 
 data class Meta(

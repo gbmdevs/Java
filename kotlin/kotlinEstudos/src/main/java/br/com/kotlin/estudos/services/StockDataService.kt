@@ -1,9 +1,9 @@
 package br.com.kotlin.estudos.services
 
 import br.com.kotlin.estudos.model.dto.stock.StockRequestDTO
-import br.com.kotlin.estudos.model.repository.Stock
-import br.com.kotlin.estudos.model.repository.StockDataHistory
-import br.com.kotlin.estudos.model.stock.ChartResponse
+import br.com.kotlin.estudos.model.repository.financial.Stock
+import br.com.kotlin.estudos.model.repository.financial.StockDataHistory
+import br.com.kotlin.estudos.model.repository.stock.ChartResponse
 import br.com.kotlin.estudos.repository.StocksDataHistoryRepository
 import br.com.kotlin.estudos.util.DateConverter
 import io.ktor.client.*
@@ -35,7 +35,7 @@ class StockDataService(private val stocksService: StocksService , private  val s
         client.close()
     }
 
-    suspend fun callClientDataStocks(symbol: String, loc: String,stock: Stock,dateBegin: Long, dateEnd: Long){
+    suspend fun callClientDataStocks(symbol: String, loc: String, stock: Stock, dateBegin: Long, dateEnd: Long){
         val gson = Gson()
         val jsonResponse: String = client.get("https://query1.finance.yahoo.com/v8/finance/chart/$symbol.$loc?formatted=true&includeAdjustedClose=true&interval=1d&period1=$dateBegin&period2=$dateEnd").body()
         println("Json: $jsonResponse")
