@@ -1,10 +1,9 @@
 package br.com.kotlin.estudos.model.repository.financial
 
-import br.com.kotlin.estudos.model.repository.financial.id.FixedExpenseId
-import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 import org.hibernate.annotations.JdbcTypeCode
 import org.hibernate.type.SqlTypes
+import java.math.BigDecimal
 import java.util.*
 
 @Entity
@@ -17,7 +16,6 @@ class FixedExpense(
     @JdbcTypeCode(SqlTypes.CHAR)
     val id: UUID,
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="type_fixed_id",referencedColumnName ="id")
     @JdbcTypeCode(SqlTypes.CHAR)
@@ -25,6 +23,9 @@ class FixedExpense(
 
     @JdbcTypeCode(SqlTypes.DATE)
     @Column(name="due_date")
-    var dueDate: Date?
+    var dueDate: Date?,
+
+    @Column(name="value_expense_actual")
+    var valueExpenseActual: BigDecimal?
 
 ){}

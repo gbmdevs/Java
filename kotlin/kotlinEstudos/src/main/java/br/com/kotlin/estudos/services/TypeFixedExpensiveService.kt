@@ -15,6 +15,8 @@ class TypeFixedExpensiveService(
 
     fun listarTodos(): List<TypeFixedExpense> = typeFixedExpenseRepository.findAll().toList()
 
+    fun findById(id: UUID) = typeFixedExpenseRepository.findById(id)
+
     fun salvar(tipDespesaDTO: TipDespesaDTO): TypeFixedExpense {
         try {
             val tipDespesa = TypeFixedExpense(

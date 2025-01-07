@@ -1,7 +1,7 @@
 insert into usuario values('0a232a0e-82e8-4d6a-bd3b-f629fc2e8f80','guih.smi2@gmail.com','$2a$10$mv3sE8fvLKRR85AoC1NPN.sPsFaDYrSPKijFaaxVr1lsVnYZLRi1W',NULL,'Guilherme Gois Braga de Medeiros');
 
 insert into TYPE_FIXED_EXPENSE values('c91519fe-52bc-4413-92d3-a87da286d647','0a232a0e-82e8-4d6a-bd3b-f629fc2e8f80','Fatura Claro',true);
-insert into FIXED_EXPENSE values('d4d9d3ca-8a9a-4d46-86fd-00eb299648e7','c91519fe-52bc-4413-92d3-a87da286d647',CURRENT_DATE);
+insert into FIXED_EXPENSE values('d4d9d3ca-8a9a-4d46-86fd-00eb299648e7','c91519fe-52bc-4413-92d3-a87da286d647',CURRENT_DATE,76.99);
 
 insert into type_balance values(1,'Iti Itaú','Conta corrente do iti itau.',true);
 insert into type_balance values(2,'Banco Inter','Conta corrente do Inter.',true);

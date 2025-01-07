@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/fixed-expense")
+@RequestMapping("/finance/fixed-expense")
 class FixedExpenseController(
     private val  fixedExpensiveService: FixedExpensiveService
 ){
@@ -18,9 +18,9 @@ class FixedExpenseController(
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    fun insertFixedExpense(@RequestBody fixedExpenseDTO: FixedExpenseDTO){
+    fun insertFixedExpense(@RequestBody fixedExpenseDTO: FixedExpenseDTO): FixedExpense{
         logger.info("Recebendo dados: $fixedExpenseDTO")
-
+        return fixedExpensiveService.save(fixedExpenseDTO)
     }
     @GetMapping("/my")
     @ResponseStatus(HttpStatus.OK)
