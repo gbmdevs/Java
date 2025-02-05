@@ -25,6 +25,7 @@ class SecurityConfig(private val jwtAuthenticationFilter: JwtAuthenticationFilte
             .headers().frameOptions().disable()
             .and()
             .authorizeHttpRequests()
+            .requestMatchers(AntPathRequestMatcher("/ws/**")).permitAll()
             .requestMatchers(AntPathRequestMatcher("/auth/**")).permitAll()
             .requestMatchers(AntPathRequestMatcher("/h2-console/**")).permitAll()
             .anyRequest().authenticated()
