@@ -6,6 +6,7 @@ CREATE TABLE STOCK_USER_OPER(
     oper_buy_price NUMERIC(10,2) DEFAULT 0,
     oper_buy_date DATE NOT NULL,
     oper_buy_total NUMERIC(10,2) DEFAULT 0,
+    oper_situation CHAR(1) DEFAULT 'A',
     CONSTRAINT fk_usuario_oper_id FOREIGN KEY(usuario_id) REFERENCES usuario(id),
     CONSTRAINT fk_stock_oper_id FOREIGN KEY(stock_id) REFERENCES stock(id)
 );
