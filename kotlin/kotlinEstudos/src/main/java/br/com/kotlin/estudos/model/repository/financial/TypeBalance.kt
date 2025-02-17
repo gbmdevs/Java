@@ -11,11 +11,12 @@ import java.sql.Date
 @Table(name="TYPE_BALANCE")
 class TypeBalance(
      @Id
-     @Column(nullable = false)
-     private val type: Int,
+     @Column(name="type",nullable = false)
+     var type: Int,
      @Column(name="type_name")
-     private val typeName: String,
+     var typeName: String,
      @Column(name="type_desc")
-     private val typeDesc: String
-
+     var typeDesc: String,
+     @Column(name="is_active")
+     var isActive: Boolean
 ){}

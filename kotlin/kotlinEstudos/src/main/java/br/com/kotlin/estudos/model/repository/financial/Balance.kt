@@ -1,5 +1,6 @@
 package br.com.kotlin.estudos.model.repository.financial
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 import java.util.*
 import org.hibernate.annotations.JdbcTypeCode
@@ -15,13 +16,14 @@ class Balance(
      @JdbcTypeCode(SqlTypes.CHAR)
      val id: UUID = UUID.randomUUID(),
 
+     @JsonIgnore
      @ManyToOne(fetch = FetchType.LAZY)
      @JoinColumn(name="usuario_id")
      @JdbcTypeCode(SqlTypes.CHAR)
      var user: Usuario?,
 
      @ManyToOne(fetch = FetchType.LAZY)
-     @JoinColumn(name="type")
+     @JoinColumn(name="type", referencedColumnName = "type")
      var typeBalance: TypeBalance?,
 
      @Column(name = "VALUE_CONSUME")
@@ -29,5 +31,8 @@ class Balance(
 
      @Column(name = "DATE_CONSUME")
      var dateConsume: Date,
+
+     @Column(name = "DESCRIPTION")
+     var description: String
 
      ){}

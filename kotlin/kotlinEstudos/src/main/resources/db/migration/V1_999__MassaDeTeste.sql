@@ -6,8 +6,8 @@ insert into FIXED_EXPENSE values('d4d9d3ca-8a9a-4d46-86fd-00eb299648e7','c91519f
 insert into type_balance values(1,'Iti Itaú','Conta corrente do iti itau.',true);
 insert into type_balance values(2,'Banco Inter','Conta corrente do Inter.',true);
 
-insert into balance values('4545e64c-446d-4d2a-ba9e-711fde482995','0a232a0e-82e8-4d6a-bd3b-f629fc2e8f80',1,-24.59,CURRENT_TIMESTAMP);
-insert into balance values('ae7cf29e-744a-4979-8e5d-449dedad0ba8','0a232a0e-82e8-4d6a-bd3b-f629fc2e8f80',1,57.23,CURRENT_TIMESTAMP);
+insert into balance values('4545e64c-446d-4d2a-ba9e-711fde482995','0a232a0e-82e8-4d6a-bd3b-f629fc2e8f80',1,-24.59,CURRENT_TIMESTAMP,'Teste1');
+insert into balance values('ae7cf29e-744a-4979-8e5d-449dedad0ba8','0a232a0e-82e8-4d6a-bd3b-f629fc2e8f80',1,57.23,CURRENT_TIMESTAMP,'testes1');
 
 
 insert into stock values('e4557f86-5770-45f5-ac90-327c2e48e1b4','VALE3','Vale Brasil','SA',true);

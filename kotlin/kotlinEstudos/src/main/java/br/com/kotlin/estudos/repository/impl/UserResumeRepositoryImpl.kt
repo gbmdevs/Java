@@ -26,8 +26,8 @@ sto.oper_buy_qt
 FROM STOCK_USER_OPER sto
 INNER JOIN STOCK s ON s.id = sto.stock_id
 LEFT JOIN STOCK_DATA_HIST sdh ON sdh.stock_id = s.id
-WHERE sdh.stock_date = ( select max(sdh2.stock_date) from stock_data_hist  sdh2)
-or sdh.stock_date is null  
+WHERE (sdh.stock_date = ( select max(sdh2.stock_date) from stock_data_hist  sdh2)
+or sdh.stock_date is null) 
 and (sto.oper_situation = :situation or :situation is null)
 order by valuation desc
             """

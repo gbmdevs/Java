@@ -6,7 +6,6 @@ import br.com.kotlin.estudos.model.dto.tipdespesa.TipDespesaDTO
 import br.com.kotlin.estudos.model.repository.financial.FixedExpense
 import br.com.kotlin.estudos.model.repository.financial.Stock
 import br.com.kotlin.estudos.model.repository.financial.TypeFixedExpense
-import br.com.kotlin.estudos.repository.BalanceRepository
 import br.com.kotlin.estudos.repository.FixedExpensiveRepository
 import org.springframework.stereotype.Service
 import java.util.*
