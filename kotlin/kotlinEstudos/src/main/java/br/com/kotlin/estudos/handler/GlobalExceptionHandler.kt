@@ -1,6 +1,7 @@
 package br.com.kotlin.estudos.handler
 
 import br.com.kotlin.estudos.model.dto.ErrorResponse
+import io.jsonwebtoken.ExpiredJwtException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
@@ -17,4 +18,16 @@ class GlobalExceptionHandler {
         )
         return ResponseEntity(errorResponse,HttpStatus.INTERNAL_SERVER_ERROR)
     }
+
+    @ExceptionHandler(ExpiredJwtException::class)
+    fun jwtExpiredHandler(ex: ExpiredJwtException):  ResponseEntity<ErrorResponse>{
+        val errorResponse = ErrorResponse (
+            code    = 401,
+            message =  "Access not authorized: ${ex.message}"
+        )
+        return ResponseEntity(errorResponse,HttpStatus.UNAUTHORIZED)
+    }
+
+
+
 }

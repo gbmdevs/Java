@@ -33,7 +33,6 @@ class BalanceController(
        return balanceService.findByUsuario()
     }
 
-
     @PostMapping
     fun insertBalance(@RequestBody request: BalanceDTORequest){
        balanceService.insertBalance(request)

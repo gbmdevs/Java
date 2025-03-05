@@ -41,23 +41,29 @@ class StockDataService(private val stocksService: StocksService , private  val s
         println("Json: $jsonResponse")
         val chartResponse = gson.fromJson(jsonResponse, ChartResponse::class.java)
         println("Variavel: $chartResponse")
-        loadDataBalanceStocks(chartResponse,stock)
+        if(chartResponse.chart != null){
+           loadDataBalanceStocks(chartResponse,stock)
+        }
     }
 
     fun retrieveStocksTickets(): List<Stock>{
         return stocksService.findAll();
     }
     fun loadDataBalanceStocks(response: ChartResponse, stock: Stock){
-        response.chart.result.get(0).timestamp.forEachIndexed { index,date ->
-            val stockDataHistory = StockDataHistory(
-                    stock      = stock,
-                    dateStock  = DateConverter.convertSecondToDate(date),
-                    stockOpen  = response.chart.result.get(0).indicators.quote.get(0).open.get(index).toBigDecimal(),
+        try {
+            response.chart.result.get(0).timestamp.forEachIndexed { index, date ->
+                val stockDataHistory = StockDataHistory(
+                    stock = stock,
+                    dateStock = DateConverter.convertSecondToDate(date),
+                    stockOpen = response.chart.result.get(0).indicators.quote.get(0).open.get(index).toBigDecimal(),
                     stockClose = response.chart.result.get(0).indicators.quote.get(0).close.get(index).toBigDecimal(),
-                    stockHigh  = response.chart.result.get(0).indicators.quote.get(0).high.get(index).toBigDecimal(),
-                    stockLow   = response.chart.result.get(0).indicators.quote.get(0).low.get(index).toBigDecimal()
-            )
-            stocksDataHistoryRepository.save(stockDataHistory)
+                    stockHigh = response.chart.result.get(0).indicators.quote.get(0).high.get(index).toBigDecimal(),
+                    stockLow = response.chart.result.get(0).indicators.quote.get(0).low.get(index).toBigDecimal()
+                )
+                stocksDataHistoryRepository.save(stockDataHistory)
+            }
+        }catch(ex: Exception){
+            println("Erro no banco de dados $ex");
         }
 
     }

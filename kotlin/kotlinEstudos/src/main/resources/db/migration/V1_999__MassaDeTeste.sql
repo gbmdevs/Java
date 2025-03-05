@@ -15,7 +15,7 @@ insert into stock values('6d4a2098-2dcb-474a-a262-afacd99fb67e','BBAS3','Banco d
 insert into stock values('6583fac0-732c-4d2d-940d-8cf851709175','HASH11','Hash Crypto','SA',true);
 insert into stock values('2ac0bfe8-68bc-45a0-80ba-ef485dc71eb3','MXRF11','Fundo IFIX','SA',true);
 insert into stock values('8fa10054-1e6c-4378-b0b9-11f274262917','USIM5','Fundo IFIX','SA',true);
-insert into stock values('da8d4258-cd7d-4a3a-8549-8e573684305e','BBDC4','Fundo IFIX','SA',true);
+insert into stock values('da8d4258-cd7d-4a3a-8549-8e573684305e','BBDC4','Bradesco','SA',true);
 insert into stock values('fe444b6a-922a-4362-90da-e6bea369b926','XPML11','Fundo Shopping','SA',true);
 insert into stock values('75e66db5-6838-438e-b523-7b383409a7ef','EGIE3','Engie energia','SA',true);
 insert into stock values('1ec8c1f5-63f9-47b3-9b14-cf00408a805c','ITSA4','Itausa SA','SA',true);

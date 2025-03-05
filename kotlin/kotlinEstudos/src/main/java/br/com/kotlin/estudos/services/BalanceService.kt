@@ -7,6 +7,7 @@ import br.com.kotlin.estudos.repository.BalanceRepository
 import br.com.kotlin.estudos.repository.ResumeBalanceRepository
 import br.com.kotlin.estudos.repository.TypeBalanceRepository
 import org.springframework.stereotype.Service
+import java.math.BigDecimal
 
 @Service
 class BalanceService(
@@ -27,8 +28,8 @@ class BalanceService(
 
     fun insertBalance(request: BalanceDTORequest){
         val typeBalance = typeBalanceRepository.findByType(request.typeBalance)
-        if(typeBalance == null){
-            throw  Exception()
+        if(typeBalance == null || request.value == BigDecimal.ZERO){
+            throw  Exception("Valor contem zero")
         }
         val balance = Balance(
             typeBalance = typeBalance,
