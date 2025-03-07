@@ -6,16 +6,17 @@ import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.test.context.ContextConfiguration
 
-import org.junit.jupiter.api.Test 
+import org.junit.jupiter.api.Test
+import org.springframework.test.context.ActiveProfiles
 
-@SpringBootTest(classes = arrayOf(APISpringApplication ::class))
+@SpringBootTest
+@ActiveProfiles("test")
 class APISpringApplicationTest {
 
     @Test
     fun testForApp(){ 
         println("Teste foi!");
     }
-
   
 }
  
