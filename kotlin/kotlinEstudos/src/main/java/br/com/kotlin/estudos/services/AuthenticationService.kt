@@ -6,6 +6,7 @@ import br.com.kotlin.estudos.repository.UsuarioRepository
 import br.com.kotlin.estudos.model.repository.financial.Usuario
 import br.com.kotlin.estudos.model.dto.LoginUserDTO
 import br.com.kotlin.estudos.model.dto.RegisterUserDto
+import org.springframework.beans.factory.annotation.Autowired
 
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken

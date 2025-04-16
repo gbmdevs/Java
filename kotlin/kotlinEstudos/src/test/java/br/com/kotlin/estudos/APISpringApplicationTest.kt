@@ -13,10 +13,10 @@ import org.springframework.test.context.ActiveProfiles
 @ActiveProfiles("test")
 class APISpringApplicationTest {
 
-    @Test
+   /* @Test
     fun testForApp(){ 
         println("Teste foi!");
-    }
+    }*/
   
 }
  

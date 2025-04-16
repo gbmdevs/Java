@@ -4,6 +4,7 @@ import br.com.kotlin.estudos.model.dto.ErrorResponse
 import io.jsonwebtoken.ExpiredJwtException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.security.authentication.BadCredentialsException
 import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 
@@ -19,7 +20,7 @@ class GlobalExceptionHandler {
         return ResponseEntity(errorResponse,HttpStatus.INTERNAL_SERVER_ERROR)
     }
 
-    @ExceptionHandler(ExpiredJwtException::class)
+    @ExceptionHandler(ExpiredJwtException::class,BadCredentialsException::class)
     fun jwtExpiredHandler(ex: ExpiredJwtException):  ResponseEntity<ErrorResponse>{
         val errorResponse = ErrorResponse (
             code    = 401,
