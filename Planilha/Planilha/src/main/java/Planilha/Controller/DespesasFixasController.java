@@ -21,8 +21,8 @@ import Planilha.Controller.DatasController;
 
 public class DespesasFixasController {
        private List<DespesasFixas>  despesasFixas = new ArrayList<DespesasFixas>();
-       private static String DATA_INICIO = "'2025-12-01'";
-       private static String DATA_FINAL  = "'2026-01-01'";
+       private static String DATA_INICIO = "'2026-03-01'";
+       private static String DATA_FINAL  = "'2026-04-01'";
   
 public void setDespesasFixas(List<DespesasFixas> despesasFixas){
     this.despesasFixas = despesasFixas;
